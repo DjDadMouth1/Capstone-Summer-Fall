@@ -65,60 +65,81 @@ img {
   margin: 0 auto;
 }
 
-header {
-  background-color: #27ae60;
+.body-content {
+  background-image: url("https://wallpaperaccess.com/full/2697107.jpg");
+  background-size: cover;
+  height: 100vh;
+  /* position: relative;
+    &:before{
+        content:'';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(#333, 0.3);
+      
+    } */
 }
 
-header .container .logo {
+.body-content header {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.4);
+  /* position: relative;
+        z-index: 1; */
+}
+
+.body-content header .container {
   padding: 20px 0px;
 }
 
-header .container .logo a {
+.body-content header .container .logo a {
   font-size: 24px;
   color: white;
 }
 
-header .container .navi .navi-list li a {
+.body-content header .container .navi .navi-list li a {
   font-size: px;
   color: white;
   margin-left: 30px;
   font-weight: bold;
 }
 
-header .container .navi .navi-list li:hover a {
+.body-content header .container .navi .navi-list li:hover a {
   color: #f1c40f;
 }
 
-.body-content {
-  margin: auto;
-  width: 500px;
-  padding-top: 50px;
+.body-content .content {
+  padding-top: 20px;
+  /* position: relative;
+        z-index: 1; */
 }
 
-.body-content .container {
-  border: solid black 1px;
+.body-content .content .container {
+  width: 500px;
+  margin: auto;
+  border: solid #333 1px;
   border-radius: 10px;
   padding: 20px 20px 20px 20px;
 }
 
-.body-content .container .input-form .form-header {
+.body-content .content .container .input-form .form-header {
   padding-bottom: 10px;
 }
 
-.body-content .container .input-form .input-group {
+.body-content .content .container .input-form .input-group {
   padding-bottom: 10px;
 }
 
-.body-content .container .input-form .input-group .input-box {
+.body-content .content .container .input-form .input-group .input-box {
   border: solid 1px #333;
   border-radius: 5px;
 }
 
-.body-content .container .input-form .run-button {
+.body-content .content .container .input-form .run-button {
   padding-bottom: 10px;
 }
 
-.body-content .container .input-form .run-button .btn {
+.body-content .content .container .input-form .run-button .btn {
   border: solid 1px #333;
   border-radius: 7px;
   background-color: #27ae60;
@@ -127,7 +148,7 @@ header .container .navi .navi-list li:hover a {
   cursor: pointer;
 }
 
-.body-content .container .input-form .run-button .btn:hover {
+.body-content .content .container .input-form .run-button .btn:hover {
   color: #f1c40f;
 }
 /*# sourceMappingURL=style.css.map */
