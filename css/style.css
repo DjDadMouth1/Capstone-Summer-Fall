@@ -82,6 +82,11 @@ header .container .navi .navi-list li a {
   font-size: px;
   color: white;
   margin-left: 30px;
+  font-weight: bold;
+}
+
+header .container .navi .navi-list li:hover a {
+  color: #f1c40f;
 }
 
 .body-content .container {
@@ -100,5 +105,9 @@ header .container .navi .navi-list li a {
   color: white;
   padding: 5px;
   cursor: pointer;
+}
+
+.body-content .container .input-form .run-button .btn:hover {
+  color: #f1c40f;
 }
 /*# sourceMappingURL=style.css.map */
