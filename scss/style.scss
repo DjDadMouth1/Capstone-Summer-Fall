@@ -45,21 +45,29 @@ header{
     }
 }
 .body-content{
+    margin: auto;
+    width: 500px;
+    padding-top: 50px;
+    
     .container{
-        padding: 20px 0px;
+        border: solid black 1px;
+        border-radius: 10px;
+        padding: 20px 20px 20px 20px;
         .input-form{
             .form-header{
-
+                padding-bottom: 10px;
             }
             .input-group{
+                padding-bottom: 10px;
                 .input-text{
                 }
                 .input-box{
                     border: solid 1px #333;
-                    border-radius: 7px;
+                    border-radius: 5px;
                 }
             }
             .run-button{
+                padding-bottom: 10px;
                 .btn{
                     border: solid 1px #333;
                     border-radius: 7px;
