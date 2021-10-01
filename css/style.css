@@ -1,0 +1,27 @@
+* {
+  color: #333;
+}
+
+img {
+  max-width: 100%;
+}
+
+.container {
+  max-width: 1120px;
+  margin: 0 auto;
+}
+
+.test p {
+  color: red;
+}
+
+.body-content .container .input-form .input-group .input-box {
+  border: solid 1px #333;
+  border-radius: 5px;
+}
+
+.body-content .container .input-form .run-button .btn {
+  border: solid 1px #333;
+  border-radius: 5px;
+}
+/*# sourceMappingURL=style.css.map */
