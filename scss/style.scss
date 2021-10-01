@@ -1,5 +1,12 @@
+@import "variables";
+@import "flex";
+@import "media";
+
 *{
     color: #333;
+}
+html,body,input, button{
+    font-family: "Open Sans", Courier, monospace;
 }
 img{
     max-width: 100%;
@@ -9,13 +16,33 @@ img{
     margin: 0 auto;
 }
 
-.test{
-    p{
-        color: red;
+header{
+    background-color: $primary;
+    .container{
+        .logo{
+            padding: 20px 0px;
+            a{
+                font-size: 24px;
+                color: white;
+            }
+        }
+        .navi{
+            .navi-list{
+                li{
+                    a{  
+                        font-size: px;
+                        color: white;
+                        margin-left: 30px;
+                    }
+                }
+            }
+            
+        }
     }
 }
 .body-content{
     .container{
+        padding: 20px 0px;
         .input-form{
             .form-header{
 
@@ -25,13 +52,17 @@ img{
                 }
                 .input-box{
                     border: solid 1px #333;
-                    border-radius: 5px;
+                    border-radius: 7px;
                 }
             }
             .run-button{
                 .btn{
                     border: solid 1px #333;
-                    border-radius: 5px;
+                    border-radius: 7px;
+                    background-color: $primary;
+                    color: white;
+                    padding: 5px;
+                    cursor: pointer;
                 }
                 
             }
@@ -39,3 +70,4 @@ img{
         }
     }
 }
+
