@@ -89,13 +89,33 @@ header .container .navi .navi-list li:hover a {
   color: #f1c40f;
 }
 
+.body-content {
+  margin: auto;
+  width: 500px;
+  padding-top: 50px;
+}
+
 .body-content .container {
-  padding: 20px 0px;
+  border: solid black 1px;
+  border-radius: 10px;
+  padding: 20px 20px 20px 20px;
+}
+
+.body-content .container .input-form .form-header {
+  padding-bottom: 10px;
+}
+
+.body-content .container .input-form .input-group {
+  padding-bottom: 10px;
 }
 
 .body-content .container .input-form .input-group .input-box {
   border: solid 1px #333;
-  border-radius: 7px;
+  border-radius: 5px;
+}
+
+.body-content .container .input-form .run-button {
+  padding-bottom: 10px;
 }
 
 .body-content .container .input-form .run-button .btn {
