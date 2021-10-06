@@ -4,6 +4,12 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="https://kit.fontawesome.com/a7ebbfc552.js" crossorigin="anonymous"></script>
+    <script>
+      function doSomething() {
+          alert('Form submitted!');
+          return false;
+      }
+    </script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/reset.css">
@@ -35,12 +41,11 @@
             </ul>
           </nav>
         </div>
-      
       </header>
-      
+
       <div class="content">
         <div class="container">
-          <form action="/action_page.php">
+          <form onsubmit="return doSomething();" class="my-form">
             <input type="file" id="myFile" name="filename">
             <input type="submit" value="Run Frictionless">
           </form>
