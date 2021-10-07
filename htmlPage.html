@@ -7,6 +7,19 @@
     <script>
       function doSomething() {
           alert('Form submitted!');
+		  
+		  var file = document.getElementById('myFile');
+	  
+          if(file.files.length)
+          {
+            var fileReader=new FileReader();
+            fileReader.onload=function()
+            {
+              document.getElementById('output').textContent=fileReader.result;
+            }
+            fileReader.readAsBinaryString(file.files[0]);
+          }
+		  
           return false;
       }
     </script>
@@ -52,6 +65,11 @@
         </div>
       </div>
       
+	  <div class="content">
+	    <div class="container">
+          <pre id="output"></pre>
+        </div>
+	  </div>
 
     </div>
     
