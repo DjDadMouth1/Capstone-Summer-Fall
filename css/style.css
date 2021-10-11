@@ -145,6 +145,7 @@ img {
 }
 
 .body-content .content .container .input-form form .run-frictionless {
+  padding: 0px 10px;
   height: 33px;
   border: solid 1px #333;
   border-radius: 7px;
@@ -157,13 +158,50 @@ img {
   color: #f1c40f;
 }
 
-.body-content .content .container .output {
-  max-height: 550px;
-  background-color: white;
-  margin: auto;
+.body-content .content .container .output-form {
+  position: relative;
+  height: 550px;
   width: 50%;
-  overflow: auto;
+  margin: auto;
   margin-top: 20px;
+}
+
+.body-content .content .container .output-form .download {
+  position: absolute;
+  margin-right: 8px;
+  right: 12px;
+  font-size: 20px;
+}
+
+.body-content .content .container .output-form .download .download-btn {
+  height: 33px;
+  font-size: 14px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  border: solid 1px #333;
+  border-radius: 7px;
+  background-color: #27ae60;
+  color: white;
+  cursor: pointer;
+  padding: 8px;
+}
+
+.body-content .content .container .output-form .download .download-btn:hover {
+  color: #f1c40f;
+}
+
+.body-content .content .container .output-form .download .download-btn:hover i {
+  color: #f1c40f;
+}
+
+.body-content .content .container .output-form .output {
   border-radius: 5px;
+  position: absolute;
+  top: 34px;
+  max-height: 100%;
+  width: 100%;
+  background-color: white;
+  overflow: auto;
+  padding: 0px 10px;
 }
 /*# sourceMappingURL=style.css.map */

@@ -78,7 +78,8 @@ img{
                     border: solid #333 1px;
                     border-radius: 10px;
                     padding: 20px 20px 20px 20px;
-                    .choose-file{                 
+                    .choose-file{  
+             
                         border: solid 1px #333;
                         border-radius: 7px;
                         background-color: $primary;
@@ -90,6 +91,7 @@ img{
                         }
                     }
                     .run-frictionless{
+                        padding: 0px 10px;
                         height: 33px;
                         border: solid 1px #333;
                         border-radius: 7px;
@@ -105,14 +107,48 @@ img{
                 }
                 
             }
-            .output{
-                max-height: 550px;
-                background-color: white;
-                margin: auto;
+            .output-form{
+                //max-height: 550px;
+                position: relative;
+                height: 550px;
+                //background-color: white;
                 width: 50%;
-                overflow: auto;
+                margin: auto;
                 margin-top: 20px;
-                border-radius: 5px;
+                
+                .download{
+                    position: absolute;
+                    margin-right: 8px;
+                    right: 12px;
+                    font-size: 20px;
+                    .download-btn{
+                        height: 33px;
+                        font-size: 14px;
+                        box-sizing: border-box;
+                        border: solid 1px #333;
+                        border-radius: 7px;
+                        background-color: $primary;
+                        color: white;
+                        cursor: pointer;
+                        padding: 8px;
+                        &:hover{
+                            color: $secondary;
+                        }
+                        &:hover i{
+                            color: $secondary;
+                        }   
+                    }
+                }
+                .output{
+                    border-radius: 5px;
+                    position: absolute;
+                    top: 34px;
+                    max-height: 100%;
+                    width: 100%;
+                    background-color: white;
+                    overflow: auto;
+                    padding: 0px 10px;
+                }
             }
     }
     }
