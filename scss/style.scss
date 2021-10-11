@@ -13,11 +13,11 @@ img{
 }
 .container{
     max-width: 1120px;
-    margin: 0 auto;
+    margin: auto;
 }
 .body-content{
     background-image: url("https://wallpaperaccess.com/full/2697107.jpg");
-    background-size: cover;
+    background-size: repeat;
     height: 100vh;
     /* position: relative;
     &:before{
@@ -64,31 +64,21 @@ img{
     }
      
     .content{
-        padding-top: 20px;
+        padding-top: 50px;
         /* position: relative;
         z-index: 1; */
         .container{
-            width: 500px;
-            margin: auto;
-            border: solid #333 1px;
-            border-radius: 10px;
-            padding: 20px 20px 20px 20px;
+
             .input-form{
-                .form-header{
-                    padding-bottom: 10px;
-                }
-                .input-group{
-                    padding-bottom: 10px;
-                    .input-text{
-                    }
-                    .input-box{
-                        border: solid 1px #333;
-                        border-radius: 5px;
-                    }
-                }
-                .run-button{
-                    padding-bottom: 10px;
-                    .btn{
+                margin: auto;
+                width: 50%;
+                form{
+                    display: flex;
+                    justify-content: space-between;
+                    border: solid #333 1px;
+                    border-radius: 10px;
+                    padding: 20px 20px 20px 20px;
+                    .choose-file{                 
                         border: solid 1px #333;
                         border-radius: 7px;
                         background-color: $primary;
@@ -99,11 +89,32 @@ img{
                             color: $secondary;
                         }
                     }
-                    
+                    .run-frictionless{
+                        height: 33px;
+                        border: solid 1px #333;
+                        border-radius: 7px;
+                        background-color: $primary;
+                        color: white;
+                        cursor: pointer;
+                        &:hover{
+                            color: $secondary;
+                        }
+                        
+                        
+                    }
                 }
                 
             }
-        }
+            .output{
+                max-height: 550px;
+                background-color: white;
+                margin: auto;
+                width: 50%;
+                overflow: auto;
+                margin-top: 20px;
+                border-radius: 5px;
+            }
+    }
     }
 
 }

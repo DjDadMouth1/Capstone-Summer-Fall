@@ -62,12 +62,12 @@ img {
 
 .container {
   max-width: 1120px;
-  margin: 0 auto;
+  margin: auto;
 }
 
 .body-content {
   background-image: url("https://wallpaperaccess.com/full/2697107.jpg");
-  background-size: cover;
+  background-size: repeat;
   height: 100vh;
   /* position: relative;
     &:before{
@@ -109,37 +109,29 @@ img {
 }
 
 .body-content .content {
-  padding-top: 20px;
+  padding-top: 50px;
   /* position: relative;
         z-index: 1; */
 }
 
-.body-content .content .container {
-  width: 500px;
+.body-content .content .container .input-form {
   margin: auto;
+  width: 50%;
+}
+
+.body-content .content .container .input-form form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
   border: solid #333 1px;
   border-radius: 10px;
   padding: 20px 20px 20px 20px;
 }
 
-.body-content .content .container .input-form .form-header {
-  padding-bottom: 10px;
-}
-
-.body-content .content .container .input-form .input-group {
-  padding-bottom: 10px;
-}
-
-.body-content .content .container .input-form .input-group .input-box {
-  border: solid 1px #333;
-  border-radius: 5px;
-}
-
-.body-content .content .container .input-form .run-button {
-  padding-bottom: 10px;
-}
-
-.body-content .content .container .input-form .run-button .btn {
+.body-content .content .container .input-form form .choose-file {
   border: solid 1px #333;
   border-radius: 7px;
   background-color: #27ae60;
@@ -148,7 +140,30 @@ img {
   cursor: pointer;
 }
 
-.body-content .content .container .input-form .run-button .btn:hover {
+.body-content .content .container .input-form form .choose-file:hover {
   color: #f1c40f;
+}
+
+.body-content .content .container .input-form form .run-frictionless {
+  height: 33px;
+  border: solid 1px #333;
+  border-radius: 7px;
+  background-color: #27ae60;
+  color: white;
+  cursor: pointer;
+}
+
+.body-content .content .container .input-form form .run-frictionless:hover {
+  color: #f1c40f;
+}
+
+.body-content .content .container .output {
+  max-height: 550px;
+  background-color: white;
+  margin: auto;
+  width: 50%;
+  overflow: auto;
+  margin-top: 20px;
+  border-radius: 5px;
 }
 /*# sourceMappingURL=style.css.map */

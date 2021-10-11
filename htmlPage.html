@@ -58,18 +58,25 @@
 
       <div class="content">
         <div class="container">
-          <form onsubmit="return doSomething();" class="my-form">
-            <input type="file" id="myFile" name="filename">
-            <input type="submit" value="Run Frictionless">
-          </form>
+          <div class="input-form">
+            <form onsubmit="return doSomething();" class="my-form">
+              <input class="choose-file" type="file" id="myFile" name="filename">
+              <input class="run-frictionless" type="submit" value="Run Frictionless">
+            </form>
+          </div>
+          
+          <div class="output">
+            <pre id="output"></pre>
+          </div>
         </div>
+        
       </div>
       
-	  <div class="content">
+	  <!-- <div class="content">
 	    <div class="container">
-          <pre id="output"></pre>
-        </div>
-	  </div>
+        <pre id="output"></pre>
+      </div>
+	  </div> -->
 
     </div>
     
