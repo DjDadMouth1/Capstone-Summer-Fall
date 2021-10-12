@@ -8,6 +8,8 @@
       function doSomething() {
           alert('Form submitted!');
 		  
+		  document.getElementById('output-form').style.visibility="visible";
+		  
 		  var file = document.getElementById('myFile');
 	  
           if(file.files.length)
@@ -65,7 +67,7 @@
             </form>
           </div>
 
-          <div class="output-form">
+          <div class="output-form" id="output-form">
             <div class="download">
               <div class="download-btn">
                 Download File
