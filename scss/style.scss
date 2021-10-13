@@ -111,16 +111,16 @@ img{
                 //max-height: 550px;
                 position: relative;
                 height: 550px;
-                //background-color: white;
                 width: 50%;
                 margin: auto;
                 margin-top: 20px;
-                
+                visibility: hidden;
                 .download{
                     position: absolute;
                     margin-right: 8px;
                     right: 12px;
                     font-size: 20px;
+                    
                     .download-btn{
                         height: 33px;
                         font-size: 14px;

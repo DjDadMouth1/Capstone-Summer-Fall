@@ -164,7 +164,7 @@ img {
   width: 50%;
   margin: auto;
   margin-top: 20px;
-  visibility: hidden;
+  /* visibility: hidden; */
 }
 
 .body-content .content .container .output-form .download {
