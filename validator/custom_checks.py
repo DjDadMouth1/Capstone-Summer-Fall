@@ -1,32 +1,23 @@
 from frictionless import Check, errors
-import errors
-"""
-Portland State Capstone Team C - Open Data PDX
-Validator Custom Checks
-"""
 
-"""
-LEADING OR TRAILING SPACES
-
-Checks each value for leading or trailing
-whitespace
-"""
-
-class lead_trail_spaces(Check):
-    code = "leading-or-trailing-whitespace"
-    Errors = [errors.LeadTrailWhitespace]
+class duplicate_row(Check):
+    code = "duplicate-row"
+    Errors = [errors.DuplicateRowError]
 
     def __init__(self, descriptor=None):
         super().__init__(descriptor)
-    
-    def validate_row(self, row):
-        for cell in row.items():
-            if cell is None:
-                continue
+        self.__memory = {}
 
-            if cell != cell.strip():
-                note = "value has leading or trailing whitespace"
-                yield errors.LeadTrailWhitespace.from_row(row, note=note)
+    def validate_row(self, row):
+        text = ",".join(map(str, row.values()))
+        hash = hashlib.sha256(text.encode("utf-8")).hexdigest()
+        match = self.__memory.get(hash)
+        if match:
+            note = 'the same as row at position "%s"' % match
+            yield errors.DuplicateRowError.from_row(row, note=note)
+        self.__memory[hash] = row.row_position
+
+    # Metadata
 
     metadata_profile = {  # type: ignore
         "type": "object",
