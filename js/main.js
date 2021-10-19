@@ -5,15 +5,18 @@ const downloadFile = "./result.txt"
 
 $(".run-frictionless").click(function (e) { 
     console.log("runing!!!")
-    if(downloadFile){
-        $(".download").append(`
-        <a href="${downloadFile}" download>
-            <div class="download-btn">
-                Download File
-                <i class="fas fa-download"></i>
-            </div>
-        </a>
-        `);
+    if($(".download").children().length == 0){
+        if(downloadFile ){
+            $(".download").append(`
+            <a href="${downloadFile}" download>
+                <div class="download-btn">
+                    Download File
+                    <i class="fas fa-download"></i>
+                </div>
+            </a>
+            `);
+        }
     }
+    
     
 });
