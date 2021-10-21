@@ -2,6 +2,7 @@ from frictionless import Check, errors
 import hashlib
 from frictionless.errors import header
 from custom_errors import *
+import re
 
     
 class numeric_field_error(Check):
@@ -142,6 +143,39 @@ class header_format_error(Check):
                     note = field_name_errors
                     yield HeaderFormatError(labels=labels,row_positions=positions,note=note)
                     
+
+    # Metadata
+
+    metadata_profile = {  # type: ignore
+        "type": "object",
+        "properties": {},
+    }
+class phone_number_format_error(Check):
+    code = "phone-number-format-error"
+    Errors = [PhoneNumberFormatError]
+
+    def __init__(self, descriptor=None):
+        super().__init__(descriptor)
+
+    def validate_row(self, row):
+        REQUIRED_CHARACTERS = 12
+        PHONE_NUMBER_KEYS = ['PHONE','PHONE NUMBER', 'PHONE NUMBERS', 'PHONENUMBER', 'PHONENUMBERS']
+        actual_phone_number_key = None
+        # check if phone number is in header and get the key
+        uppercase_headers = [label.upper() for label in self.resource.schema.field_names]
+        for phone_number_key in PHONE_NUMBER_KEYS:
+            if phone_number_key in uppercase_headers:
+                actual_phone_number_key = phone_number_key
+        if actual_phone_number_key:
+            phone_number_value = row[actual_phone_number_key]
+            phone_number_value_length = len(phone_number_value)
+            if not phone_number_value_length == REQUIRED_CHARACTERS:
+                note = f"Does not follow phone number format. Only ten-digit numbers separated by hyphens (-) are acceptable"
+                yield PhoneNumberFormatError.from_row(row, note=note, field_name=actual_phone_number_key)
+            # regex search for phone number format 999-999-9999
+            elif not re.search("^[0-9]{3}-[0-9]{3}-[0-9]{4}$", phone_number_value):
+                note = f"Does not follow phone number format. Only ten-digit numbers separated by hyphens (-) are acceptable"
+                yield PhoneNumberFormatError.from_row(row, note=note, field_name=actual_phone_number_key)
 
     # Metadata
 
