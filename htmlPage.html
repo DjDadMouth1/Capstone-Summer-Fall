@@ -11,7 +11,7 @@
 		  document.getElementById('output-form').style.visibility="visible";
 		  
 		  var file = document.getElementById('myFile');
-	  
+      console.log(file.files[0])
           if(file.files.length)
           {
             var fileReader=new FileReader();
