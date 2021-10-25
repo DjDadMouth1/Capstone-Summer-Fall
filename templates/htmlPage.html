@@ -6,12 +6,12 @@
     <script src="https://kit.fontawesome.com/a7ebbfc552.js" crossorigin="anonymous"></script>
     <script>
       function doSomething() {
-          alert('Form submitted!');
+          //alert('Form submitted!');
 		  
 		  document.getElementById('output-form').style.visibility="visible";
 		  
 		  var file = document.getElementById('myFile');
-      console.log(file.files[0])
+	  
           if(file.files.length)
           {
             var fileReader=new FileReader();
@@ -37,9 +37,6 @@
     <script defer src="webpage.js"></script>
   </head>
   <body class="bg-dark">
-    
-
-
     <div class="body-content">
       <header>
         <div class="container flex j-between a-center ">
@@ -48,10 +45,28 @@
           </div>
           <nav class="navi">
             <ul class="navi-list flex j-between a-center">
-              <li><a href="">Home</a></li>
-              <li><a href="">Instruction</a></li>
-              <li><a href="">About</a></li>
-              <li><a href="">Contact</a></li>
+              <li class="nav-element" ><a href="">Home</a></li>
+              <li class="nav-element" ><a href="">Instruction</a></li>
+              <li class="nav-element" ><a href="">About</a></li>
+              <li class="nav-element" ><a href="">Contact</a></li>
+              <li class="hamburger-icon">                    
+                    <!-- <div class="ham-content">
+                      <a href="">Home</a>
+                      <a href="">Instruction</a>
+                      <a href="">About</a>
+                      <a href="">Contact</a>
+                    </div> -->
+                    <div class="hover-ham">
+                      <i class="fa fa-bars"></i>
+                      <div class="ham-content">
+                        <a href="">Home</a>
+                        <a href="">Instruction</a>
+                        <a href="">About</a>
+                        <a href="">Contact</a>
+                      </div>
+                    </div>
+                                     
+              </li>
       
             </ul>
           </nav>
@@ -69,12 +84,15 @@
 
           <div class="output-form" id="output-form">
             <div class="download">
-              <a href="./result.txt" download>
+              <!-- when download class is click, it will run a function in main.js
+              to display downboad-btn button. This function can replace the name
+              of download file in href link by the name of result file. -->
+              <!-- <a href="./sample.csv" download>
                 <div class="download-btn">
                   Download File
                   <i class="fas fa-download"></i>
                 </div>
-              </a> 
+              </a>  -->
             </div>
             <pre class="output" id="output"></pre>
           </div>
