@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://kit.fontawesome.com/a7ebbfc552.js" crossorigin="anonymous"></script>
+    <script>
+      function doSomething() {
+          //alert('Form submitted!');
+		  
+		  document.getElementById('output-form').style.visibility="visible";
+		  
+		  var file = document.getElementById('myFile');
+	  
+          if(file.files.length)
+          {
+            var fileReader=new FileReader();
+            fileReader.onload=function()
+            {
+              document.getElementById('output').textContent=fileReader.result;
+            }
+            fileReader.readAsBinaryString(file.files[0]);
+          }
+		  
+          return false;
+      }
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/reset.css">
+    <title>470 Project Webpage</title>
+    <!--<link
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/css/bootstrap.min.css"
+    />-->
+    <script defer src="webpage.js"></script>
+  </head>
+  <body class="bg-dark">
+    <div class="body-content">
+      <header>
+        <div class="container flex j-between a-center ">
+          <div class="logo">
+            <a href="">Logo</a>
+          </div>
+          <nav class="navi">
+            <ul class="navi-list flex j-between a-center">
+              <li class="nav-element" ><a href="">Home</a></li>
+              <li class="nav-element" ><a href="">Instruction</a></li>
+              <li class="nav-element" ><a href="">About</a></li>
+              <li class="nav-element" ><a href="">Contact</a></li>
+              <li class="hamburger-icon">                    
+                    <!-- <div class="ham-content">
+                      <a href="">Home</a>
+                      <a href="">Instruction</a>
+                      <a href="">About</a>
+                      <a href="">Contact</a>
+                    </div> -->
+                    <div class="hover-ham">
+                      <i class="fa fa-bars"></i>
+                      <div class="ham-content">
+                        <a href="">Home</a>
+                        <a href="">Instruction</a>
+                        <a href="">About</a>
+                        <a href="">Contact</a>
+                      </div>
+                    </div>
+                                     
+              </li>
+      
+            </ul>
+          </nav>
+        </div>
+      </header>
+
+      <div class="content">
+        <div class="container">
+          <div class="input-form">
+            <form onsubmit="return doSomething();" class="my-form">
+              <input class="choose-file" type="file" id="myFile" name="filename">
+              <input class="run-frictionless" type="submit" value="Run Frictionless">
+            </form>
+          </div>
+
+          <div class="output-form" id="output-form">
+            <div class="download">
+              <!-- when download class is click, it will run a function in main.js
+              to display downboad-btn button. This function can replace the name
+              of download file in href link by the name of result file. -->
+              <!-- <a href="./sample.csv" download>
+                <div class="download-btn">
+                  Download File
+                  <i class="fas fa-download"></i>
+                </div>
+              </a>  -->
+            </div>
+            <pre class="output" id="output"></pre>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    
+  </body>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="js/main.js"></script>
+</html>
