@@ -166,6 +166,7 @@ class phone_number_format_error(Check):
         for phone_number_key in PHONE_NUMBER_KEYS:
             if phone_number_key in uppercase_headers:
                 actual_phone_number_key = phone_number_key
+        # if key is found, check the rows
         if actual_phone_number_key:
             phone_number_value = row[actual_phone_number_key]
             phone_number_value_length = len(phone_number_value)
@@ -179,6 +180,30 @@ class phone_number_format_error(Check):
 
     # Metadata
 
+    metadata_profile = {  # type: ignore
+        "type": "object",
+        "properties": {},
+    }
+class web_link_format_error(Check):
+    code = "web-link-format-error"
+    Errors = [WebLinkFormatError]
+    
+    def __init__(self, descriptor=None):
+        super().__init__(descriptor)
+        
+    def validate_row(self, row):
+        URL_KEY = 'URL'
+        uppercase_headers = [label.upper() for label in self.resource.schema.field_names]
+        # if URL is a data field
+        if URL_KEY in uppercase_headers:
+            URL_value = row[URL_KEY]
+            # regex search for URL format <a href="http://www.example.com">An example website</a>
+            if not re.search("^<a href=\"(http|https)://\S+\">.*</a>$", URL_value):
+                note = f"Does not follow web link format. Web links must be written in HTML style, contain only one link, and begin with http:// or https://"
+                yield WebLinkFormatError.from_row(row, note=note, field_name=URL_KEY)
+        
+    # Metadata
+    
     metadata_profile = {  # type: ignore
         "type": "object",
         "properties": {},

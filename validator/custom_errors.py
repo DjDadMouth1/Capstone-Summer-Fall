@@ -42,3 +42,10 @@ class PhoneNumberFormatError(errors.CellError):
     template = "Row at position {rowPosition} and field at position {fieldPosition}: {note}"
     description = "Phone number in this cell does not conform to phone number format standard. Phone numbers must be ten digits, include the area code, and be separated by hyphens (-) (i.e.XXX-XXX-XXXX)."
     
+class WebLinkFormatError(errors.CellError):
+    code = "web-link-format-error"
+    name = "Phone Number Format Error"
+    tags = ["#table", "#row", "#cell"]
+    template = "Row at position {rowPosition} and field at position {fieldPosition}: {note}"
+    description = "Web link in this cell does not conform to web link format standard. Web links need to be stored in a field named URL, must begin with http:// or https://, and have the following HTML style: <a href=\"https://www.example.com/\">An example website</a>"
+    
