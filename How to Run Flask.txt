@@ -1,0 +1,29 @@
+You need to have a virtual enviroment:
+
+run: 
+	pip install virtualenv
+	note:	Make sure to have your terminal running as administrator, 
+		if you don't it will be installed in the wrong place and be unsuable
+
+When you are in the project folder (same folder that has static and templates) run:
+	virtualenv venv
+
+This creates a folder called venv, which defines your virtual environment
+
+Now run:
+	source venv/Scripts/activate
+	Note: 	this is just source <path to the activate file in venv>, 
+		venv/Scripts/activate is what is was for me, it was /env/bin/activate in the tutorial
+
+you should now have (venv) at the beginning of your terminal path
+
+Run:
+	pip install Flask
+
+Then:
+	flask run
+
+The output should tell you where the flask app is being run, but it should be:
+	http://127.0.0.1:5000
+
+
