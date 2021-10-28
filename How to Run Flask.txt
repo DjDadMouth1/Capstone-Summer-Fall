@@ -14,6 +14,16 @@ Now run:
 	source venv/Scripts/activate
 	Note: 	this is just source <path to the activate file in venv>, 
 		venv/Scripts/activate is what is was for me, it was /env/bin/activate in the tutorial
+	Note for Window: You may need to setup Python virtual enviroment on Windows. To do it, following these:
+		Running PowerShell as administrator: On the search bar of window, search: Windows PowerShell -> right click -> run as administrator
+		Activate the virtual environment:
+			Running these two commands to set executionplolicy unrestricted
+				> cd~
+				> Set-ExecutionPolicy Unrestricted -Force 
+			Activate environment: (**in window we use "\", not"/")
+				cd to venv folder
+				>.\Scripts\activate 
+
 
 you should now have (venv) at the beginning of your terminal path
 
@@ -22,6 +32,8 @@ Run:
 
 Then:
 	flask run
+	Note: Make sure you are running "flask run" in folder that contain app.py (Mine is Capstone-Summer-Fall folder).
+		If you are not in folder that contain app.py, it will promp: "app.py" module was not found in the current directory.
 
 The output should tell you where the flask app is being run, but it should be:
 	http://127.0.0.1:5000
