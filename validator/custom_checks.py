@@ -208,3 +208,74 @@ class web_link_format_error(Check):
         "type": "object",
         "properties": {},
     }
+class geolocation_format_error(Check):
+    code = "geolocation-format-error"
+    Errors = [GeolocationFormatError]
+    
+    def __init__(self, descriptor=None):
+        super().__init__(descriptor)
+    
+    def validate_row(self, row):
+        POINT_KEY = "POINT"
+        latitude_key = "LATITUDE"
+        longitude_key = "LONGITUDE"
+        uppercase_headers = [label.upper() for label in self.resource.schema.field_names]
+        latitude_value = None
+        longitude_value = None
+        latitude = None
+        longitude = None
+        point = None
+        # if latitude and longitude are data fields
+        if latitude_key in uppercase_headers and longitude_key in uppercase_headers:
+            latitude_value = str(row[latitude_key])
+            longitude_value = str(row[longitude_key])
+        # if point is a data field
+        elif POINT_KEY in uppercase_headers:
+            point_value = str(row[POINT_KEY])
+            if not re.search("^POINT\(\-?[0-9]{1,3}\.[0-9]+ \-?[0-9]{1,2}\.[0-9]+\)$", point_value):
+                note = f"Does not follow geolocation format. Point field must be formatted the following way: POINT(longitude latitude)"
+                yield GeolocationFormatError.from_row(row, note=note, field_name=POINT_KEY)
+            point = point_value[6:-1]
+            point = point.split()
+            if not len(point) == 2:
+                note = f"Does not follow geolocation format. Point must be formatted the following way: POINT(longitude latitude)"
+                yield GeolocationFormatError.from_row(row, note=note, field_name=POINT_KEY)
+            else:
+                longitude_value = point[0]
+                latitude_value = point[1]
+                latitude_key = POINT_KEY
+                longitude_key = POINT_KEY
+        # if latitude or longitude is a data field but not both
+        elif latitude_key in uppercase_headers or longitude_key in uppercase_headers:
+            error_key = None
+            if latitude_key in uppercase_headers:
+                error_key = latitude_key
+            if longitude_key in uppercase_headers:
+                error_key = longitude_key
+            note = f"Does not follow geolocation format. Latitude and longitude fields must both exist"
+            yield GeolocationFormatError.from_row(row, note=note, field_name=error_key)
+        # latitude and longitude are defined at the same time
+        # if defined, check the values
+        if latitude_value:
+            if not re.search("^\-?[0-9]{1,2}\.[0-9]+$", latitude_value):
+                note = f"Does not follow geolocation format. Latitude must be a decimal number"
+                yield GeolocationFormatError.from_row(row, note=note, field_name=latitude_key)
+            elif not re.search("^\-?[0-9]{1,3}\.[0-9]+$", longitude_value):
+                note = f"Does not follow geolocation format. Longitude must be a decimal number"
+                yield GeolocationFormatError.from_row(row, note=note, field_name=longitude_key)
+            else:
+                latitude = float(latitude_value)
+                longitude = float(longitude_value)
+                if latitude > 90.0 or latitude < -90.0:
+                    note = f"Out of bounds. Latitude must be between 90 and -90 degrees"
+                    yield GeolocationFormatError.from_row(row, note=note, field_name=latitude_key)
+                if longitude > 180.0 or longitude < -180.0:
+                    note = f"Out of bounds. Longitude must be between 180 and -180 degrees"
+                    yield GeolocationFormatError.from_row(row, note=note, field_name=longitude_key)
+        
+    # Metadata
+    
+    metadata_profile = {  # type: ignore
+        "type": "object",
+        "properties": {},
+    }

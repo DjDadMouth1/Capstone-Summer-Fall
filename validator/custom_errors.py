@@ -49,3 +49,9 @@ class WebLinkFormatError(errors.CellError):
     template = "Row at position {rowPosition} and field at position {fieldPosition}: {note}"
     description = "Web link in this cell does not conform to web link format standard. Web links need to be stored in a field named URL, must begin with http:// or https://, and have the following HTML style: <a href=\"https://www.example.com/\">An example website</a>"
     
+class GeolocationFormatError(errors.CellError):
+    code = "geolocation-format-error"
+    name = "Geolocation Format Error"
+    tags = ["#table", "#row", "#cell"]
+    template = "Row at position {rowPosition} and field at position {fieldPosition}: {note}"
+    description = "Geolocation in this cell does not conform to geolocation format standard. Latitude must be between 90 and -90 degrees and longitude must be between 180 and -180 degrees. Latitude and longitude must either be stored in two seperate fields or stored in a single point field with the format: POINT(longitude latitude)"
