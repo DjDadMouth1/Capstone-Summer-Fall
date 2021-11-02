@@ -44,7 +44,7 @@ class PhoneNumberFormatError(errors.CellError):
     
 class WebLinkFormatError(errors.CellError):
     code = "web-link-format-error"
-    name = "Phone Number Format Error"
+    name = "Web Link Format Error"
     tags = ["#table", "#row", "#cell"]
     template = "Row at position {rowPosition} and field at position {fieldPosition}: {note}"
     description = "Web link in this cell does not conform to web link format standard. Web links need to be stored in a field named URL, must begin with http:// or https://, and have the following HTML style: <a href=\"https://www.example.com/\">An example website</a>"
