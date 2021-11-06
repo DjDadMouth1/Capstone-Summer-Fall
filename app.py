@@ -1,15 +1,19 @@
-from flask import Flask, render_template
-import validate
+from flask import Flask, render_template, request
+
+from werkzeug.utils import redirect
 app = Flask(__name__)
 
 @app.route('/')
 def home():
-   return render_template('htmlPage.html')
+   return render_template('index.html')
 
-@app.route('/validate/')
-def run_validator(file):
-   validate.custom_validate(file)
-   return 'Done!'
+@app.route('/', methods=['POST'])
+def run_validator():
+   new_file = request.files['filename']
+   filename = str(new_file.filename)
+   new_file.save(new_file.filename)
+   from validate import custom_validate
+   custom_validate(filename)
+   return redirect('/')
    
-if __name__ == '__main__':
-   app.run(host='localhost', port=5000)
+app.run(host='localhost', port=5000)
