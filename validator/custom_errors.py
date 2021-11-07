@@ -55,3 +55,11 @@ class GeolocationFormatError(errors.CellError):
     tags = ["#table", "#row", "#cell"]
     template = "Row at position {rowPosition} and field at position {fieldPosition}: {note}"
     description = "Geolocation in this cell does not conform to geolocation format standard. Latitude must be between 90 and -90 degrees and longitude must be between 180 and -180 degrees. Latitude and longitude must either be stored in two seperate fields or stored in a single point field with the format: POINT(longitude latitude)"
+    
+class LogDateMatchError(errors.CellError):
+    code = "log-date-match-error"
+    name = "Log Date Match Error"
+    tags = ["#table", "#row", "#cell"]
+    template = "Row at position {rowPosition} and field at position {fieldPosition}: {note}"
+    description = "Log date in this cell does not conform to log date standard. Record date marks the time the data is collected. Log date differs from it as it marks the time the data is uploaded. They should not match."
+    

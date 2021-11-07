@@ -279,3 +279,25 @@ class geolocation_format_error(Check):
         "type": "object",
         "properties": {},
     }
+class log_date_match_error(Check):
+    code = "log-date-match-error"
+    Errors = [LogDateMatchError]
+    
+    def __init__(self, descriptor=None):
+        super().__init__(descriptor)
+    
+    def validate_row(self, row):
+        LOG_DATE_KEY = "LOG DATE"
+        RECORD_DATE_KEY = "RECORD DATE"
+        uppercase_headers = [label.upper() for label in self.resource.schema.field_names]
+        if LOG_DATE_KEY in uppercase_headers and RECORD_DATE_KEY in uppercase_headers:
+            if str(row[LOG_DATE_KEY]) == str(row[RECORD_DATE_KEY]):
+                note = f"Does not follow log date standard. Log date must not match record date"
+                yield LogDateMatchError.from_row(row, note=note, field_name=LOG_DATE_KEY)
+    
+    # Metadata
+    
+    metadata_profile = {  # type: ignore
+        "type": "object",
+        "properties": {},
+    }
