@@ -473,13 +473,11 @@ class geolocation_format_error(Check):
             point_value = str(row[POINT_KEY])
             if not re.search("^POINT\(\-?[0-9]{1,3}\.[0-9]+ \-?[0-9]{1,2}\.[0-9]+\)$", point_value):
                 note = f"Does not follow geolocation format. Point field must be formatted the following way: POINT(longitude latitude)"
-                yield GeolocationFormatError.from_row(row, note=note, field_name=POINT_KEY)
-            point = point_value[6:-1]
-            point = point.split()
-            if not len(point) == 2:
-                note = f"Does not follow geolocation format. Point must be formatted the following way: POINT(longitude latitude)"
+                print("Hello!")
                 yield GeolocationFormatError.from_row(row, note=note, field_name=POINT_KEY)
             else:
+                point = point_value[6:-1]
+                point = point.split()
                 longitude_value = point[0]
                 latitude_value = point[1]
                 latitude_key = POINT_KEY
