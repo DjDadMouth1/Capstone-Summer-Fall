@@ -5,7 +5,7 @@ from sqlalchemy.sql.expression import false
 from custom_errors import *
 import re
 from datetime import datetime
-import regex
+import re
 
    
 class header_format(Check):
@@ -615,7 +615,7 @@ class bureau_code_match_error(Check):
     }
    
    # Faihan's SECTION 
-   class valid_Email_In_Cell(Check):
+class valid_Email_In_Cell(Check):
     code = "cell-error"
     Errors = [errors.CellError]
 
