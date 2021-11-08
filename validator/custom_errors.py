@@ -36,13 +36,6 @@ class PhoneNumberFormatError(errors.CellError):
     name = "Phone Number Format Error"
     tags = ["#table", "#row", "#cell"]
     template = "Row at position {rowPosition} and field at position {fieldPosition}: {note}"
-    description = "Zip code in this cell is does not conform to ZIP CODE statndatds. Only five-digit or nine-digit Zip Codes are acceptable. Consistency within a dataset is critical. Nine-digit Zip Codes can be provided as hyphenated values (i.e.12345-9876)"
-
-class PhoneNumberFormatError(errors.CellError):
-    code = "phone-number-format-error"
-    name = "Phone Number Format Error"
-    tags = ["#table", "#row", "#cell"]
-    template = "Row at position {rowPosition} and field at position {fieldPosition}: {note}"
     description = "Phone number in this cell does not conform to phone number format standard. Phone numbers must be ten digits, include the area code, and be separated by hyphens (-) (i.e.XXX-XXX-XXXX)."
     
 class WebLinkFormatError(errors.CellError):
