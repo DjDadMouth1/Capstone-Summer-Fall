@@ -2,6 +2,7 @@ from frictionless import Check, checks, errors, validate
 from pprint import pprint
 import hashlib
 
+
 class duplicate_row(Check):
     code = "duplicate-row"
     Errors = [errors.DuplicateRowError]
@@ -27,5 +28,6 @@ class duplicate_row(Check):
         "properties": {},
     }
 
-report = validate('invalid.csv',  checks=[duplicate_row()])
+
+report = validate("invalid.csv", checks=[duplicate_row()])
 pprint(report.flatten(["rowPosition", "fieldPosition", "code"]))
