@@ -1,9 +1,11 @@
-from frictionless import Check, errors
+from frictionless import Check, checks, validate, errors
+import hashlib
+from frictionless.errors import header, row
 from sqlalchemy.sql.expression import false
 from custom_errors import *
+import re
 from datetime import datetime
-import hashlib, re
-
+import regex
 
    
 class header_format(Check):
@@ -611,9 +613,9 @@ class bureau_code_match_error(Check):
         "type": "object",
         "properties": {},
     }
-
-    # FAIHAN
-class valid_Email_In_Cell(Check):
+   
+   # Faihan's SECTION 
+   class valid_Email_In_Cell(Check):
     code = "cell-error"
     Errors = [errors.CellError]
 
