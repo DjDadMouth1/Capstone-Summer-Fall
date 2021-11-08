@@ -1,9 +1,9 @@
 from frictionless import Check, errors
-import hashlib
-from frictionless.errors import header, row
 from sqlalchemy.sql.expression import false
 from custom_errors import *
-import re
+from datetime import datetime
+import hashlib, re
+
 
    
 class header_format(Check):
@@ -611,3 +611,290 @@ class bureau_code_match_error(Check):
         "type": "object",
         "properties": {},
     }
+
+    # FAIHAN
+class duplicate_row(Check):
+    code = "duplicate-row"
+    Errors = [errors.DuplicateRowError]
+
+    def __init__(self, descriptor=None):
+        super().__init__(descriptor)
+        self.__memory = {}
+
+    def validate_row(self, row):
+        text = ",".join(map(str, row.values()))
+        hash = hashlib.sha256(text.encode("utf-8")).hexdigest()
+        match = self.__memory.get(hash)
+        if match:
+            note = 'duplicate-row the same as row at position "%s"' % match
+            yield errors.DuplicateRowError.from_row(row, note=note)
+        self.__memory[hash] = row.row_position
+
+    # Metadata
+    metadata_profile = {  # type: ignore
+        "type": "object",
+        "properties": {},
+    }
+
+
+class valid_Email_In_Cell(Check):
+    code = "cell-error"
+    Errors = [errors.CellError]
+
+    def __init__(self, descriptor=None):
+        super().__init__(descriptor)
+        self.__memory = {}
+
+    def validate_row(self, row):
+        rowPosition = row.row_position
+        for fieldPosition, field in enumerate(row):
+            fieldName = str(row.field_names[fieldPosition])
+            if (fieldName.upper().find("EMAIL") != -1):  # only run on field name is email
+                cell = str(row[fieldName])
+                # slicing domain name using slicing
+                isError = False
+                if (str(cell).find("@") == -1):
+                    isError = True
+                else:
+                    domainName = cell.split('@')[1]
+                    # Regex to check valid
+                    # domain name.
+                    regex = "^((?!-)[A-Za-z0-9-]{1,63}(?<!-)\\.)[A-Za-z]{2,6}"
+                    # Compile the ReGex
+                    regexCompile = re.compile(regex)
+                    if (not re.search(regexCompile, domainName)):
+                        isError = True
+
+                name = cell.split(" ")
+                if len(name) > 1:
+                    isError = True
+
+                if isError:
+                    note = f"Type error in the cell value: {cell} in row {rowPosition} and field {fieldName} at position {fieldPosition}: Is not an email"
+                    yield errors.CellError.from_row(row, note=note, field_name=fieldName)
+
+    # Metadata
+    metadata_profile = {  # type: ignore
+        "type": "object",
+        "properties": {},
+    }
+
+
+class valid_Date_In_Cell(Check):
+    code = "cell-error"
+    Errors = [errors.CellError]
+
+    def __init__(self, descriptor=None):
+        super().__init__(descriptor)
+        self.__memory = {}
+
+    def validate_row(self, row):
+        rowPosition = row.row_position
+        for fieldPosition, field in enumerate(row):
+            fieldName = str(row.field_names[fieldPosition])
+            if (fieldName.upper().find("DATE") != -1):  # only run on field name is date
+                cell = str(row[fieldName])
+                isError = False
+                try:
+                    date_time_obj = datetime.strptime(cell, '%d/%m/%y')
+                except:
+                    isError = True
+
+                if isError:
+                    note = f"Type error in the cell value: {cell} in row {rowPosition} and field {fieldName} at position {fieldPosition}: Is not valid date"
+                    yield errors.CellError.from_row(row, note=note, field_name=fieldName)
+
+    # Metadata
+    metadata_profile = {  # type: ignore
+        "type": "object",
+        "properties": {},
+    }
+
+
+class valid_Negative_Value_In_Cell(Check):
+    code = "cell-error"
+    Errors = [errors.CellError]
+
+    def __init__(self, descriptor=None):
+        super().__init__(descriptor)
+        self.__memory = {}
+
+    def validate_row(self, row):
+        rowPosition = row.row_position
+        for fieldPosition, field in enumerate(row):
+            fieldName = str(row.field_names[fieldPosition])
+            if (fieldName.upper().find("AMOUNT") != -1) or (fieldName.upper().find("VALUE") != -1) \
+                    or (fieldName.upper().find("AMT") != -1) or (fieldName.upper().find("SALARY") != -1):
+                cell = str(row[fieldName])
+                isError = False
+                if cell.upper().find("MINUS") != -1:
+                    isError = True
+                if (not isError) and (cell.upper().find("MINUS") != -1):
+                    isError = True
+                if (not isError) and (cell.upper().find("MINU") != -1):
+                    isError = True
+                if (not isError) and (cell[0].upper().find("(") != -1):
+                    isError = True
+                if isError:
+                    note = f"Type error in the cell value: {cell} in row {rowPosition} and field {fieldName} at position {fieldPosition}: Is not valid in Negative Value"
+                    yield errors.CellError.from_row(row, note=note, field_name=fieldName)
+
+    # Metadata
+    metadata_profile = {  # type: ignore
+        "type": "object",
+        "properties": {},
+    }
+
+
+class valid_NameField_Value_In_Cell(Check):
+    code = "cell-error"
+    Errors = [errors.CellError]
+
+    def __init__(self, descriptor=None):
+        super().__init__(descriptor)
+        self.__memory = {}
+
+    def validate_row(self, row):
+        rowPosition = row.row_position
+        for fieldPosition, field in enumerate(row):
+            fieldName = str(row.field_names[fieldPosition])
+            if (fieldName.upper().find("NAME") != -1):
+                cell = str(row[fieldName])
+                # Split the string and get all words in a list
+                list_of_words = cell.split()
+                isError = False
+                for elem in list_of_words:
+                    # capitalize first letter of each word and add to a string
+                    tmp = elem.strip().capitalize()
+                    if (tmp != elem):
+                        isError = True
+                if isError:
+                    note = f"Type error in the cell value: {cell} in row {rowPosition} and field {fieldName} at position {fieldPosition}: Is not valid Name Field"
+                    yield errors.CellError.from_row(row, note=note, field_name=fieldName)
+
+    # Metadata
+    metadata_profile = {  # type: ignore
+        "type": "object",
+        "properties": {},
+    }
+
+
+class valid_Address_Value_In_Cell(Check):
+    code = "cell-error"
+    Errors = [errors.CellError]
+
+    def __init__(self, descriptor=None):
+        super().__init__(descriptor)
+        self.__memory = {}
+
+    def validate_row(self, row):
+        rowPosition = row.row_position
+        for fieldPosition, field in enumerate(row):
+            fieldName = str(row.field_names[fieldPosition])
+            if (fieldName.upper().find("ADDRESS") != -1) or (fieldName.upper().find("STATE") != -1) \
+                    or (fieldName.upper().find("ZIP") != -1) or (fieldName.upper().find("CITY") != -1):
+                cell = str(row[fieldName])
+                isError = False
+                if cell.upper().find(",") != -1:  # 'find comma to detect error
+                    isError = True
+                if isError:
+                    note = f"Type error in the cell value: {cell} in row {rowPosition} and field {fieldName} at position {fieldPosition}: " \
+                           f"City State and zip codes should be separated out of the address and stored in separate columns named as CITY, STATE, and ZIPCODE"
+                    yield errors.CellError.from_row(row, note=note, field_name=fieldName)
+
+    # Metadata
+    metadata_profile = {  # type: ignore
+        "type": "object",
+        "properties": {},
+    }
+
+
+class valid_Text_Field_In_Cell(Check):
+    code = "cell-error"
+    Errors = [errors.CellError]
+
+    def __init__(self, descriptor=None):
+        super().__init__(descriptor)
+        self.__memory = {}
+
+    def validate_row(self, row):
+        rowPosition = row.row_position
+        for fieldPosition, field in enumerate(row):
+            fieldName = str(row.field_names[fieldPosition])
+            if (fieldName.upper().find("AMOUNT") == -1) or (fieldName.upper().find("VALUE") == -1) \
+                    or (fieldName.upper().find("AMT") == -1) or (
+                    fieldName.upper().find("SALARY") == -1):  # ignore number fields
+                cell = str(row[fieldName])
+                isError = False
+                if re.search('<[^/>][^>]*>', cell) != None:
+                    isError = True
+                if isError:
+                    note = f"Type error in the cell value: {cell} in row {rowPosition} and field {fieldName} at position {fieldPosition}: Is not valid in Text Field Value"
+                    yield errors.CellError.from_row(row, note=note, field_name=fieldName)
+
+    # Metadata
+    metadata_profile = {  # type: ignore
+        "type": "object",
+        "properties": {},
+    }
+
+
+class valid_Data_Completeness(Check):
+    code = "cell-error"
+    Errors = [errors.CellError]
+
+    def __init__(self, descriptor=None):
+        super().__init__(descriptor)
+        self.__memory = {}
+
+    def validate_row(self, row):
+        rowPosition = row.row_position
+        for fieldPosition, field in enumerate(row):
+            fieldName = str(row.field_names[fieldPosition])
+            cell = str(row[fieldName])
+            isError = False
+            if (isNotBlank(cell) == False):
+                isError = True
+            if isError:
+                note = f"Error in the cell value: {cell} in row {rowPosition} and field {fieldName} at position {fieldPosition}: Is empty, It is not valid Data Completeness rule"
+                yield errors.CellError.from_row(row, note=note, field_name=fieldName)
+
+    # Metadata
+    metadata_profile = {  # type: ignore
+        "type": "object",
+        "properties": {},
+    }
+
+class valid_Summerized_Data(Check):
+    code = "cell-error"
+    Errors = [errors.CellError]
+
+    def __init__(self, descriptor=None):
+        super().__init__(descriptor)
+        self.__memory = {}
+
+    def validate_row(self, row):
+        rowPosition = row.row_position
+        for fieldPosition, field in enumerate(row):
+            fieldName = str(row.field_names[fieldPosition])
+            cell = str(row[fieldName])
+            isError = False
+            if (cell.upper().find("TOT") >= 0) or (cell.upper().find("SUM") >= 0):
+                isError = True
+            if isError:
+                note = f"Row {rowPosition}: Is including roll-ups, subtotal and total of values in cells as part of the column. It is not valid Summarized Data, applications can compute these values and have totals of subtotals skews results"
+                yield errors.CellError.from_row(row, note=note, field_name=fieldName)
+
+    # Metadata
+    metadata_profile = {  # type: ignore
+        "type": "object",
+        "properties": {},
+    }
+
+
+def isNotBlank(myString):
+    if myString and myString.strip():
+        # myString is not None AND myString is not empty or blank
+        return True
+    # myString is None OR myString is empty or blank
+    return False
