@@ -163,7 +163,7 @@ img{
                 @media only screen and (max-width: 768px){
                     width: 70%;
                 }
-                @media only screen and (max-width: 415px){
+                @media only screen and (max-width: 600px){
                     width: 90%;
                 }
                 form{
@@ -172,6 +172,9 @@ img{
                     border: solid #333 1px;
                     border-radius: 10px;
                     padding: 20px 20px 20px 20px;
+                    @media only screen and (max-width: 600px){
+                        padding: 20px 10px;
+                    }
                     .choose-file{  
              
                         border: solid 1px #333;
@@ -183,6 +186,9 @@ img{
                         &:hover{
                             color: $secondary;
                         }
+                        @media only screen and (max-width: 600px){
+                            font-size: 12px;
+                        }
                     }
                     .run-frictionless{
                         padding: 0px 10px;
@@ -192,6 +198,10 @@ img{
                         background-color: $primary;
                         color: white;
                         cursor: pointer;
+                        @media only screen and (max-width: 600px){
+                            font-size: 12px;
+                            padding: 0px 3px;
+                        }
                         &:hover{
                             color: $secondary;
                         }
@@ -209,7 +219,7 @@ img{
                 @media only screen and (max-width: 768px){
                     width: 70%;
                 }
-                @media only screen and (max-width: 415px){
+                @media only screen and (max-width: 600px){
                     width: 90%;
                 }
                 margin: auto;
@@ -237,6 +247,9 @@ img{
                         &:hover i{
                             color: $secondary;
                         }   
+                        @media only screen and (max-width: 600px){
+                            font-size: 12px;
+                        }
                     }
                 }
                 .output{
