@@ -701,7 +701,7 @@ class valid_Email_In_Cell(Check):
         rowPosition = row.row_position
         for fieldPosition, field in enumerate(row):
             fieldName = str(row.field_names[fieldPosition])
-            if fieldName.upper().find("EMAIL") != -1:  # only run on field name is email
+            if fieldName.upper().find("EMAIL") != -1:  # only run on field name is Email
                 cell = str(row[fieldName])
                 # slicing domain name using slicing
                 isError = False
@@ -721,7 +721,7 @@ class valid_Email_In_Cell(Check):
                 if len(name) > 1:
                     isError = True
 
-                if isError:
+                if isError: # If have error, we will set message into Note for Frictionless print into report
                     note = f"Type error in the cell value: {cell} in row {rowPosition} and field {fieldName} at position {fieldPosition}: Is not an email"
                     yield errors.CellError.from_row(
                         row, note=note, field_name=fieldName
@@ -756,7 +756,7 @@ class valid_Date_In_Cell(Check):
                 except:
                     isError = True
 
-                if isError:
+                if isError:# If have error, we will set message into Note for Frictionless print into report
                     note = f"Type error in the cell value: {cell} in row {rowPosition} and field {fieldName} at position {fieldPosition}: Is not valid date"
                     yield errors.CellError.from_row(
                         row, note=note, field_name=fieldName
@@ -796,11 +796,11 @@ class valid_Negative_Value_In_Cell(Check):
                     isError = True
                 if (not isError) and (cell.upper().find("SUB") != -1): # find String contain String "SUB" in cell
                     isError = True
-                if (not isError) and (cell.upper().find("MINU") != -1):# find String contain String "SUB" in cell
+                if (not isError) and (cell.upper().find("MINU") != -1):# find String contain String "Minus" in cell
                     isError = True
                 if (not isError) and (cell[0].upper().find("(") != -1):# find String contain String "(" in cell
                     isError = True
-                if isError:
+                if isError:# If have error, we will set message into Note for Frictionless print into report
                     note = f"Type error in the cell value: {cell} in row {rowPosition} and field {fieldName} at position {fieldPosition}: Is not valid in Negative Value"
                     yield errors.CellError.from_row(
                         row, note=note, field_name=fieldName
@@ -835,9 +835,9 @@ class valid_NameField_Value_In_Cell(Check):
                 for elem in list_of_words:
                     # capitalize first letter of each word and add to a string
                     tmp = elem.strip().capitalize()
-                    if tmp != elem:
-                        isError = True
-                if isError:
+                    if tmp != elem: # compare Origin word and capitalize word
+                        isError = True # If it is not equal, it mean Error requirement 
+                if isError:# If have error, we will set message into Note for Frictionless print into report
                     note = f"Type error in the cell value: {cell} in row {rowPosition} and field {fieldName} at position {fieldPosition}: Is not valid Name Field"
                     yield errors.CellError.from_row(
                         row, note=note, field_name=fieldName
@@ -875,7 +875,7 @@ class valid_Address_Value_In_Cell(Check):
                 #City State and zip codes should be separated out of the address and stored in separate columns named as CITY, STATE, and ZIPCODE
                 if cell.upper().find(",") != -1:  # 'find comma to detect error, 
                     isError = True
-                if isError:
+                if isError:# If have error, we will set message into Note for Frictionless print into report
                     note = (
                         f"Type error in the cell value: {cell} in row {rowPosition} and field {fieldName} at position {fieldPosition}: "
                         f"City State and zip codes should be separated out of the address and stored in separate columns named as CITY, STATE, and ZIPCODE"
@@ -915,7 +915,7 @@ class valid_Text_Field_In_Cell(Check):
                 isError = False
                 if re.search("<[^/>][^>]*>", cell) != None: # Find html tag in cell String
                     isError = True
-                if isError:
+                if isError:# If have error, we will set message into Note for Frictionless print into report
                     note = f"Type error in the cell value: {cell} in row {rowPosition} and field {fieldName} at position {fieldPosition}: Is not valid in Text Field Value"
                     yield errors.CellError.from_row(
                         row, note=note, field_name=fieldName
@@ -946,7 +946,7 @@ class valid_Data_Completeness(Check):
             isError = False
             if isNotBlank(cell) == False: # run function to detect null value in cell
                 isError = True
-            if isError:
+            if isError:# If have error, we will set message into Note for Frictionless print into report
                 note = f"Error in the cell value: {cell} in row {rowPosition} and field {fieldName} at position {fieldPosition}: Is empty, It is not valid Data Completeness rule"
                 yield errors.CellError.from_row(row, note=note, field_name=fieldName)
 
@@ -975,7 +975,7 @@ class valid_Summerized_Data(Check):
             isError = False
             if (cell.upper().find("TOT") >= 0) or (cell.upper().find("SUM") >= 0): # only run on field name contains string "TOT" = total and "SUM"
                 isError = True
-            if isError:
+            if isError:# If have error, we will set message into Note for Frictionless print into report
                 note = f"Row {rowPosition}: Is including roll-ups, subtotal and total of values in cells as part of the column. It is not valid Summarized Data, applications can compute these values and have totals of subtotals skews results"
                 yield errors.CellError.from_row(row, note=note, field_name=fieldName)
 
