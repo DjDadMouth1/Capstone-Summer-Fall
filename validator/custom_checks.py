@@ -280,7 +280,7 @@ class lead_trail_spaces(Check):
     """
 
     code = "leading-or-trailing-whitespace"
-    Errors = [custom_errors.LeadTrailWhitespace]
+    Errors = [LeadTrailWhitespace]
 
     def __init__(self, descriptor=None):
         super().__init__(descriptor)
@@ -295,7 +295,7 @@ class lead_trail_spaces(Check):
             # If strip() removes trail or lead whitespace get the error
             if cell[1] != cell[1].strip():
                 note = "value has leading or trailing whitespace"
-                yield custom_errors.LeadTrailWhitespace.from_row(
+                yield LeadTrailWhitespace.from_row(
                     row, note=note, field_name=cell[0]
                 )
 
@@ -314,7 +314,7 @@ class address_field_seperate(Check):
 
     """
     code = "address-field-seperated"
-    Errors = [custom_errors.AddressFieldSeperated]
+    Errors = [AddressFieldSeperated]
 
     def __init__(self, descriptor=None):
         super().__init__(descriptor)
@@ -344,7 +344,7 @@ class address_field_seperate(Check):
         if note_fieldnames:
             # Concatenate the label list and produce a single error
             note = f"Fields labeled \"{', '.join(note_fieldnames)}\", should be merged into single \"Address\" label column"
-            yield custom_errors.AddressFieldSeperated(labels=note_fieldnames, row_positions=note_positions, note=note)
+            yield AddressFieldSeperated(labels=note_fieldnames, row_positions=note_positions, note=note)
 
     metadata_profile = {  # type: ignore
         "type": "object",
@@ -361,7 +361,7 @@ class monetary_fields(Check):
     """
 
     code = "monetary fields"
-    Errors = [custom_errors.MonetaryFields]
+    Errors = [MonetaryFields]
     
 
     def __init__(self, descriptor=None):
@@ -380,7 +380,7 @@ class monetary_fields(Check):
                     # If strip() removes trail or lead whitespace get the error
                     if not bool(check.match(str(cell[1]))):
                         note = "monetary values should only contain numbers to two decimal places, no '$' or commas"
-                        yield custom_errors.MonetaryFields.from_row(
+                        yield MonetaryFields.from_row(
                             row, note=note, field_name=cell[0]
                         )
 
