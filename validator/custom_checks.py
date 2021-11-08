@@ -269,3 +269,122 @@ class boolean_format_consistency(Check):
         "type": "object",
         "properties": {},
     }
+
+# JORDAN'S SECTION
+class lead_trail_spaces(Check):
+    """
+    LEADING OR TRAILING SPACES
+
+    Checks each value for leading or trailing
+    whitespace
+    """
+
+    code = "leading-or-trailing-whitespace"
+    Errors = [custom_errors.LeadTrailWhitespace]
+
+    def __init__(self, descriptor=None):
+        super().__init__(descriptor)
+
+    def validate_row(self, row):
+
+        # cell is a tuple of (field_name, cell value)
+        for cell in row.items():
+            if not isinstance(cell[1], str):
+                continue
+
+            # If strip() removes trail or lead whitespace get the error
+            if cell[1] != cell[1].strip():
+                note = "value has leading or trailing whitespace"
+                yield custom_errors.LeadTrailWhitespace.from_row(
+                    row, note=note, field_name=cell[0]
+                )
+
+    metadata_profile = {  # type: ignore
+        "type": "object",
+        "properties": {},
+    }
+
+
+class address_field_seperate(Check):
+    """
+    ADDRESS
+
+    Checks for address labels that are seperated to multiple columns by
+    Number, Street, Quadrant instead of a single Address field
+
+    """
+    code = "address-field-seperated"
+    Errors = [custom_errors.AddressFieldSeperated]
+
+    def __init__(self, descriptor=None):
+        super().__init__(descriptor)
+
+
+    def validate_start(self):
+        address_labels = ["STREETNUMBER", "STREET", "QUADRANT"]
+        note_fieldnames = []
+        note_positions = []
+
+        # Loop through labels and label positions
+        for label, pos in zip(self.resource.header.labels, self.resource.header.field_positions):
+            # Skip blanks
+            if label is None:
+                continue
+            print(label)
+
+            # Compate each label to all possible seperate address labels
+            for test_label in address_labels:
+
+                # Normalize and compare label
+                if label.upper().replace(" ", "") == test_label:
+                    note_fieldnames.append(label)
+                    note_positions.append(pos)
+
+        # If the list is not empty there is a seperate label error
+        if note_fieldnames:
+            # Concatenate the label list and produce a single error
+            note = f"Fields labeled \"{', '.join(note_fieldnames)}\", should be merged into single \"Address\" label column"
+            yield custom_errors.AddressFieldSeperated(labels=note_fieldnames, row_positions=note_positions, note=note)
+
+    metadata_profile = {  # type: ignore
+        "type": "object",
+        "properties": {},
+    }
+
+class monetary_fields(Check):
+    """
+    MONETARY FIELDS
+
+    This may be handled by Numeric Field Values
+
+    Checks monetary fields for '$' or ',' characters
+    """
+
+    code = "monetary fields"
+    Errors = [custom_errors.MonetaryFields]
+    
+
+    def __init__(self, descriptor=None):
+        super().__init__(descriptor)
+
+    def validate_row(self, row):
+        Monetary_Labels = ['COST','PRICE','VALUATION']
+        check = re.compile(r'^\d+(\.\d{2})?$')
+        
+        # cell is a tuple of (field_name, cell value)
+        for cell in row.items():
+            print(str(cell[1]) + ' type is ' + str(type(cell[1])))
+            for label in Monetary_Labels:
+                if cell[0].upper() == label:
+                    
+                    # If strip() removes trail or lead whitespace get the error
+                    if not bool(check.match(str(cell[1]))):
+                        note = "monetary values should only contain numbers to two decimal places, no '$' or commas"
+                        yield custom_errors.MonetaryFields.from_row(
+                            row, note=note, field_name=cell[0]
+                        )
+
+    metadata_profile = {  # type: ignore
+        "type": "object",
+        "properties": {},
+    }

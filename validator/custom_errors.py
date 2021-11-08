@@ -46,3 +46,25 @@ class BooleanFormatConsistencyError(errors.CellError):
     template = "Row at position {rowPosition} and field at position {fieldPosition}: {note}"
     description = 'Boolean format in this cell is inconsistent with other boolean values in this column. Only one of the following sets of boolean values may be used per column: [{"1","0"}, {"t", "f"}, {"true", "false"}, {"yes", "no"}, {"y", "n"}, {"on", "off"}] ()'
     
+#JORDAN'S SECTION
+class LeadTrailWhitespace(errors.ConstraintError):
+    code = "leading-or-trailing-whitespace"
+    name = "Leading or Trailing Whitespace"
+    tags = ["#table", "#row", "#cell"]
+    template = 'The cell "{cell}" in row "{rowPosition}" at position "{fieldPosition}" does not conform to a constraint: {note}'
+    description = "The field value contains leading or trailing whitespace"
+
+
+class AddressFieldSeperated(errors.HeaderError):
+    code = "address-field-seperated"
+    name = "Address Field Seperated"
+    tags = ["#table", "#header", "#label"]
+    template = "The address fields should not be seperated: {note}"
+    description = "Address fields should be combined into one field"
+
+class MonetaryFields(errors.ConstraintError):
+    code = "monetary-fields"
+    name = "Monetary Fields"
+    tags = ["#table", "#row", "#cell"]
+    template = 'The cell "{cell}" in row "{rowPosition}" at position "{fieldPosition}" does not conform to a constraint: {note}'
+    description = "The field value contains a monetary value that shold not have '$' or ',' characters"
