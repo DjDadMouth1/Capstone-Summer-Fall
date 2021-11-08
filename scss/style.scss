@@ -13,28 +13,15 @@ img{
 }
 .container{
     max-width: 1120px;
-    margin: 0 auto;
+    margin: auto;
 }
 .body-content{
     background-image: url("https://wallpaperaccess.com/full/2697107.jpg");
-    background-size: cover;
+    background-size: repeat;
     height: 100vh;
-    /* position: relative;
-    &:before{
-        content:'';
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: rgba(#333, 0.3);
-      
-    } */
 
     header{
         border-bottom: 1px solid rgba(black, 0.4);
-        /* position: relative;
-        z-index: 1; */
         .container{
             padding: 20px 0px;
             .logo{
@@ -64,31 +51,20 @@ img{
     }
      
     .content{
-        padding-top: 20px;
-        /* position: relative;
-        z-index: 1; */
+        padding-top: 50px;
         .container{
-            width: 500px;
-            margin: auto;
-            border: solid #333 1px;
-            border-radius: 10px;
-            padding: 20px 20px 20px 20px;
+
             .input-form{
-                .form-header{
-                    padding-bottom: 10px;
-                }
-                .input-group{
-                    padding-bottom: 10px;
-                    .input-text{
-                    }
-                    .input-box{
-                        border: solid 1px #333;
-                        border-radius: 5px;
-                    }
-                }
-                .run-button{
-                    padding-bottom: 10px;
-                    .btn{
+                margin: auto;
+                width: 50%;
+                form{
+                    display: flex;
+                    justify-content: space-between;
+                    border: solid #333 1px;
+                    border-radius: 10px;
+                    padding: 20px 20px 20px 20px;
+                    .choose-file{  
+             
                         border: solid 1px #333;
                         border-radius: 7px;
                         background-color: $primary;
@@ -99,11 +75,67 @@ img{
                             color: $secondary;
                         }
                     }
-                    
+                    .run-frictionless{
+                        padding: 0px 10px;
+                        height: 33px;
+                        border: solid 1px #333;
+                        border-radius: 7px;
+                        background-color: $primary;
+                        color: white;
+                        cursor: pointer;
+                        &:hover{
+                            color: $secondary;
+                        }
+                        
+                        
+                    }
                 }
                 
             }
-        }
+            .output-form{
+                //max-height: 550px;
+                position: relative;
+                height: 550px;
+                width: 50%;
+                margin: auto;
+                margin-top: 20px;
+                visibility: hidden;
+                .download{
+                    position: absolute;
+                    margin-right: 8px;
+                    right: 12px;
+                    font-size: 20px;
+                    
+                    .download-btn{
+                        height: 33px;
+                        font-size: 14px;
+                        box-sizing: border-box;
+                        border: solid 1px #333;
+                        border-radius: 7px;
+                        background-color: $primary;
+                        color: white;
+                        cursor: pointer;
+                        padding: 8px;
+                        &:hover{
+                            color: $secondary;
+                        }
+                        &:hover i{
+                            color: $secondary;
+                        }   
+                    }
+                }
+                .output{
+                    border-radius: 5px;
+                    position: absolute;
+                    top: 34px;
+                    max-height: 100%;
+                    width: 100%;
+                    background-color: white;
+                    overflow: auto;
+                    padding: 0px 10px;
+                }
+            }
+    }
     }
 
 }

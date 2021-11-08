@@ -6,7 +6,9 @@
     <script src="https://kit.fontawesome.com/a7ebbfc552.js" crossorigin="anonymous"></script>
     <script>
       function doSomething() {
-          alert('Form submitted!');
+          //alert('Form submitted!');
+		  
+		  document.getElementById('output-form').style.visibility="visible";
 		  
 		  var file = document.getElementById('myFile');
 	  
@@ -35,9 +37,6 @@
     <script defer src="webpage.js"></script>
   </head>
   <body class="bg-dark">
-    
-
-
     <div class="body-content">
       <header>
         <div class="container flex j-between a-center ">
@@ -58,18 +57,29 @@
 
       <div class="content">
         <div class="container">
-          <form onsubmit="return doSomething();" class="my-form">
-            <input type="file" id="myFile" name="filename">
-            <input type="submit" value="Run Frictionless">
-          </form>
+          <div class="input-form">
+            <form onsubmit="return doSomething();" class="my-form">
+              <input class="choose-file" type="file" id="myFile" name="filename">
+              <input class="run-frictionless" type="submit" value="Run Frictionless">
+            </form>
+          </div>
+
+          <div class="output-form" id="output-form">
+            <div class="download">
+              <!-- when download class is click, it will run a function in main.js
+              to display downboad-btn button. This function can replace the name
+              of download file in href link by the name of result file. -->
+              <!-- <a href="./sample.csv" download>
+                <div class="download-btn">
+                  Download File
+                  <i class="fas fa-download"></i>
+                </div>
+              </a>  -->
+            </div>
+            <pre class="output" id="output"></pre>
+          </div>
         </div>
       </div>
-      
-	  <div class="content">
-	    <div class="container">
-          <pre id="output"></pre>
-        </div>
-	  </div>
 
     </div>
     
