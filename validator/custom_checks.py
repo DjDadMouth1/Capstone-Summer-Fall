@@ -5,7 +5,7 @@ from sqlalchemy.sql.expression import false
 from custom_errors import *
 import re
 from datetime import datetime
-import re
+
 
    
 class header_format(Check):
