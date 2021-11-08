@@ -63,3 +63,10 @@ class LogDateMatchError(errors.CellError):
     template = "Row at position {rowPosition} and field at position {fieldPosition}: {note}"
     description = "Log date in this cell does not conform to log date standard. Record date marks the time the data is collected. Log date differs from it as it marks the time the data is uploaded. They should not match."
     
+class BureauCodeMatchError(errors.CellError):
+    code = "bureau-code-match-error"
+    name = "Bureau Code Match Error"
+    tags = ["#table", "#row", "#cell"]
+    template = "Row at position {rowPosition} and field at position {fieldPosition}: {note}"
+    description = "Data in this cell does not conform to bureau code standard. Bureau must exist and bureau code must match bureau description."
+    

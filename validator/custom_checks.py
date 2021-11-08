@@ -301,3 +301,75 @@ class log_date_match_error(Check):
         "type": "object",
         "properties": {},
     }
+class bureau_code_match_error(Check):
+    code = "bureau-code-match-error"
+    Errors = [BureauCodeMatchError]
+    
+    def __init__(self, descriptor=None):
+        super().__init__(descriptor)
+    
+    def validate_row(self, row):
+        BUREAU_CODE_KEY = "BUREAU CODE"
+        BUREAU_DESCRIPTION_KEY = "BUREAU DESCRIPTION"
+        BUREAU_CODES = {
+            "boec": "Bureau of Emergency Communications",
+            "bfpdr": "Bureau of Fire & Police Disability & Retirement",
+            "ppb": "Portland Police Bureau",
+            "pfr": "Portland Fire & Rescue",
+            "pbem": "Portland Bureau of Emergency Management",
+            "ppr": "Portland Parks and Recreation",
+            "oca": "Office of the City Attorney",
+            "ogr": "Office of Government Relations",
+            "omf": "Office of Management and Finance",
+            "bhr": "Human Resources",
+            "brfs": "Revenue and Financial Services",
+            "bts": "Technology Services",
+            "cao": "Office of the Chief Administrative Officer",
+            "cbo": "City Budget Office",
+            "bsa": "Special Appropriations",
+            "bes": "Bureau of Environmental Services",
+            "pwb": "Portland Water Bureau",
+            "bds": "Bureau of Development Services",
+            "phb": "Portland Housing Bureau",
+            "bps": "Bureau of Planning and Sustainability",
+            "oct": "Office for Community Technology",
+            "occl": "Office of Community and Civic Life",
+            "pcl": "Portland Children's Levy",
+            "pp": "Prosper Portland",
+            "oehr": "Office of Equity & Human Rights",
+            "pbot": "Portland Bureau of Transportation",
+            "ocau": "Office of the City Auditor",
+            "om": "Office of the Mayor",
+            "cpa": "Commissioner of Public Affairs",
+            "cps": "Commissioner of Public Safety",
+            "cpu": "Commissioner of Public Utilities",
+            "cpw": "Commissioner of Public Works",
+        }
+        uppercase_headers = [label.upper() for label in self.resource.schema.field_names]
+        # Don't repeat yourself. There should be a function for this, but Frictionless is weird so I was afraid to try
+        if BUREAU_CODE_KEY in uppercase_headers and BUREAU_DESCRIPTION_KEY in uppercase_headers:
+            if not str(row[BUREAU_CODE_KEY]) in BUREAU_CODES:
+                note = f"Does not follow bureau code standard. Bureau code not found"
+                yield BureauCodeMatchError.from_row(row, note=note, field_name=BUREAU_CODE_KEY)
+            elif not str(row[BUREAU_DESCRIPTION_KEY]) in BUREAU_CODES.values():
+                note = f"Does not follow bureau code standard. Bureau description not found"
+                yield BureauCodeMatchError.from_row(row, note=note, field_name=BUREAU_DESCRIPTION_KEY)
+            elif not BUREAU_CODES[str(row[BUREAU_CODE_KEY])] == row[str(BUREAU_DESCRIPTION_KEY)]:
+                note = f"Does not follow bureau code standard. Bureau code must match bureau description"
+                yield BureauCodeMatchError.from_row(row, note=note, field_name=BUREAU_CODE_KEY)
+        elif BUREAU_CODE_KEY in uppercase_headers:
+            if not str(row[BUREAU_CODE_KEY]) in BUREAU_CODES:
+                note = f"Does not follow bureau code standard. Bureau code not found"
+                yield BureauCodeMatchError.from_row(row, note=note, field_name=BUREAU_CODE_KEY)
+        elif BUREAU_DESCRIPTION_KEY in uppercase_headers:
+            if not str(row[BUREAU_DESCRIPTION_KEY]) in BUREAU_CODES.values():
+                note = f"Does not follow bureau code standard. Bureau description not found"
+                yield BureauCodeMatchError.from_row(row, note=note, field_name=BUREAU_DESCRIPTION_KEY)
+
+        
+    # Metadata
+    
+    metadata_profile = {  # type: ignore
+        "type": "object",
+        "properties": {},
+    }
