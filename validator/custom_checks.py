@@ -1,7 +1,7 @@
 from frictionless import Check, errors
 import hashlib
-from frictionless.errors import header
-from custom_errors import *
+
+from .custom_errors import *
 
     
 class numeric_field_error(Check):

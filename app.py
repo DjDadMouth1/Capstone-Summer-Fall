@@ -12,8 +12,8 @@ def run_validator():
    new_file = request.files['filename']
    filename = str(new_file.filename)
    new_file.save(new_file.filename)
-   from validate import custom_validate
-   custom_validate(filename)
+   from validator import validator
+   validator.custom_validate(filename)
    return redirect('/')
    
 app.run(host='localhost', port=5000)
