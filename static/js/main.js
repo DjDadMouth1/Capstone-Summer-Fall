@@ -1,6 +1,6 @@
 
 //const downloadFile = "./sample.csv"
-const downloadFile = "./result.txt"
+const downloadFile = "./sample.csv"
 //const downloadFile = "";
 
 $(".run-frictionless").click(function (e) { 
