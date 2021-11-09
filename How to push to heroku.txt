@@ -1,0 +1,20 @@
+Download the heroku CLI
+	Note: 	everything done in the heroku CLI must be done from the terminal command line
+		this means that you can't log in to heroku from gitbash 
+
+Also download gunicorn with:
+	pip install gunicorn
+In the terminal:
+	heroku login -i
+	Then login with your heroku account info (if you don't have a heroku account linked to our project, talk to Travis)
+
+Set your local files to go through git to be able to be pushed to heroku with:
+	heroku git:remote -a capstoneteamc
+
+Then push what's in your local files on the main branch with:
+	git push heroku main
+	Note: your local files will have to match up with what's in the git repository
+
+You can instead push a branch with:
+	git push heroku {testbranch}:main
+	replacing {testbranch} with the branch you want to push
