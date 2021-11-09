@@ -1,6 +1,6 @@
 from frictionless import Check, errors
+from .custom_errors import *
 from sqlalchemy.sql.expression import false
-from custom_errors import *
 from datetime import datetime
 import re
 

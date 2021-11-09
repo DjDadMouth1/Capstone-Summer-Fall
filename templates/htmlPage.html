@@ -76,10 +76,14 @@
       <div class="content">
         <div class="container">
           <div class="input-form">
-            <form onsubmit="return doSomething();" class="my-form">
+            <form method="POST" action="" enctype="multipart/form-data">
+              <p><input type="file" name="filename"></p>
+              <p><input type="submit" value="Run Frictionless"></p>
+            </form>
+            <!-- <form method="POST" action="" onsubmit="return doSomething();" class="my-form">
               <input class="choose-file" type="file" id="myFile" name="filename">
               <input class="run-frictionless" type="submit" value="Run Frictionless">
-            </form>
+            </form> -->
           </div>
 
           <div class="output-form" id="output-form">
