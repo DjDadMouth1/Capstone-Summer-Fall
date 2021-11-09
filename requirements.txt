@@ -38,6 +38,7 @@ rsa==4.7.2
 scikit-learn==0.24.1
 scipy==1.6.1
 six==1.15.0
+sqlalchemy==1.4.26
 tensorboard==2.5.0
 tensorboard-data-server==0.6.1
 tensorboard-plugin-wit==1.8.0
