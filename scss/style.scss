@@ -3,7 +3,7 @@
 @import "media";
 
 *{
-    color: #333;
+    color: white;
 }
 html,body,input, button{
     font-family: "Open Sans", Courier, monospace;
@@ -17,150 +17,54 @@ img{
 }
 //@media only screen and (max-width: 768px)
 .body-content{
-    background-image: url("../images/background.jpg");
-    background-size: no-repeat;
-    height: 110vh;
+    background-color: #002244;
+    //height: 100vh;
+    position: relative;
 
     header{
         padding: 0px 20px;
         @media only screen and (max-width: 768px){
             padding: 0px 40px;
         }
-        border-bottom: 1px solid rgba(black, 0.4);
+        border-bottom: 1px solid rgba(white, 0.4);
         .container{
             padding: 20px 0px;
             .logo{
                 
                 a{
-                    font-size: 34px;
-                    color: white;
                     @media only screen and (max-width: 768px){
                         font-size: 34px;
                     }
-                }
-            }
-            .navi{
-                .navi-list{
-                    @media only screen and (max-width: 700px){
-                        .nav-element{
-                            display: none;
-                        }
-                    }
-                    li{
-                        a{     
-                            display: flex;
-                            align-items: center;
-                            justify-content: center;
-                            @media only screen and (max-width: 768px){
-                                font-size: 20px;
-                            }
-                            
-                            font-size: 24px;
-                            color: white;
-                            margin-left: 30px;
-                            font-weight: bold;
-                            
-                        }
-                        &:hover a{
-                            color: $secondary;
-                        }
-                    }
-                    .hamburger-icon{
-                        display: none;
-                        padding-left: 20px;
-                        /* .hover-ham{
-                            .ham-content{
-
-                                display: none;
-                                position: absolute;
-                                top: 48px;
-                                right: 20px;
-                                background-color: $primary;
-                                min-width: 160px;
-                                box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-                                z-index: 1;
-                                padding: 10px 0px;
-                                a{
-                                    display: block;
-                                    padding: 5px 10px 5px 0px;
-                                    &:hover{
-                                        color: greenyellow;
-                                    }
-                                }
-                                
-
-                            }
-                        }
-                        
-                        .hover-ham{
-                            &:hover .ham-content{
-                                display: block;
-                            }
-                        } */
-                        
-                        
-                        @media only screen and (max-width: 700px){
-                            
-                            display: inline-block;
-                            position: relative;
-                            :hover .ham-content{
-                                display: block;
-                            }
-                            .hover-ham{
-                                .ham-content{
-                                    display: none;
-                                    position: absolute;
-                                    top: 26px;
-                                    right: 0;
-                                    background-color: $primary;
-                                    min-width: 160px;
-                                    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-                                    z-index: 1;
-                                    padding: 10px 0px;
-                                    a{
-                                        display: block;
-                                        
-                                        padding: 5px 10px 5px 0px;
-                                        &:hover{
-                                            color: greenyellow;
-                                        }
-                                    }
-                                }
-                            }
-                            .hover-ham{
-                                &:hover .ham-content{
-                                    display: block;
-                                }
-                            }
-                            
-                            
-                        } 
-                        
-                        i{
-                            color: white;
-                            
-                            
-                            @media only screen and (max-width: 700px){
-                                
-                                font-size: 30px;
-                            } 
-                        }
-                       
+                    .logo-img{
+                        border-radius: 50%;
+                        width: 60px;
                     }
                 }
-                
             }
+            .title{
+                margin-left: 20px;
+                a{
+                    div{
+                        font-size: 34px;
+                        color: white;
+                        font-weight: 900;
+                        text-align: center;
+                    }
+                    
+                }
+            }
+           
         }
     }
      
     .content{
         padding-top: 50px;
+        border-bottom: 1px solid rgba(white, 0.4);
         .container{
-
             .input-form{
                 margin: auto;
                 width: 50%;
-                @media only screen and (max-width: 768px){
+                @media only screen and (max-width: 900px){
                     width: 70%;
                 }
                 @media only screen and (max-width: 600px){
@@ -169,36 +73,44 @@ img{
                 form{
                     display: flex;
                     justify-content: space-between;
-                    border: solid #333 1px;
+                    border: solid white 1px;
                     border-radius: 10px;
                     padding: 20px 20px 20px 20px;
                     @media only screen and (max-width: 600px){
                         padding: 20px 10px;
+                        display: block;
+                        margin: auto;
                     }
-                    .choose-file{  
-             
-                        border: solid 1px #333;
-                        border-radius: 7px;
-                        background-color: $primary;
-                        color: white;
-                        padding: 5px;
+                    .input-p{
                         cursor: pointer;
-                        &:hover{
-                            color: $secondary;
-                        }
-                        @media only screen and (max-width: 600px){
-                            font-size: 12px;
+                        .choose-file{  
+                            border: solid 1px white;
+                            border-radius: 7px;
+                            background-color: $primary;
+                            color: white;
+                            padding: 5px;
+                            cursor: pointer;
+                            &:hover{
+                                color: $secondary;
+                            }
+                            @media only screen and (max-width: 950px){
+                                font-size: 12px;
+                            }
+                            @media only screen and (max-width: 600px){
+                                margin-bottom: 10px;
+                            }
                         }
                     }
+                    
                     .run-frictionless{
                         padding: 0px 10px;
                         height: 33px;
-                        border: solid 1px #333;
+                        border: solid 1px white;
                         border-radius: 7px;
                         background-color: $primary;
                         color: white;
                         cursor: pointer;
-                        @media only screen and (max-width: 600px){
+                        @media only screen and (max-width: 950px){
                             font-size: 12px;
                             padding: 0px 3px;
                         }
@@ -235,7 +147,7 @@ img{
                         height: 33px;
                         font-size: 14px;
                         box-sizing: border-box;
-                        border: solid 1px #333;
+                        border: solid 1px white;
                         border-radius: 7px;
                         background-color: $primary;
                         color: white;
@@ -264,6 +176,36 @@ img{
                 }
             }
     }
+    }
+    footer{
+        background-color: #002244;
+        padding-top: 20px;
+        a{
+            .blue-logo{
+                border-radius: 30% 30% 0% 30%;
+                width: 40px;
+            }  
+        }
+        .footer-content{
+            margin-left: 15px;
+            .footer-version{
+                font-size: 14px;
+            }
+            .footer-license{
+                font-size: 12px;
+                a{
+                    color: $primary;
+                }
+            }
+            
+        }
+        @media only screen and (max-width: 786){
+            a{
+            .blue-logo{
+                width: 20px;
+            }  
+        }
+        }
     }
 
 }

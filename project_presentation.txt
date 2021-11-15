@@ -1,0 +1,45 @@
+1. Do I have knowledge or skills to do that project
+2. how is project interesting to me
+
+
+
+Ranking
+
+First:	(8) Glass Plate Game (Bart Massey): Web-app game? I know nothing about this game, but I think we can do it. 
+
+Second: (1)InstaServ: Is this a web-app?? We know exactly what we need to do. If we choose this project, we just jump in to do project. Looks like the already have user interface design for us. What language will we work with if we do this project? html, css, javascript, creactjs, node.js???
+
+Third: (9) SightLine: I have no knowlegde about this field. But the project is interesting and looks like it's not more complicate than others projects.
+
+Fourth:(2)knowledge graph generator: She already has some source for us like open-source NLP, spacy.io. We know clearly how the product should be. It may not hard like other projects. But I don't know, the problems will come when we really work on project.
+
+Fifth; (4)Smart Cozy: This is a continouation of the previous project. => I don't really like it. In my understanding, we will create some more games for this Smart Cozy device, but the games of this device are not simmilar like other small games we have seen on websites. They dont' tell how many games we need to do.
+
+Sixth: (5) Open Data Stream: Work in backend, sql??? What is our product??
+
+Seventh: (3)Voice-centric privacy policy consent syste (Alexa): build an app for Alexa: 
+	1.Build a simple Alexa weather skill 
+	2.Design and build an Alexa privacy manager skill
+	3.Create system documentation, user documentation, and code
+	4.Create Youtubevideo, 
+	5.Present a  live zoom dem
+ 	There are too many goal, and alot of things that I don't really know. I'm not good at AI. 
+
+Eighth: (6) Photon: I don't know. NO idea.
+
+	(7) Crypto: I dont know. NO idea.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

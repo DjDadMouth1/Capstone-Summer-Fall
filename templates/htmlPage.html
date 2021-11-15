@@ -39,46 +39,21 @@
   <body class="bg-dark">
     <div class="body-content">
       <header>
-        <div class="container flex j-between a-center ">
+        <div class="container flex j-center a-center ">
           <div class="logo">
-            <a href="">Logo</a>
+            <a href=""><img class="logo-img" src="../static/images/logo.PNG" alt=""></a>
           </div>
-          <nav class="navi">
-            <ul class="navi-list flex j-between a-center">
-              <li class="nav-element" ><a href="">Home</a></li>
-              <li class="nav-element" ><a href="">Instruction</a></li>
-              <li class="nav-element" ><a href="">About</a></li>
-              <li class="nav-element" ><a href="">Contact</a></li>
-              <li class="hamburger-icon">                    
-                    <!-- <div class="ham-content">
-                      <a href="">Home</a>
-                      <a href="">Instruction</a>
-                      <a href="">About</a>
-                      <a href="">Contact</a>
-                    </div> -->
-                    <div class="hover-ham">
-                      <i class="fa fa-bars"></i>
-                      <div class="ham-content">
-                        <a href="">Home</a>
-                        <a href="">Instruction</a>
-                        <a href="">About</a>
-                        <a href="">Contact</a>
-                      </div>
-                    </div>
-                                     
-              </li>
-      
-            </ul>
-          </nav>
+          <div class="title">
+            <a href=""> <div>PORTLAND OPEN DATA</div> </a>
+          </div>
         </div>
       </header>
-
       <div class="content">
         <div class="container">
           <div class="input-form">
             <form method="POST" action="" enctype="multipart/form-data">
-              <p><input type="file" name="filename"></p>
-              <p><input type="submit" value="Run Frictionless"></p>
+              <p class="input-p"><input class="choose-file" type="file" name="filename"></p>
+              <p><input class="run-frictionless" type="submit" value="Run Frictionless"></p>
             </form>
             <!-- <form method="POST" action="" onsubmit="return doSomething();" class="my-form">
               <input class="choose-file" type="file" id="myFile" name="filename">
@@ -102,6 +77,18 @@
           </div>
         </div>
       </div>
+      <footer class="flex j-center a-center" >
+        <a href=""><img class="blue-logo" src="../static/images/blue-logo.PNG" alt=""></a>
+        <div class="footer-content">
+          <p class="footer-version">
+            Open data handbook 2020. Version 0.1 - Preliminary draft.
+          </p>
+          <p class="footer-license">
+            This work is licensed under a
+            <a href="">Creative Commons Attribution-ShareAlike 4.0 International License.</a>
+          </p>
+        </div>
+      </footer>
 
     </div>
     
