@@ -685,6 +685,74 @@ class bureau_code_match_error(Check):
     }
 
 
+class date_time_format_error(Check):
+    code = "date-time-format-error"
+    Errors = [DateTimeFormatError]
+
+    def __init__(self, descriptor=None):
+        super().__init__(descriptor)
+        
+    def check_date(self, date, formats, index):
+        if index > 10:
+            return f"Date in this cell does not follow date format standard. Check page 19 of Open Data handbook for correct date formats"
+        try:
+            date_obj = datetime.strptime(date, formats[index])
+        except:
+            return self.check_date(date, formats, index + 1)
+        return None
+        
+    def validate_row(self, row):
+        DATE_KEY = "DATE"
+        TIME_KEY = "TIME"
+        DATETIME_KEY = "DATETIME"
+        uppercase_headers = [
+            label.upper() for label in self.resource.schema.field_names
+        ]
+        if DATETIME_KEY in uppercase_headers:
+            try:
+                datetime_obj = datetime.strptime(str(row[DATETIME_KEY]), "%Y-%m-%dT%H:%M:%S")
+            except:
+                try:
+                    datetime_obj = datetime.strptime(str(row[DATETIME_KEY]), "%Y-%m-%d %H:%M:%S")
+                except:
+                    note = f"Datetime in this cell does not follow datetime format standard. Check page 19 of Open Data handbook for correct datetime formats"
+                    yield DateTimeFormatError.from_row(
+                        row, note=note, field_name=DATETIME_KEY
+                    )
+        else:
+            if DATE_KEY in uppercase_headers:
+                date_in_cell = str(row[DATE_KEY])
+                DATE_FORMATS = [
+                    "%b %d %Y",
+                    "%b %d %y",
+                    "%B %d %Y",
+                    "%B %d %y",
+                    "%m-%d-%Y",
+                    "%m/%d/%Y",
+                    "%m.%d.%Y",
+                    "%m-%d-%y",
+                    "%m/%d/%y",
+                    "%m.%d.%y",
+                    "%Y-%m-%d"
+                ]
+                note = self.check_date(date_in_cell, DATE_FORMATS, 0)
+                if note:
+                    yield DateTimeFormatError.from_row(
+                        row, note=note, field_name=DATE_KEY
+                    )
+            if TIME_KEY in uppercase_headers:
+                try:
+                    time_obj = datetime.strptime(str(row[TIME_KEY]), "%I:%M:%S %p")
+                except:
+                    try:
+                        time_obj = datetime.strptime(str(row[TIME_KEY]), "%H:%M:%S")
+                    except:
+                        note = f"Time in this cell does not follow time format standard. Check page 19 of Open Data handbook for correct time formats"
+                        yield DateTimeFormatError.from_row(
+                            row, note=note, field_name=TIME_KEY
+                        )
+        
+
 # Faihan's SECTION
 """
 This class to check  email format.

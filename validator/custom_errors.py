@@ -88,6 +88,16 @@ class BureauCodeMatchError(errors.CellError):
     description = "Data in this cell does not conform to bureau code standard. Bureau must exist and bureau code must match bureau description."
 
 
+class DateTimeFormatError(errors.CellError):
+    code = "date-time-format-error"
+    name = "Date Time Format Error"
+    tags = ["#table", "#row", "#cell"]
+    template = (
+        "Row at position {rowPosition} and field at position {fieldPosition}: {note}"
+    )
+    description = "Data in this cell does not conform to date/time format standard. Date/time must be valid and must follow one of the formats as described in page 19 of the Open Data handbook."
+
+
 class BooleanFormatConsistencyError(errors.CellError):
     code = "boolean-consistency-error"
     name = "Boolean data Inconsistent"
