@@ -18,3 +18,4 @@ Then push what's in your local files on the main branch with:
 You can instead push a branch with:
 	git push heroku {testbranch}:main
 	replacing {testbranch} with the branch you want to push
+	Note: if your branch is behind main, you'll have to add the -f flag right before heroku to force it to work.
