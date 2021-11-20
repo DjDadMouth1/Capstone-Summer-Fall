@@ -10,11 +10,12 @@ def home():
 @app.route('/', methods=['POST'])
 def run_validator():
    new_file = request.files['filename']
+   outputselection = request.values['outputSelection']
    filename = str(new_file.filename)
+   outputselection = str(outputselection)
    new_file.save(new_file.filename)
    from validator import validator
-   validator.custom_validate(filename)
+   validator.custom_validate(filename,outputselection)
    return send_file('report.json')
-
-if __name__ == "__main__":
-   app.run(host='localhost', port=5000)
+   
+app.run(host='localhost', port=5000)

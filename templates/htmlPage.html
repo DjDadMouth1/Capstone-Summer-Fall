@@ -53,6 +53,13 @@
           <div class="input-form">
             <form method="POST" action="" enctype="multipart/form-data">
               <p class="input-p"><input class="choose-file" type="file" name="filename"></p>
+              <p class="input-p">
+                <select class="output-selection" name="outputSelection">
+                  <option selected="selected" value="">Default</option>
+                  <option value="schema">Schema</option>
+                  <option value="error">Error Only</option>                
+                </select>
+              </p>
               <p><input class="run-frictionless" type="submit" value="Run Frictionless"></p>
             </form>
             <!-- <form method="POST" action="" onsubmit="return doSomething();" class="my-form">
