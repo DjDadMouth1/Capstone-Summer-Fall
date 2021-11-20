@@ -18,4 +18,12 @@ def run_validator():
    validator.custom_validate(filename,outputselection)
    return send_file('report.json')
    
+@app.route('/config', methods=['GET'])
+def root():
+    web_indiv = {}
+    url_sequence = 'test'
+    web_indiv[url_sequence] = {'url':'testabc','name':'hello','count': 4}
+    return render_template('config.html', web_data = web_indiv, url_sequence = url_sequence)
+
+
 app.run(host='localhost', port=5000)

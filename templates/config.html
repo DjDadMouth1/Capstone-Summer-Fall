@@ -51,26 +51,14 @@
       <div class="content">
         <div class="container">
           <div class="input-form">
-            <form method="POST" action="" enctype="multipart/form-data">
-              <p class="input-p"><input class="choose-file" type="file" name="filename"></p>
-              <p class="input-p">
-                <select class="output-selection" name="outputSelection">
-                  <option selected="selected" value="">Report Type</option>
-                  <option value="default">Full</option>
-                  <option value="schema">Schema</option>
-                  <option value="error">Error Only</option>                
-                </select>
-              </p>
-              <p><input class="run-frictionless" type="submit" value="Run Frictionless"></p>
-            </form>
-            <form action="/config" name="config" enctype="multipart/form-data">
-              <p><input class="config" type="submit" value="Configuration"> </p>
-
-            </form> 
-            <!-- <form method="POST" action="" onsubmit="return doSomething();" class="my-form">
-              <input class="choose-file" type="file" id="myFile" name="filename">
-              <input class="run-frictionless" type="submit" value="Run Frictionless">
-            </form> -->
+            {{web_data[url_sequence]}}
+            <table>
+                <tr>
+                    {%for value in web_data[url_sequence].values()%}
+                      <td class="col-md-2">{{ value }}</td>
+                    {% endfor %}
+                </tr>
+            </table>
           </div>
 
           <div class="output-form" id="output-form">
