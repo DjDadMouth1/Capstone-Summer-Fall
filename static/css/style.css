@@ -161,7 +161,7 @@ img {
   cursor: pointer;
 }
 
-.body-content .content .container .input-form form .input-p .choose-file {
+.body-content .content .container .input-form form .input-p .choose-file, .output-selection {
   border: solid 1px white;
   border-radius: 7px;
   background-color: #27ae60;
@@ -170,18 +170,18 @@ img {
   cursor: pointer;
 }
 
-.body-content .content .container .input-form form .input-p .choose-file:hover {
+.body-content .content .container .input-form form .input-p .choose-file:hover, .output-selection:hover {
   color: #f1c40f;
 }
 
 @media only screen and (max-width: 950px) {
-  .body-content .content .container .input-form form .input-p .choose-file {
+  .body-content .content .container .input-form form .input-p .choose-file, .output-selection{
     font-size: 12px;
   }
 }
 
 @media only screen and (max-width: 600px) {
-  .body-content .content .container .input-form form .input-p .choose-file {
+  .body-content .content .container .input-form form .input-p .choose-file, .output-selection{
     margin-bottom: 10px;
   }
 }
