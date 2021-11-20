@@ -114,18 +114,18 @@ img {
 
 .body-content .content .container .input-form {
   margin: auto;
-  width: 50%;
+  width: 60%;
 }
 
 @media only screen and (max-width: 900px) {
   .body-content .content .container .input-form {
-    width: 70%;
+    width: 75%;
   }
 }
 
 @media only screen and (max-width: 600px) {
   .body-content .content .container .input-form {
-    width: 90%;
+    width: 95%;
   }
 }
 
@@ -186,7 +186,7 @@ img {
   }
 }
 
-.body-content .content .container .input-form form .run-frictionless {
+.body-content .content .container .input-form form .run-frictionless, .output-selection {
   padding: 0px 10px;
   height: 33px;
   border: solid 1px white;
@@ -197,7 +197,7 @@ img {
 }
 
 @media only screen and (max-width: 950px) {
-  .body-content .content .container .input-form form .run-frictionless {
+  .body-content .content .container .input-form form .run-frictionless, .output-selection {
     font-size: 12px;
     padding: 0px 3px;
   }
