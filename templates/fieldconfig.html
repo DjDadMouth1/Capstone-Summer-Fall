@@ -50,16 +50,18 @@
       </header>
       <div class="content">
         <div class="container">
-          <div class="input-form">
-            {{web_data[url_sequence]}}
-            <table>
-                <tr>
-                    {%for value in web_data[url_sequence].values()%}
-                      <td class="col-md-2">{{ value }}</td>
-                    {% endfor %}
-                </tr>
-            </table>
+          <div class="config-form">
+            <form method="POST" action="" enctype="multipart/form-data">
+              {% for key, value in config_dict.items() %}
+              <h4>{{key}}:</h4>
+              <p class="input-p">{% for field in value %}<input name="{{key}}[{{loop.index}}]" value="{{field}}"> {%endfor%}<input name="{{key}}[{{value|length + 1}}]" value=""></p>
+              {% endfor %}
+              <button type="submit">Update Config</button>
+          </form>
           </div>
+          <form action="/">
+            <button type="submit">Validator</button>
+          </form> 
 
           <div class="output-form" id="output-form">
             <div class="download">

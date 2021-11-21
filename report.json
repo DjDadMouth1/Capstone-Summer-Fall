@@ -1,25 +1,14 @@
-{
-  "path": "Fire loss  time 2019.csv",
-  "name": "fire-loss-time-2019",
-  "profile": "tabular-data-resource",
-  "scheme": "file",
-  "format": "csv",
-  "hashing": "md5",
-  "encoding": "utf-8-sig",
-  "schema": {
-    "fields": [
-      {
-        "name": "Day of DateofFire",
-        "type": "string"
-      },
-      {
-        "name": "TotalFireLoss",
-        "type": "string"
-      },
-      {
-        "name": "TotalPropertyValue",
-        "type": "string"
-      }
-    ]
-  }
-}
+[
+  [
+    "Row at position 3 and field at position 2: Does not follow geolocation format. Point field must be formatted the following way: POINT(longitude latitude)"
+  ],
+  [
+    "Row at position 3 and field at position 3: Does not follow geolocation format. Latitude must be a decimal number"
+  ],
+  [
+    "Row at position 4 and field at position 2: Does not follow geolocation format. Point field must be formatted the following way: POINT(longitude latitude)"
+  ],
+  [
+    "Row at position 4 and field at position 3: Does not follow geolocation format. Latitude must be a decimal number"
+  ]
+]

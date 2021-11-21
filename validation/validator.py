@@ -4,7 +4,7 @@ import json
 
 def custom_validate(file, output_selection = None):
     output_report = None
-    new_checks = [custom_checks.monetary_fields()]
+    new_checks = [custom_checks.geolocation_format_error()]
     report = validate(file, checks=new_checks)
     
     if output_selection == 'schema':
@@ -18,6 +18,3 @@ def custom_validate(file, output_selection = None):
         json.dump(output_report,outfile, indent=2)
     
     return 
-
-if __name__ == "__main__":
-    custom_validate()
