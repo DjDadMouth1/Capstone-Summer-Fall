@@ -1,0 +1,122 @@
+{
+  "version": "4.19.5",
+  "time": 0.018,
+  "errors": [],
+  "tasks": [
+    {
+      "resource": {
+        "path": "./static/userfiles/Fire loss  time 2019.csv",
+        "name": "fire-loss-time-2019",
+        "profile": "tabular-data-resource",
+        "scheme": "file",
+        "format": "csv",
+        "hashing": "md5",
+        "stats": {
+          "hash": "8e9de63dd5c0cb9a8d4926c072c72259",
+          "bytes": 5159,
+          "fields": 3,
+          "rows": 140
+        },
+        "encoding": "utf-8-sig",
+        "schema": {
+          "fields": [
+            {
+              "name": "Day of DateofFire",
+              "type": "string"
+            },
+            {
+              "name": "TotalFireLoss",
+              "type": "string"
+            },
+            {
+              "name": "TotalPropertyValue",
+              "type": "string"
+            }
+          ]
+        }
+      },
+      "time": 0.018,
+      "scope": [
+        "hash-count-error",
+        "byte-count-error",
+        "field-count-error",
+        "row-count-error",
+        "blank-header",
+        "extra-label",
+        "missing-label",
+        "blank-label",
+        "duplicate-label",
+        "incorrect-label",
+        "blank-row",
+        "primary-key-error",
+        "foreign-key-error",
+        "extra-cell",
+        "missing-cell",
+        "type-error",
+        "constraint-error",
+        "unique-error",
+        "header-format-error",
+        "leading-or-trailing-whitespace",
+        "numeric-field-error",
+        "valid_namefield_value_in_cell",
+        "web-link-format-error"
+      ],
+      "partial": false,
+      "errors": [
+        {
+          "code": "header-format-error",
+          "name": "Header Format Error",
+          "tags": [
+            "#table",
+            "#header",
+            "#format"
+          ],
+          "note": "The column name, 'Day of DateofFire', at field position 1 has the following error(s): It contains non-alphanumeric character(s) , and it contains lowercase character(s)",
+          "message": "The column name, 'Day of DateofFire', at field position 1 has the following error(s): It contains non-alphanumeric character(s) , and it contains lowercase character(s)",
+          "description": "Column names must be all upper case and limited to 30 characters and must start with an alphabetic character. Use only alphanumeric characters and period (.), dash(-) or underscore (_)."
+        },
+        {
+          "code": "header-format-error",
+          "name": "Header Format Error",
+          "tags": [
+            "#table",
+            "#header",
+            "#format"
+          ],
+          "note": "The column name, 'TotalFireLoss', at field position 2 has the following error(s): It contains lowercase character(s)",
+          "message": "The column name, 'TotalFireLoss', at field position 2 has the following error(s): It contains lowercase character(s)",
+          "description": "Column names must be all upper case and limited to 30 characters and must start with an alphabetic character. Use only alphanumeric characters and period (.), dash(-) or underscore (_)."
+        },
+        {
+          "code": "header-format-error",
+          "name": "Header Format Error",
+          "tags": [
+            "#table",
+            "#header",
+            "#format"
+          ],
+          "note": "The column name, 'TotalPropertyValue', at field position 3 has the following error(s): It contains lowercase character(s)",
+          "message": "The column name, 'TotalPropertyValue', at field position 3 has the following error(s): It contains lowercase character(s)",
+          "description": "Column names must be all upper case and limited to 30 characters and must start with an alphabetic character. Use only alphanumeric characters and period (.), dash(-) or underscore (_)."
+        },
+        {
+          "code": "check-error",
+          "name": "Check Error",
+          "tags": [],
+          "note": "Boolean format consistency check requires a number data type column. Ignore this message if the data does not contain columns containing numbers. Note that if a field contains a non-numeric character, the number in the field it will be saved as a string (e.g. 90% and $1.50 will both saved as strings rather than numbers.)",
+          "message": "Check is not valid: Boolean format consistency check requires a number data type column. Ignore this message if the data does not contain columns containing numbers. Note that if a field contains a non-numeric character, the number in the field it will be saved as a string (e.g. 90% and $1.50 will both saved as strings rather than numbers.)",
+          "description": "Provided check is not valid"
+        }
+      ],
+      "stats": {
+        "errors": 4
+      },
+      "valid": false
+    }
+  ],
+  "stats": {
+    "errors": 4,
+    "tasks": 1
+  },
+  "valid": false
+}

@@ -12,9 +12,12 @@ def custom_validate(file, output_selection = None):
     check_selection = check_select()
     output_report = None
     
-    report = validate(file, checks=check_selection)
-    
     filepath = './static/userfiles/' + file
+
+    print(filepath)
+
+    report = validate(filepath, checks=check_selection)
+    
     if output_selection == 'schema':
         output_report = describe(filepath)
     elif output_selection == 'error':
