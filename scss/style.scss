@@ -1,7 +1,7 @@
 @import "variables";
 @import "flex";
 @import "media";
-
+//hello there
 *{
     color: white;
 }
@@ -63,7 +63,7 @@ img{
         .container{
             .input-form{
                 margin: auto;
-                width: 50%;
+                width: 60%;
                 @media only screen and (max-width: 900px){
                     width: 70%;
                 }
@@ -74,6 +74,8 @@ img{
                     display: flex;
                     justify-content: space-between;
                     border: solid white 1px;
+                    box-sizing: content-box;
+                    width: 100%;
                     border-radius: 10px;
                     padding: 20px 20px 20px 20px;
                     @media only screen and (max-width: 600px){
@@ -102,6 +104,16 @@ img{
                             }
                         }
                     }
+                    .input-selection{
+                        .output-selection{
+                            color: white;
+                            background-color: #27ae60;
+                            border-radius: 7px;
+                            height: 33px;
+                            border: white solid 1px;
+                            font-family: "Open Sans", Courier, monospace;
+                        }
+                    }
                     
                     .run-frictionless{
                         padding: 0px 10px;
@@ -128,7 +140,7 @@ img{
                 //max-height: 550px;
                 position: relative;
                 height: 550px;
-                width: 50%;
+                width: 60%;
                 @media only screen and (max-width: 768px){
                     width: 70%;
                 }
@@ -167,16 +179,51 @@ img{
                 }
                 .output{
                     border-radius: 5px;
+                    margin: 0px 20px;
                     position: absolute;
                     top: 34px;
-                    max-height: 100%;
+                    max-height: 90%;
                     width: 100%;
                     background-color: white;
+                    color: black;
                     overflow: auto;
                     padding: 0px 10px;
                 }
             }
-    }
+            .config-form{
+                form{
+                    h4{
+                        color: $primary;
+                    }
+                    input{
+                        margin-bottom: 10px;
+                    }
+                    p{
+                        margin-bottom: 20px;
+                        input{
+                            padding-left: 5px;
+                            border: 1px solid white;
+                        }
+                    }
+                    button{
+                        background: $primary;
+                        padding: 10px 20px;
+                        margin-bottom: 20px;
+                        border-radius: 5px;
+                        cursor: pointer;
+                    }
+                }
+            }
+            form{
+                .config-btn{
+                    background: $primary;
+                    padding: 10px 20px;
+                    margin-bottom: 20px;
+                    border-radius: 5px;
+                    cursor: pointer;
+                }
+            }
+        }
     }
     footer{
         background-color: #002244;
