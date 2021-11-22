@@ -1,4 +1,4 @@
-id,point,latitude,longitude
-1,point(45.51135 45.51135),45.51135,-122.68679
-2,english,123-4568,test
-3,blach,12345,blah
+address,3,log date,record date
+"123 st, portland",point(45.51135 45.51135),45.51135,-23
+2,english,"",Ted
+total,blach,12345,I dont know

@@ -121,3 +121,75 @@ class MonetaryFields(errors.ConstraintError):
     tags = ["#table", "#row", "#cell"]
     template = 'The cell "{cell}" in row "{rowPosition}" at position "{fieldPosition}" does not conform to a constraint: {note}'
     description = "The field value contains a monetary value that shold not have '$' or ',' characters"
+
+class ValidEmailInCell(errors.CellError):
+    code = "valid-email-in-cell"
+    name = "Valid Email In Cell"
+    tags = ["#table", "#row", "#cell"]
+    template = (
+        "Row at position {rowPosition} and field at position {fieldPosition}: {note}"
+    )
+    description = 'Cell contains invalid email, must be in /"example@domain.com/" format.'
+
+class ValidDateInCell(errors.CellError):
+    code = "valid-date-in-cell"
+    name = "Valid Date In Cell"
+    tags = ["#table", "#row", "#cell"]
+    template = (
+        "Row at position {rowPosition} and field at position {fieldPosition}: {note}"
+    )
+    description = 'Cell contains invalid Date format.'
+
+class ValidNegativeValueInCell(errors.CellError):
+    code = "valid-negative-value-in-cell"
+    name = "Valid Negative Value In Cell"
+    tags = ["#table", "#row", "#cell"]
+    template = (
+        "Row at position {rowPosition} and field at position {fieldPosition}: {note}"
+    )
+    description = 'Cell contains invalid nagative number format.'
+
+class ValidNamefieldValueInCell(errors.CellError):
+    code = "valid_namefield_value_in_cell"
+    name = "Valid Namefield Value In Cell"
+    tags = ["#table", "#row", "#cell"]
+    template = (
+        "Row at position {rowPosition} and field at position {fieldPosition}: {note}"
+    )
+    description = 'Cell contains invalid Name Field format.'
+
+class ValidAddressValueInCell(errors.CellError):
+    code = "valid-address-value-in-cell"
+    name = "Valid Address Value In Cell"
+    tags = ["#table", "#row", "#cell"]
+    template = (
+        "Row at position {rowPosition} and field at position {fieldPosition}: {note}"
+    )
+    description = 'Cell contains invalid Address format.'
+
+class ValidTextFieldInCell(errors.CellError):
+    code = "valid-textfield-value-in-cell"
+    name = "Valid Textfield Value In Cell"
+    tags = ["#table", "#row", "#cell"]
+    template = (
+        "Row at position {rowPosition} and field at position {fieldPosition}: {note}"
+    )
+    description = 'Cell contains invalid Text format.'
+
+class ValidDataCompleteness(errors.CellError):
+    code = "valid-data-completeness"
+    name = "Valid Data Completeness"
+    tags = ["#table", "#row", "#cell"]
+    template = (
+        "Row at position {rowPosition} and field at position {fieldPosition}: {note}"
+    )
+    description = 'Cell does not contain a value.'
+
+class ValidSummerizedData(errors.CellError):
+    code = "ValidSummerizedData"
+    name = "ValidSummerizedData"
+    tags = ["#table", "#row", "#cell"]
+    template = (
+        "Row at position {rowPosition}: {note}"
+    )
+    description = 'Summarized Data (total, sums, roll-ups) should not be included in datasets.'

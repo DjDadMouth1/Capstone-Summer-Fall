@@ -50,30 +50,23 @@
       </header>
       <div class="content">
         <div class="container">
-          <div class="input-form">
+          <div class="config-form">
             <form method="POST" action="" enctype="multipart/form-data">
-              <p class="input-p"><input class="choose-file" type="file" name="filename"></p>
-              <p class="input-p">
-                <select class="output-selection" name="outputSelection">
-                  <option selected="selected" value="">Report Type</option>
-                  <option value="default">Full</option>
-                  <option value="schema">Schema</option>
-                  <option value="error">Error Only</option>                
-                </select>
-              </p>
-              <p><input class="run-frictionless" type="submit" value="Run Frictionless"></p>
-            </form>
-            <form action="/field_config">
-              <button type="submit">Check Configuration</button>
-            </form>
-            <form action="/check_select">
-              <button type="submit">Check Selection</button>
-            </form> 
-            <!-- <form method="POST" action="" onsubmit="return doSomething();" class="my-form">
-              <input class="choose-file" type="file" id="myFile" name="filename">
-              <input class="run-frictionless" type="submit" value="Run Frictionless">
-            </form> -->
+              <h4>Select custom checks to be run:</h4>
+              {% for key, value in check_select.items() %}
+              {% if value == 1 %}
+              <input type="checkbox" id="{{key}}" name="{{key}}" value=0 checked>
+              {% else %}
+              <input type="checkbox" id="{{key}}" name="{{key}}" value=1>
+              {% endif %}
+              <label for="html">{{key}}</label><br>
+              {% endfor %}
+              <button type="submit">Update Selection</button>
+          </form>
           </div>
+          <form action="/">
+            <button type="submit">Validator</button>
+          </form> 
 
           <div class="output-form" id="output-form">
             <div class="download">

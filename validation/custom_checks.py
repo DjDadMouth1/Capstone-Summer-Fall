@@ -12,8 +12,9 @@ import importlib.resources as resources
 cfg_dict = {}
 cfg_file = resources.open_text('settings', 'fields.cfg')
 for line in cfg_file:
-    key, value = line.rstrip('\n').split(' = ')
-    cfg_dict[key] = value.split(',')
+    if not line.startswith('#'): 
+        key, value = line.rstrip('\n').split(' = ')
+        cfg_dict[key] = value.split(',')
 
 class header_format(Check):
     code = "header-format-error"
@@ -141,7 +142,7 @@ class zip_code_format(Check):
 
     def __init__(self, descriptor=None):
         super().__init__(descriptor)
-        self.__checklabels = ["ZIP", "ZIP CODE", "ZIP CODES", "ZIPCODE", "ZIPCODES"]
+        self.__checklabels = []
         # Append any new labels from the config file
         if 'ZIP_CODE_FORMAT' in cfg_dict:
             for new_label in cfg_dict['ZIP_CODE_FORMAT']:
@@ -187,7 +188,7 @@ class zip_code_consistency(Check):
     def __init__(self, descriptor=None):
         super().__init__(descriptor)
         self.__memory = {}
-        self.__checklabels = ["ZIP", "ZIP CODE", "ZIP CODES", "ZIPCODE", "ZIPCODES"]
+        self.__checklabels = []
         # Append any new labels from the config file
         if 'ZIP_CODE_CONSISTENCY' in cfg_dict:
             for new_label in cfg_dict['ZIP_CODE_CONSISTENCY']:
@@ -342,7 +343,7 @@ class address_field_seperate(Check):
 
     def __init__(self, descriptor=None):
         super().__init__(descriptor)
-        self.__checklabels = ["STREETNUMBER", "STREET", "QUADRANT"]
+        self.__checklabels = []
         # Append any new labels from the config file
         if 'ADDRESS_FIELD_SEPERATE' in cfg_dict:
             for new_label in cfg_dict['ADDRESS_FIELD_SEPERATE']:
@@ -400,7 +401,7 @@ class monetary_fields(Check):
 
     def __init__(self, descriptor=None):
         super().__init__(descriptor)
-        self.__checklabels = ["COST", "PRICE", "VALUATION"]
+        self.__checklabels = []
 
         # Append any new labels from the config file
         if 'MONETARY_FIELDS' in cfg_dict:
@@ -413,16 +414,15 @@ class monetary_fields(Check):
         check = re.compile(r"^-?\d+(\.\d{2})?$")
 
         # cell is a tuple of (field_name, cell value)
-        for cell in row.items():
-            for label in self.__checklabels:
-                if cell[0].upper() == label:
+        for field, value in row.items():
+            if field.upper() in self.__checklabels:
 
-                    # If strip() removes trail or lead whitespace get the error
-                    if not bool(check.match(str(cell[1]))):
-                        note = "monetary values should only contain numbers to two decimal places, no '$' or commas"
-                        yield MonetaryFields.from_row(
-                            row, note=note, field_name=cell[0]
-                        )
+                # If strip() removes trail or lead whitespace get the error
+                if not bool(check.match(str(value))):
+                    note = "monetary values should only contain numbers to two decimal places, no '$' or commas"
+                    yield MonetaryFields.from_row(
+                        row, note=note, field_name=field
+                    )
 
     metadata_profile = {  # type: ignore
         "type": "object",
@@ -436,13 +436,7 @@ class phone_number_format_error(Check):
 
     def __init__(self, descriptor=None):
         super().__init__(descriptor)
-        self.__checklabels = [
-            "PHONE",
-            "PHONE NUMBER",
-            "PHONE NUMBERS",
-            "PHONENUMBER",
-            "PHONENUMBERS"
-        ]
+        self.__checklabels = []
 
         # Append any new labels from the config file
         if 'PHONE_NUMBER_FORMAT_ERROR' in cfg_dict:
@@ -485,7 +479,7 @@ class web_link_format_error(Check):
 
     def __init__(self, descriptor=None):
         super().__init__(descriptor)
-        self.__checklabels = ['URL']
+        self.__checklabels = []
 
         # Append any new labels from the config file
         if 'WEB_LINK_FORMAT_ERROR' in cfg_dict:
@@ -543,7 +537,7 @@ class geolocation_format_error(Check):
         elif bool(not POINT_KEY and not LAT_KEY and not LON_KEY):
             config_error = True
         if config_error:
-            note = f"Configuration does not follow geolocation format. Must have a Point field and/or Latitude and longitude fields."
+            note = f"Configuration does not follow GEOLOCATION_FORMAT_ERROR check. Must have a Point field and/or Latitude and longitude fields."
             yield errors.CheckError(note=note)
 
         # Check if both the lat and long fields exist in the file
@@ -639,19 +633,55 @@ class log_date_match_error(Check):
 
     def __init__(self, descriptor=None):
         super().__init__(descriptor)
+        self.__checklabels = []
+
+        # Append any new labels from the config file
+        if 'LOG_DATE_MATCH_ERROR' in cfg_dict:
+            for new_label in cfg_dict['LOG_DATE_MATCH_ERROR']:
+                if new_label.strip() not in self.__checklabels:
+                    self.__checklabels.append(new_label.strip().upper())
+
+    def validate_start(self):
+        # Gets the first valid keys from the config list
+        LOG_DATE_KEY = next(filter(lambda label: "LOG" in label, self.__checklabels), None)
+        RECORD_DATE_KEY = next(filter(lambda label: "REC" in label, self.__checklabels), None)
+        log_field = None
+        rec_field = None
+        
+        # Check if config file has loaded the proper keys
+        if bool((LOG_DATE_KEY and not RECORD_DATE_KEY) or (not LOG_DATE_KEY and RECORD_DATE_KEY)):
+            note = f"Configuration does not follow LOG_DATE_MATCH_ERROR check. Must have a Log date and Record date field name to compare."
+            yield errors.CheckError(note=note)
+
+        # Check if both the lat and long fields exist in the file
+        for field in self.resource.header.fields:
+            if field['name'].upper() == LOG_DATE_KEY:
+                log_field = field['name']
+            if field['name'].upper() == RECORD_DATE_KEY:
+                rec_field = field['name']
+        print(log_field)
+        print(rec_field)
+
+        # Check if data file has both lat and long fields
+        if bool((log_field and not rec_field) or (not log_field and rec_field)) or bool(not log_field and not rec_field):
+            note = f"Data file does not follow LOG_DATE_MATCH_ERROR format. Does not contain both a Log date and Record Date field."
+            yield errors.CheckError(note=note)
 
     def validate_row(self, row):
-        LOG_DATE_KEY = "LOG DATE"
-        RECORD_DATE_KEY = "RECORD DATE"
-        uppercase_headers = [
-            label.upper() for label in self.resource.schema.field_names
-        ]
-        if LOG_DATE_KEY in uppercase_headers and RECORD_DATE_KEY in uppercase_headers:
-            if str(row[LOG_DATE_KEY]) == str(row[RECORD_DATE_KEY]):
-                note = f"Does not follow log date standard. Log date must not match record date"
-                yield LogDateMatchError.from_row(
-                    row, note=note, field_name=LOG_DATE_KEY
-                )
+        LOG_DATE_KEY = next(filter(lambda label: "LOG" in label, self.__checklabels), None)
+        RECORD_DATE_KEY = next(filter(lambda label: "REC" in label, self.__checklabels), None)
+        log_field = None
+        record_field = None
+        for label in self.resource.schema.field_names:
+            if label.upper() == LOG_DATE_KEY:
+                log_field = label
+            elif label.upper() == RECORD_DATE_KEY:
+                record_field = label
+        if str(row[log_field]) == str(row[record_field]):
+            note = f"Does not follow log date standard. Log date must not match record date"
+            yield LogDateMatchError.from_row(
+                row, note=note, field_name=log_field
+            )
 
     # Metadata
 
@@ -756,26 +786,36 @@ class bureau_code_match_error(Check):
 """
 This class to check  email format.
 """
-class valid_Email_In_Cell(Check):
-    code = "cell-error"
-    Errors = [errors.CellError]
+class valid_email_in_cell(Check):
+    code = "valid-email-in-cell"
+    Errors = [ValidEmailInCell]
 
     def __init__(self, descriptor=None):
         super().__init__(descriptor)
-        self.__memory = {}
+        self.__checklabels = []
+
+        # Append any new labels from the config file
+        if 'VALID_EMAIL_IN_CELL' in cfg_dict:
+            for new_label in cfg_dict['VALID_EMAIL_IN_CELL']:
+                if new_label.strip() not in self.__checklabels:
+                    self.__checklabels.append(new_label.strip().upper())
+
+    def validate_start(self):
+        # Check if config file has loaded at least one keys
+        if not self.__checklabels:
+            note = f"Configuration does not follow VALID_EMAIL_IN_CELL check format. Must have at least one field name to check."
+            yield errors.CheckError(note=note)
+
 
     def validate_row(self, row):
-        rowPosition = row.row_position
-        for fieldPosition, field in enumerate(row):
-            fieldName = str(row.field_names[fieldPosition])
-            if fieldName.upper().find("EMAIL") != -1:  # only run on field name is Email
-                cell = str(row[fieldName])
+        for field, value in row.items():
+            if field.upper() in self.__checklabels:
                 # slicing domain name using slicing
                 isError = False
-                if str(cell).find("@") == -1: # Find character "@" to check email format.
+                if str(value).find("@") == -1: # Find character "@" to check email format.
                     isError = True
                 else:
-                    domainName = cell.split("@")[1]
+                    domainName = value.split("@")[1]
                     # Regex to check valid
                     # domain name.
                     regex = "^((?!-)[A-Za-z0-9-]{1,63}(?<!-)\\.)[A-Za-z]{2,6}"
@@ -784,14 +824,14 @@ class valid_Email_In_Cell(Check):
                     if not re.search(regexCompile, domainName):
                         isError = True
 
-                name = cell.split(" ") # find space in email address.
+                name = value.split(" ") # find space in email address.
                 if len(name) > 1:
                     isError = True
 
                 if isError: # If have error, we will set message into Note for Frictionless print into report
-                    note = f"Type error in the cell value: {cell} in row {rowPosition} and field {fieldName} at position {fieldPosition}: Is not an email"
-                    yield errors.CellError.from_row(
-                        row, note=note, field_name=fieldName
+                    note = f"Type error in the cell value: \"{value}\" is not an email"
+                    yield ValidEmailInCell.from_row(
+                        row, note=note, field_name=field
                     )
 
     # Metadata
@@ -803,30 +843,39 @@ class valid_Email_In_Cell(Check):
 """
 This class to check  Date format.
 """
-class valid_Date_In_Cell(Check):
-    code = "cell-error"
-    Errors = [errors.CellError]
+class valid_date_in_cell(Check):
+    code = "valid-date-in-cell"
+    Errors = [ValidDateInCell]
 
     def __init__(self, descriptor=None):
         super().__init__(descriptor)
-        self.__memory = {}
+        self.__checklabels = []
+
+        # Append any new labels from the config file
+        if 'VALID_DATE_IN_CELL' in cfg_dict:
+            for new_label in cfg_dict['VALID_DATE_IN_CELL']:
+                if new_label.strip() not in self.__checklabels:
+                    self.__checklabels.append(new_label.strip().upper())
+
+    def validate_start(self):
+        # Check if config file has loaded at least one keys
+        if not self.__checklabels:
+            note = f"Configuration does not follow VALID_DATE_IN_CELL check. Must add at least one field name to check."
+            yield errors.CheckError(note=note)
 
     def validate_row(self, row):
-        rowPosition = row.row_position
-        for fieldPosition, field in enumerate(row):
-            fieldName = str(row.field_names[fieldPosition])
-            if fieldName.upper().find("DATE") != -1:  # only run on field name is date
-                cell = str(row[fieldName])
+        for field, value in row.items():
+            if field.upper() in self.__checklabels:
                 isError = False
                 try:
-                    date_time_obj = datetime.strptime(cell, "%d/%m/%y") #try to parse this string value into date, if can not past. It mean this cell value is not true Date format
+                    date_time_obj = datetime.strptime(value, "%d/%m/%y") #try to parse this string value into date, if can not past. It mean this cell value is not true Date format
                 except:
                     isError = True
 
                 if isError:# If have error, we will set message into Note for Frictionless print into report
-                    note = f"Type error in the cell value: {cell} in row {rowPosition} and field {fieldName} at position {fieldPosition}: Is not valid date"
-                    yield errors.CellError.from_row(
-                        row, note=note, field_name=fieldName
+                    note = f"Type error in the cell value: \"{value}\" is not a valid date"
+                    yield ValidDateInCell.from_row(
+                        row, note=note, field_name=field
                     )
 
     # Metadata
@@ -838,39 +887,42 @@ class valid_Date_In_Cell(Check):
 """
 This class to check  Negative Value format.
 """
-class valid_Negative_Value_In_Cell(Check):
-    code = "cell-error"
-    Errors = [errors.CellError]
+class valid_negative_value_in_cell(Check):
+    code = "valid-negative-value-in-cell"
+    Errors = [ValidNegativeValueInCell]
 
     def __init__(self, descriptor=None):
         super().__init__(descriptor)
-        self.__memory = {}
+        self.__checklabels = []
+
+        # Append any new labels from the config file
+        if 'VALID_NEGATIVE_VALUE_IN_CELL' in cfg_dict:
+            for new_label in cfg_dict['VALID_NEGATIVE_VALUE_IN_CELL']:
+                if new_label.strip() not in self.__checklabels:
+                    self.__checklabels.append(new_label.strip().upper())
+    
+    def validate_start(self):
+        # Check if config file has loaded at least one keys
+        if not self.__checklabels:
+            note = f"Configuration does not follow VALID_NEGATIVE_VALUE_IN_CELL check. Must add at least one field name to check."
+            yield errors.CheckError(note=note)
 
     def validate_row(self, row):
-        rowPosition = row.row_position
-        for fieldPosition, field in enumerate(row):
-            fieldName = str(row.field_names[fieldPosition])
-            # we only run valid on column have Names are "AMOUNT", "VALUE", "AMT", and "SALARY".
-            if (
-                (fieldName.upper().find("AMOUNT") != -1)
-                or (fieldName.upper().find("VALUE") != -1)
-                or (fieldName.upper().find("AMT") != -1)
-                or (fieldName.upper().find("SALARY") != -1)
-            ):
-                cell = str(row[fieldName])
+        for field, value in row.items():
+            if field.upper() in self.__checklabels:
                 isError = False
-                if cell.upper().find("MINUS") != -1: # find String contain String "MINUS" in cell
+                if value.upper().find("MINUS") != -1: # find String contain String "MINUS" in cell
                     isError = True
-                if (not isError) and (cell.upper().find("SUB") != -1): # find String contain String "SUB" in cell
+                if (not isError) and (value.upper().find("SUB") != -1): # find String contain String "SUB" in cell
                     isError = True
-                if (not isError) and (cell.upper().find("MINU") != -1):# find String contain String "Minus" in cell
+                if (not isError) and (value.upper().find("MINU") != -1):# find String contain String "Minus" in cell
                     isError = True
-                if (not isError) and (cell[0].upper().find("(") != -1):# find String contain String "(" in cell
+                if (not isError) and (value.upper().find("(") != -1):# find String contain String "(" in cell
                     isError = True
                 if isError:# If have error, we will set message into Note for Frictionless print into report
-                    note = f"Type error in the cell value: {cell} in row {rowPosition} and field {fieldName} at position {fieldPosition}: Is not valid in Negative Value"
-                    yield errors.CellError.from_row(
-                        row, note=note, field_name=fieldName
+                    note = f"Type error in the cell value: \"{value}\" is not valid in Negative Value"
+                    yield ValidNegativeValueInCell.from_row(
+                        row, note=note, field_name=field
                     )
 
     # Metadata
@@ -882,16 +934,15 @@ class valid_Negative_Value_In_Cell(Check):
 """
 This class to check  Name Field format.
 """
-class valid_NameField_Value_In_Cell(Check):
-    code = "cell-error"
-    Errors = [errors.CellError]
+class valid_namefield_value_in_cell(Check):
+    code = "valid_namefield_value_in_cell"
+    Errors = [ValidNamefieldValueInCell]
 
     def __init__(self, descriptor=None):
         super().__init__(descriptor)
         self.__memory = {}
 
     def validate_row(self, row):
-        rowPosition = row.row_position
         for fieldPosition, field in enumerate(row):
             fieldName = str(row.field_names[fieldPosition])
             if fieldName.upper().find("NAME") != -1:
@@ -905,8 +956,8 @@ class valid_NameField_Value_In_Cell(Check):
                     if tmp != elem: # compare Origin word and capitalize word
                         isError = True # If it is not equal, it mean Error requirement 
                 if isError:# If have error, we will set message into Note for Frictionless print into report
-                    note = f"Type error in the cell value: {cell} in row {rowPosition} and field {fieldName} at position {fieldPosition}: Is not valid Name Field"
-                    yield errors.CellError.from_row(
+                    note = f"Type error in the cell value: {cell} is not valid Name Field"
+                    yield ValidNamefieldValueInCell.from_row(
                         row, note=note, field_name=fieldName
                     )
 
@@ -919,16 +970,15 @@ class valid_NameField_Value_In_Cell(Check):
 """
 This class to check  Address format.
 """
-class valid_Address_Value_In_Cell(Check):
-    code = "cell-error"
-    Errors = [errors.CellError]
+class valid_address_value_in_cell(Check):
+    code = "valid-address-value-in-cell"
+    Errors = [ValidAddressValueInCell]
 
     def __init__(self, descriptor=None):
         super().__init__(descriptor)
         self.__memory = {}
 
     def validate_row(self, row):
-        rowPosition = row.row_position
         for fieldPosition, field in enumerate(row):
             fieldName = str(row.field_names[fieldPosition])
             if (
@@ -944,10 +994,9 @@ class valid_Address_Value_In_Cell(Check):
                     isError = True
                 if isError:# If have error, we will set message into Note for Frictionless print into report
                     note = (
-                        f"Type error in the cell value: {cell} in row {rowPosition} and field {fieldName} at position {fieldPosition}: "
-                        f"City State and zip codes should be separated out of the address and stored in separate columns named as CITY, STATE, and ZIPCODE"
+                        f"Type error in the cell value: \"{cell}\", City State and zip codes should be separated out of the address and stored in separate columns named as CITY, STATE, and ZIPCODE"
                     )
-                    yield errors.CellError.from_row(
+                    yield ValidAddressValueInCell.from_row(
                         row, note=note, field_name=fieldName
                     )
 
@@ -960,13 +1009,12 @@ class valid_Address_Value_In_Cell(Check):
 """
 This class to check  Text Field format.
 """
-class valid_Text_Field_In_Cell(Check):
-    code = "cell-error"
-    Errors = [errors.CellError]
+class valid_text_field_in_cell(Check):
+    code = "valid-text-field-in-cell"
+    Errors = [ValidTextFieldInCell]
 
     def __init__(self, descriptor=None):
         super().__init__(descriptor)
-        self.__memory = {}
 
     def validate_row(self, row):
         rowPosition = row.row_position
@@ -983,8 +1031,8 @@ class valid_Text_Field_In_Cell(Check):
                 if re.search("<[^/>][^>]*>", cell) != None: # Find html tag in cell String
                     isError = True
                 if isError:# If have error, we will set message into Note for Frictionless print into report
-                    note = f"Type error in the cell value: {cell} in row {rowPosition} and field {fieldName} at position {fieldPosition}: Is not valid in Text Field Value"
-                    yield errors.CellError.from_row(
+                    note = f"Type error in the cell value: {cell} is not a valid Text Field Value"
+                    yield ValidTextFieldInCell.from_row(
                         row, note=note, field_name=fieldName
                     )
 
@@ -997,13 +1045,12 @@ class valid_Text_Field_In_Cell(Check):
 """
 This class to check Data Completeness format.
 """
-class valid_Data_Completeness(Check):
-    code = "cell-error"
-    Errors = [errors.CellError]
+class valid_data_completeness(Check):
+    code = "valid-data-completeness"
+    Errors = [ValidDataCompleteness]
 
     def __init__(self, descriptor=None):
         super().__init__(descriptor)
-        self.__memory = {}
 
     def validate_row(self, row):
         rowPosition = row.row_position
@@ -1014,8 +1061,8 @@ class valid_Data_Completeness(Check):
             if isNotBlank(cell) == False: # run function to detect null value in cell
                 isError = True
             if isError:# If have error, we will set message into Note for Frictionless print into report
-                note = f"Error in the cell value: {cell} in row {rowPosition} and field {fieldName} at position {fieldPosition}: Is empty, It is not valid Data Completeness rule"
-                yield errors.CellError.from_row(row, note=note, field_name=fieldName)
+                note = f"Error in the cell value: \"{cell}\" in row {rowPosition} is empty, It is not valid Data Completeness rule"
+                yield ValidDataCompleteness.from_row(row, note=note, field_name=fieldName)
 
     # Metadata
     metadata_profile = {  # type: ignore
@@ -1026,9 +1073,9 @@ class valid_Data_Completeness(Check):
 """
 This class to check Summerized Data format.
 """
-class valid_Summerized_Data(Check):
-    code = "cell-error"
-    Errors = [errors.CellError]
+class valid_summerized_data(Check):
+    code = "valid-summerized-data"
+    Errors = [ValidSummerizedData]
 
     def __init__(self, descriptor=None):
         super().__init__(descriptor)
@@ -1043,8 +1090,8 @@ class valid_Summerized_Data(Check):
             if (cell.upper().find("TOT") >= 0) or (cell.upper().find("SUM") >= 0): # only run on field name contains string "TOT" = total and "SUM"
                 isError = True
             if isError:# If have error, we will set message into Note for Frictionless print into report
-                note = f"Row {rowPosition}: Is including roll-ups, subtotal and total of values in cells as part of the column. It is not valid Summarized Data, applications can compute these values and have totals of subtotals skews results"
-                yield errors.CellError.from_row(row, note=note, field_name=fieldName)
+                note = f"Cell containing \"{cell}\" appears to summarize values from previous fields."
+                yield ValidSummerizedData.from_row(row, note=note, field_name=fieldName)
 
     # Metadata
     metadata_profile = {  # type: ignore
