@@ -1,0 +1,29 @@
+{
+  "path": "./static/userfiles/invalid.csv",
+  "name": "invalid",
+  "profile": "tabular-data-resource",
+  "scheme": "file",
+  "format": "csv",
+  "hashing": "md5",
+  "encoding": "utf-8",
+  "schema": {
+    "fields": [
+      {
+        "name": "address",
+        "type": "string"
+      },
+      {
+        "name": "3",
+        "type": "string"
+      },
+      {
+        "name": "log date",
+        "type": "number"
+      },
+      {
+        "name": "record date",
+        "type": "string"
+      }
+    ]
+  }
+}

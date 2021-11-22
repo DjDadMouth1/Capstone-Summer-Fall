@@ -5,24 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="https://kit.fontawesome.com/a7ebbfc552.js" crossorigin="anonymous"></script>
     <script>
-      function doSomething() {
-          //alert('Form submitted!');
-		  
-		  document.getElementById('output-form').style.visibility="visible";
-		  
-		  var file = document.getElementById('myFile');
-	  
-          if(file.files.length)
-          {
-            var fileReader=new FileReader();
-            fileReader.onload=function()
-            {
-              document.getElementById('output').textContent=fileReader.result;
-            }
-            fileReader.readAsBinaryString(file.files[0]);
-          }
-		  
-          return false;
+      function displayReport(filepath) {
+      
+      fetch(filepath)
+        .then(res => res.text())
+        .then(text => {
+          const insertAt = document.getElementById('output');
+          insertAt.textContent = text;
+          document.getElementById('output-form').style.visibility="visible";
+        });		  
       }
     </script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -56,7 +47,7 @@
               <p class="input-p">
                 <select class="output-selection" name="outputSelection">
                   <option selected="selected" value="">Report Type</option>
-                  <option value="default">Full</option>
+                  <option value="">Full</option>
                   <option value="schema">Schema</option>
                   <option value="error">Error Only</option>                
                 </select>
@@ -68,19 +59,18 @@
             </form>
             <form action="/check_select">
               <button type="submit">Check Selection</button>
-            </form> 
-            <!-- <form method="POST" action="" onsubmit="return doSomething();" class="my-form">
-              <input class="choose-file" type="file" id="myFile" name="filename">
-              <input class="run-frictionless" type="submit" value="Run Frictionless">
-            </form> -->
+            </form>
           </div>
-
+          {% if display %}
+              <script>displayReport("{{report}}");</script>
+          {% endif %}
+          <div id='test'></div>
           <div class="output-form" id="output-form">
             <div class="download">
               <!-- when download class is clicked, it will run a function in main.js
               to display downboad-btn button. This function can replace the name
               of download file in href link by the name of result file. -->
-              <a href="./result.txt" download>
+              <a href="{{report}}" download>
                 <div class="download-btn">
                   Download Files
                   <i class="fas fa-download"></i>

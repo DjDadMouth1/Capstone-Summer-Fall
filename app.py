@@ -1,7 +1,11 @@
-from flask import Flask, render_template, request, send_file
+import os
+from flask import Flask, render_template, request
 
-from werkzeug.utils import redirect
 app = Flask(__name__)
+
+# File save location
+userfile_path = os.path.join(app.instance_path, 'userfiles')
+
 
 @app.route('/')
 def home():
@@ -15,12 +19,13 @@ def run_validator():
          outputselection = request.values['outputSelection']
          filename = str(new_file.filename)
          outputselection = str(outputselection)
-         new_file.save(new_file.filename)
+         new_file.save(('./static/userfiles/' + new_file.filename))
          from validation import validator
          report_name = validator.custom_validate(filename,outputselection)
-         return render_template('htmlPage.html', report = report_name)
-   else:
-      return render_template('htmlPage.html')
+         print(report_name)
+         return render_template('htmlPage.html', display = True, report = report_name)
+   
+   return render_template('htmlPage.html')
    
 @app.route('/field_config', methods=['GET','POST'])
 def check_config():
@@ -53,7 +58,6 @@ def check_select():
    if request.method == 'POST':
       data = request.form.to_dict()
       new_check_selection = ''
-      print(data)
       with open('./settings/checks.cfg','r') as outfile:
          for line in outfile:
             custom_check = line.split('=')[0].strip()

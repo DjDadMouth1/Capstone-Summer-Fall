@@ -1,7 +1,7 @@
 from re import S
 from . import custom_checks
 from frictionless import describe, validate
-import json, importlib, inspect
+import json, inspect
 import importlib.resources as resources
 
 # Load the checks.cfg file into a dictionary with
@@ -14,17 +14,24 @@ def custom_validate(file, output_selection = None):
     
     report = validate(file, checks=check_selection)
     
+    filepath = './static/userfiles/' + file
     if output_selection == 'schema':
-        output_report = describe(file)
+        output_report = describe(filepath)
     elif output_selection == 'error':
         output_report = report.flatten(['note','message','description'])
     else:
         output_report = report
+    
+    print(output_selection)
+    if output_selection != '':
+        output_selection = '-' + output_selection
 
-    with open('./userfiles/report.json','w') as outfile:
+    new_file = './static/userfiles/' + file.split('.')[0] + output_selection + '-report.json'
+    
+    with open(new_file,'w') as outfile:
         json.dump(output_report,outfile, indent=2)
     
-    return
+    return new_file.split('./',1)[1]
 
 def check_select():
     add_checks = []
@@ -33,8 +40,6 @@ def check_select():
         custom_check, value = line.rstrip('\n').split('=')
         if value.strip() == '1':
             add_checks.append(custom_check.strip())
-
-    print(add_checks)
 
     selected_checks = []
     for name, obj in inspect.getmembers(custom_checks):
