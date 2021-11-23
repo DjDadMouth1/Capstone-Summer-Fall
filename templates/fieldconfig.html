@@ -4,27 +4,6 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="https://kit.fontawesome.com/a7ebbfc552.js" crossorigin="anonymous"></script>
-    <script>
-      function doSomething() {
-          //alert('Form submitted!');
-		  
-		  document.getElementById('output-form').style.visibility="visible";
-		  
-		  var file = document.getElementById('myFile');
-	  
-          if(file.files.length)
-          {
-            var fileReader=new FileReader();
-            fileReader.onload=function()
-            {
-              document.getElementById('output').textContent=fileReader.result;
-            }
-            fileReader.readAsBinaryString(file.files[0]);
-          }
-		  
-          return false;
-      }
-    </script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/reset.css') }}">
@@ -60,23 +39,8 @@
           </form>
           </div>
           <form action="/">
-            <button type="submit">Validator</button>
+            <button class="return-to-validator" type="submit">Validator</button>
           </form> 
-
-          <div class="output-form" id="output-form">
-            <div class="download">
-              <!-- when download class is clicked, it will run a function in main.js
-              to display downboad-btn button. This function can replace the name
-              of download file in href link by the name of result file. -->
-              <a href="./result.txt" download>
-                <div class="download-btn">
-                  Download Files
-                  <i class="fas fa-download"></i>
-                </div>
-              </a>
-            </div>
-            <pre class="output" id="output"></pre>
-          </div>
         </div>
       </div>
       <footer class="flex j-center a-center" >
