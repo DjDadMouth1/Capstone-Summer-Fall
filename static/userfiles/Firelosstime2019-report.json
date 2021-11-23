@@ -1,0 +1,3078 @@
+{
+  "version": "4.19.5",
+  "time": 0.025,
+  "errors": [],
+  "tasks": [
+    {
+      "resource": {
+        "path": "./static/userfiles/Firelosstime2019.csv",
+        "name": "firelosstime2019",
+        "profile": "tabular-data-resource",
+        "scheme": "file",
+        "format": "csv",
+        "hashing": "md5",
+        "stats": {
+          "hash": "8e9de63dd5c0cb9a8d4926c072c72259",
+          "bytes": 5159,
+          "fields": 3,
+          "rows": 140
+        },
+        "encoding": "utf-8-sig",
+        "schema": {
+          "fields": [
+            {
+              "name": "Day of DateofFire",
+              "type": "string"
+            },
+            {
+              "name": "TotalFireLoss",
+              "type": "string"
+            },
+            {
+              "name": "TotalPropertyValue",
+              "type": "string"
+            }
+          ]
+        }
+      },
+      "time": 0.025,
+      "scope": [
+        "hash-count-error",
+        "byte-count-error",
+        "field-count-error",
+        "row-count-error",
+        "blank-header",
+        "extra-label",
+        "missing-label",
+        "blank-label",
+        "duplicate-label",
+        "incorrect-label",
+        "blank-row",
+        "primary-key-error",
+        "foreign-key-error",
+        "extra-cell",
+        "missing-cell",
+        "type-error",
+        "constraint-error",
+        "unique-error",
+        "header-format-error",
+        "monetary-fields"
+      ],
+      "partial": false,
+      "errors": [
+        {
+          "code": "header-format-error",
+          "name": "Header Format Error",
+          "tags": [
+            "#table",
+            "#header",
+            "#format"
+          ],
+          "note": "The column name, 'Day of DateofFire', at field position 1 has the following error(s): It contains non-alphanumeric character(s) , and it contains lowercase character(s)",
+          "message": "The column name, 'Day of DateofFire', at field position 1 has the following error(s): It contains non-alphanumeric character(s) , and it contains lowercase character(s)",
+          "description": "Column names must be all upper case and limited to 30 characters and must start with an alphabetic character. Use only alphanumeric characters and period (.), dash(-) or underscore (_)."
+        },
+        {
+          "code": "header-format-error",
+          "name": "Header Format Error",
+          "tags": [
+            "#table",
+            "#header",
+            "#format"
+          ],
+          "note": "The column name, 'TotalFireLoss', at field position 2 has the following error(s): It contains lowercase character(s)",
+          "message": "The column name, 'TotalFireLoss', at field position 2 has the following error(s): It contains lowercase character(s)",
+          "description": "Column names must be all upper case and limited to 30 characters and must start with an alphabetic character. Use only alphanumeric characters and period (.), dash(-) or underscore (_)."
+        },
+        {
+          "code": "header-format-error",
+          "name": "Header Format Error",
+          "tags": [
+            "#table",
+            "#header",
+            "#format"
+          ],
+          "note": "The column name, 'TotalPropertyValue', at field position 3 has the following error(s): It contains lowercase character(s)",
+          "message": "The column name, 'TotalPropertyValue', at field position 3 has the following error(s): It contains lowercase character(s)",
+          "description": "Column names must be all upper case and limited to 30 characters and must start with an alphabetic character. Use only alphanumeric characters and period (.), dash(-) or underscore (_)."
+        },
+        {
+          "cell": "41,000",
+          "fieldName": "TotalFireLoss",
+          "fieldNumber": 2,
+          "fieldPosition": 2,
+          "cells": [
+            "January 1, 2019",
+            "41,000",
+            "11,683,770"
+          ],
+          "rowNumber": 1,
+          "rowPosition": 2,
+          "code": "monetary-fields",
+          "name": "Monetary Fields",
+          "tags": [
+            "#table",
+            "#row",
+            "#cell"
+          ],
+          "note": "monetary values should only contain numbers to two decimal places, no '$' or commas",
+          "message": "The cell \"41,000\" in row \"2\" at position \"2\" does not conform to a constraint: monetary values should only contain numbers to two decimal places, no '$' or commas",
+          "description": "The field value contains a monetary value that shold not have '$' or ',' characters"
+        },
+        {
+          "cell": "3,600",
+          "fieldName": "TotalFireLoss",
+          "fieldNumber": 2,
+          "fieldPosition": 2,
+          "cells": [
+            "January 2, 2019",
+            "3,600",
+            "1,035,600"
+          ],
+          "rowNumber": 2,
+          "rowPosition": 3,
+          "code": "monetary-fields",
+          "name": "Monetary Fields",
+          "tags": [
+            "#table",
+            "#row",
+            "#cell"
+          ],
+          "note": "monetary values should only contain numbers to two decimal places, no '$' or commas",
+          "message": "The cell \"3,600\" in row \"3\" at position \"2\" does not conform to a constraint: monetary values should only contain numbers to two decimal places, no '$' or commas",
+          "description": "The field value contains a monetary value that shold not have '$' or ',' characters"
+        },
+        {
+          "cell": "207,005",
+          "fieldName": "TotalFireLoss",
+          "fieldNumber": 2,
+          "fieldPosition": 2,
+          "cells": [
+            "January 3, 2019",
+            "207,005",
+            "7,327,000"
+          ],
+          "rowNumber": 3,
+          "rowPosition": 4,
+          "code": "monetary-fields",
+          "name": "Monetary Fields",
+          "tags": [
+            "#table",
+            "#row",
+            "#cell"
+          ],
+          "note": "monetary values should only contain numbers to two decimal places, no '$' or commas",
+          "message": "The cell \"207,005\" in row \"4\" at position \"2\" does not conform to a constraint: monetary values should only contain numbers to two decimal places, no '$' or commas",
+          "description": "The field value contains a monetary value that shold not have '$' or ',' characters"
+        },
+        {
+          "cell": "7,130",
+          "fieldName": "TotalFireLoss",
+          "fieldNumber": 2,
+          "fieldPosition": 2,
+          "cells": [
+            "January 4, 2019",
+            "7,130",
+            "6,010,030"
+          ],
+          "rowNumber": 4,
+          "rowPosition": 5,
+          "code": "monetary-fields",
+          "name": "Monetary Fields",
+          "tags": [
+            "#table",
+            "#row",
+            "#cell"
+          ],
+          "note": "monetary values should only contain numbers to two decimal places, no '$' or commas",
+          "message": "The cell \"7,130\" in row \"5\" at position \"2\" does not conform to a constraint: monetary values should only contain numbers to two decimal places, no '$' or commas",
+          "description": "The field value contains a monetary value that shold not have '$' or ',' characters"
+        },
+        {
+          "cell": "150,600",
+          "fieldName": "TotalFireLoss",
+          "fieldNumber": 2,
+          "fieldPosition": 2,
+          "cells": [
+            "January 5, 2019",
+            "150,600",
+            "2,560,000"
+          ],
+          "rowNumber": 5,
+          "rowPosition": 6,
+          "code": "monetary-fields",
+          "name": "Monetary Fields",
+          "tags": [
+            "#table",
+            "#row",
+            "#cell"
+          ],
+          "note": "monetary values should only contain numbers to two decimal places, no '$' or commas",
+          "message": "The cell \"150,600\" in row \"6\" at position \"2\" does not conform to a constraint: monetary values should only contain numbers to two decimal places, no '$' or commas",
+          "description": "The field value contains a monetary value that shold not have '$' or ',' characters"
+        },
+        {
+          "cell": "4,875",
+          "fieldName": "TotalFireLoss",
+          "fieldNumber": 2,
+          "fieldPosition": 2,
+          "cells": [
+            "January 6, 2019",
+            "4,875",
+            "28,400"
+          ],
+          "rowNumber": 6,
+          "rowPosition": 7,
+          "code": "monetary-fields",
+          "name": "Monetary Fields",
+          "tags": [
+            "#table",
+            "#row",
+            "#cell"
+          ],
+          "note": "monetary values should only contain numbers to two decimal places, no '$' or commas",
+          "message": "The cell \"4,875\" in row \"7\" at position \"2\" does not conform to a constraint: monetary values should only contain numbers to two decimal places, no '$' or commas",
+          "description": "The field value contains a monetary value that shold not have '$' or ',' characters"
+        },
+        {
+          "cell": "36,000",
+          "fieldName": "TotalFireLoss",
+          "fieldNumber": 2,
+          "fieldPosition": 2,
+          "cells": [
+            "January 7, 2019",
+            "36,000",
+            "65,000"
+          ],
+          "rowNumber": 7,
+          "rowPosition": 8,
+          "code": "monetary-fields",
+          "name": "Monetary Fields",
+          "tags": [
+            "#table",
+            "#row",
+            "#cell"
+          ],
+          "note": "monetary values should only contain numbers to two decimal places, no '$' or commas",
+          "message": "The cell \"36,000\" in row \"8\" at position \"2\" does not conform to a constraint: monetary values should only contain numbers to two decimal places, no '$' or commas",
+          "description": "The field value contains a monetary value that shold not have '$' or ',' characters"
+        },
+        {
+          "cell": "5,500",
+          "fieldName": "TotalFireLoss",
+          "fieldNumber": 2,
+          "fieldPosition": 2,
+          "cells": [
+            "January 8, 2019",
+            "5,500",
+            "5,500"
+          ],
+          "rowNumber": 8,
+          "rowPosition": 9,
+          "code": "monetary-fields",
+          "name": "Monetary Fields",
+          "tags": [
+            "#table",
+            "#row",
+            "#cell"
+          ],
+          "note": "monetary values should only contain numbers to two decimal places, no '$' or commas",
+          "message": "The cell \"5,500\" in row \"9\" at position \"2\" does not conform to a constraint: monetary values should only contain numbers to two decimal places, no '$' or commas",
+          "description": "The field value contains a monetary value that shold not have '$' or ',' characters"
+        },
+        {
+          "cell": "123,650",
+          "fieldName": "TotalFireLoss",
+          "fieldNumber": 2,
+          "fieldPosition": 2,
+          "cells": [
+            "January 9, 2019",
+            "123,650",
+            "753,700"
+          ],
+          "rowNumber": 9,
+          "rowPosition": 10,
+          "code": "monetary-fields",
+          "name": "Monetary Fields",
+          "tags": [
+            "#table",
+            "#row",
+            "#cell"
+          ],
+          "note": "monetary values should only contain numbers to two decimal places, no '$' or commas",
+          "message": "The cell \"123,650\" in row \"10\" at position \"2\" does not conform to a constraint: monetary values should only contain numbers to two decimal places, no '$' or commas",
+          "description": "The field value contains a monetary value that shold not have '$' or ',' characters"
+        },
+        {
+          "cell": "54,000",
+          "fieldName": "TotalFireLoss",
+          "fieldNumber": 2,
+          "fieldPosition": 2,
+          "cells": [
+            "January 10, 2019",
+            "54,000",
+            "1,296,080"
+          ],
+          "rowNumber": 10,
+          "rowPosition": 11,
+          "code": "monetary-fields",
+          "name": "Monetary Fields",
+          "tags": [
+            "#table",
+            "#row",
+            "#cell"
+          ],
+          "note": "monetary values should only contain numbers to two decimal places, no '$' or commas",
+          "message": "The cell \"54,000\" in row \"11\" at position \"2\" does not conform to a constraint: monetary values should only contain numbers to two decimal places, no '$' or commas",
+          "description": "The field value contains a monetary value that shold not have '$' or ',' characters"
+        },
+        {
+          "cell": "2,612",
+          "fieldName": "TotalFireLoss",
+          "fieldNumber": 2,
+          "fieldPosition": 2,
+          "cells": [
+            "January 11, 2019",
+            "2,612",
+            "17,612"
+          ],
+          "rowNumber": 11,
+          "rowPosition": 12,
+          "code": "monetary-fields",
+          "name": "Monetary Fields",
+          "tags": [
+            "#table",
+            "#row",
+            "#cell"
+          ],
+          "note": "monetary values should only contain numbers to two decimal places, no '$' or commas",
+          "message": "The cell \"2,612\" in row \"12\" at position \"2\" does not conform to a constraint: monetary values should only contain numbers to two decimal places, no '$' or commas",
+          "description": "The field value contains a monetary value that shold not have '$' or ',' characters"
+        },
+        {
+          "cell": "968,880",
+          "fieldName": "TotalFireLoss",
+          "fieldNumber": 2,
+          "fieldPosition": 2,
+          "cells": [
+            "January 12, 2019",
+            "968,880",
+            "34,744,640"
+          ],
+          "rowNumber": 12,
+          "rowPosition": 13,
+          "code": "monetary-fields",
+          "name": "Monetary Fields",
+          "tags": [
+            "#table",
+            "#row",
+            "#cell"
+          ],
+          "note": "monetary values should only contain numbers to two decimal places, no '$' or commas",
+          "message": "The cell \"968,880\" in row \"13\" at position \"2\" does not conform to a constraint: monetary values should only contain numbers to two decimal places, no '$' or commas",
+          "description": "The field value contains a monetary value that shold not have '$' or ',' characters"
+        },
+        {
+          "cell": "312,150",
+          "fieldName": "TotalFireLoss",
+          "fieldNumber": 2,
+          "fieldPosition": 2,
+          "cells": [
+            "January 13, 2019",
+            "312,150",
+            "363,400"
+          ],
+          "rowNumber": 13,
+          "rowPosition": 14,
+          "code": "monetary-fields",
+          "name": "Monetary Fields",
+          "tags": [
+            "#table",
+            "#row",
+            "#cell"
+          ],
+          "note": "monetary values should only contain numbers to two decimal places, no '$' or commas",
+          "message": "The cell \"312,150\" in row \"14\" at position \"2\" does not conform to a constraint: monetary values should only contain numbers to two decimal places, no '$' or commas",
+          "description": "The field value contains a monetary value that shold not have '$' or ',' characters"
+        },
+        {
+          "cell": "63,610",
+          "fieldName": "TotalFireLoss",
+          "fieldNumber": 2,
+          "fieldPosition": 2,
+          "cells": [
+            "January 14, 2019",
+            "63,610",
+            "583,910"
+          ],
+          "rowNumber": 14,
+          "rowPosition": 15,
+          "code": "monetary-fields",
+          "name": "Monetary Fields",
+          "tags": [
+            "#table",
+            "#row",
+            "#cell"
+          ],
+          "note": "monetary values should only contain numbers to two decimal places, no '$' or commas",
+          "message": "The cell \"63,610\" in row \"15\" at position \"2\" does not conform to a constraint: monetary values should only contain numbers to two decimal places, no '$' or commas",
+          "description": "The field value contains a monetary value that shold not have '$' or ',' characters"
+        },
+        {
+          "cell": "3,770",
+          "fieldName": "TotalFireLoss",
+          "fieldNumber": 2,
+          "fieldPosition": 2,
+          "cells": [
+            "January 15, 2019",
+            "3,770",
+            "3,810"
+          ],
+          "rowNumber": 15,
+          "rowPosition": 16,
+          "code": "monetary-fields",
+          "name": "Monetary Fields",
+          "tags": [
+            "#table",
+            "#row",
+            "#cell"
+          ],
+          "note": "monetary values should only contain numbers to two decimal places, no '$' or commas",
+          "message": "The cell \"3,770\" in row \"16\" at position \"2\" does not conform to a constraint: monetary values should only contain numbers to two decimal places, no '$' or commas",
+          "description": "The field value contains a monetary value that shold not have '$' or ',' characters"
+        },
+        {
+          "cell": "5,515",
+          "fieldName": "TotalFireLoss",
+          "fieldNumber": 2,
+          "fieldPosition": 2,
+          "cells": [
+            "January 16, 2019",
+            "5,515",
+            "23,426,065"
+          ],
+          "rowNumber": 16,
+          "rowPosition": 17,
+          "code": "monetary-fields",
+          "name": "Monetary Fields",
+          "tags": [
+            "#table",
+            "#row",
+            "#cell"
+          ],
+          "note": "monetary values should only contain numbers to two decimal places, no '$' or commas",
+          "message": "The cell \"5,515\" in row \"17\" at position \"2\" does not conform to a constraint: monetary values should only contain numbers to two decimal places, no '$' or commas",
+          "description": "The field value contains a monetary value that shold not have '$' or ',' characters"
+        },
+        {
+          "cell": "1,550",
+          "fieldName": "TotalFireLoss",
+          "fieldNumber": 2,
+          "fieldPosition": 2,
+          "cells": [
+            "January 17, 2019",
+            "1,550",
+            "327,150"
+          ],
+          "rowNumber": 17,
+          "rowPosition": 18,
+          "code": "monetary-fields",
+          "name": "Monetary Fields",
+          "tags": [
+            "#table",
+            "#row",
+            "#cell"
+          ],
+          "note": "monetary values should only contain numbers to two decimal places, no '$' or commas",
+          "message": "The cell \"1,550\" in row \"18\" at position \"2\" does not conform to a constraint: monetary values should only contain numbers to two decimal places, no '$' or commas",
+          "description": "The field value contains a monetary value that shold not have '$' or ',' characters"
+        },
+        {
+          "cell": "5,600",
+          "fieldName": "TotalFireLoss",
+          "fieldNumber": 2,
+          "fieldPosition": 2,
+          "cells": [
+            "January 19, 2019",
+            "5,600",
+            "6,200"
+          ],
+          "rowNumber": 19,
+          "rowPosition": 20,
+          "code": "monetary-fields",
+          "name": "Monetary Fields",
+          "tags": [
+            "#table",
+            "#row",
+            "#cell"
+          ],
+          "note": "monetary values should only contain numbers to two decimal places, no '$' or commas",
+          "message": "The cell \"5,600\" in row \"20\" at position \"2\" does not conform to a constraint: monetary values should only contain numbers to two decimal places, no '$' or commas",
+          "description": "The field value contains a monetary value that shold not have '$' or ',' characters"
+        },
+        {
+          "cell": "3,000",
+          "fieldName": "TotalFireLoss",
+          "fieldNumber": 2,
+          "fieldPosition": 2,
+          "cells": [
+            "January 20, 2019",
+            "3,000",
+            "200,000"
+          ],
+          "rowNumber": 20,
+          "rowPosition": 21,
+          "code": "monetary-fields",
+          "name": "Monetary Fields",
+          "tags": [
+            "#table",
+            "#row",
+            "#cell"
+          ],
+          "note": "monetary values should only contain numbers to two decimal places, no '$' or commas",
+          "message": "The cell \"3,000\" in row \"21\" at position \"2\" does not conform to a constraint: monetary values should only contain numbers to two decimal places, no '$' or commas",
+          "description": "The field value contains a monetary value that shold not have '$' or ',' characters"
+        },
+        {
+          "cell": "8,000",
+          "fieldName": "TotalFireLoss",
+          "fieldNumber": 2,
+          "fieldPosition": 2,
+          "cells": [
+            "January 21, 2019",
+            "8,000",
+            "2,582,000"
+          ],
+          "rowNumber": 21,
+          "rowPosition": 22,
+          "code": "monetary-fields",
+          "name": "Monetary Fields",
+          "tags": [
+            "#table",
+            "#row",
+            "#cell"
+          ],
+          "note": "monetary values should only contain numbers to two decimal places, no '$' or commas",
+          "message": "The cell \"8,000\" in row \"22\" at position \"2\" does not conform to a constraint: monetary values should only contain numbers to two decimal places, no '$' or commas",
+          "description": "The field value contains a monetary value that shold not have '$' or ',' characters"
+        },
+        {
+          "cell": "28,300",
+          "fieldName": "TotalFireLoss",
+          "fieldNumber": 2,
+          "fieldPosition": 2,
+          "cells": [
+            "January 22, 2019",
+            "28,300",
+            "11,183,940"
+          ],
+          "rowNumber": 22,
+          "rowPosition": 23,
+          "code": "monetary-fields",
+          "name": "Monetary Fields",
+          "tags": [
+            "#table",
+            "#row",
+            "#cell"
+          ],
+          "note": "monetary values should only contain numbers to two decimal places, no '$' or commas",
+          "message": "The cell \"28,300\" in row \"23\" at position \"2\" does not conform to a constraint: monetary values should only contain numbers to two decimal places, no '$' or commas",
+          "description": "The field value contains a monetary value that shold not have '$' or ',' characters"
+        },
+        {
+          "cell": "1,560",
+          "fieldName": "TotalFireLoss",
+          "fieldNumber": 2,
+          "fieldPosition": 2,
+          "cells": [
+            "January 23, 2019",
+            "1,560",
+            "13,560"
+          ],
+          "rowNumber": 23,
+          "rowPosition": 24,
+          "code": "monetary-fields",
+          "name": "Monetary Fields",
+          "tags": [
+            "#table",
+            "#row",
+            "#cell"
+          ],
+          "note": "monetary values should only contain numbers to two decimal places, no '$' or commas",
+          "message": "The cell \"1,560\" in row \"24\" at position \"2\" does not conform to a constraint: monetary values should only contain numbers to two decimal places, no '$' or commas",
+          "description": "The field value contains a monetary value that shold not have '$' or ',' characters"
+        },
+        {
+          "cell": "9,300",
+          "fieldName": "TotalFireLoss",
+          "fieldNumber": 2,
+          "fieldPosition": 2,
+          "cells": [
+            "January 25, 2019",
+            "9,300",
+            "250,400"
+          ],
+          "rowNumber": 25,
+          "rowPosition": 26,
+          "code": "monetary-fields",
+          "name": "Monetary Fields",
+          "tags": [
+            "#table",
+            "#row",
+            "#cell"
+          ],
+          "note": "monetary values should only contain numbers to two decimal places, no '$' or commas",
+          "message": "The cell \"9,300\" in row \"26\" at position \"2\" does not conform to a constraint: monetary values should only contain numbers to two decimal places, no '$' or commas",
+          "description": "The field value contains a monetary value that shold not have '$' or ',' characters"
+        },
+        {
+          "cell": "17,550",
+          "fieldName": "TotalFireLoss",
+          "fieldNumber": 2,
+          "fieldPosition": 2,
+          "cells": [
+            "January 26, 2019",
+            "17,550",
+            "2,119,300"
+          ],
+          "rowNumber": 26,
+          "rowPosition": 27,
+          "code": "monetary-fields",
+          "name": "Monetary Fields",
+          "tags": [
+            "#table",
+            "#row",
+            "#cell"
+          ],
+          "note": "monetary values should only contain numbers to two decimal places, no '$' or commas",
+          "message": "The cell \"17,550\" in row \"27\" at position \"2\" does not conform to a constraint: monetary values should only contain numbers to two decimal places, no '$' or commas",
+          "description": "The field value contains a monetary value that shold not have '$' or ',' characters"
+        },
+        {
+          "cell": "24,600",
+          "fieldName": "TotalFireLoss",
+          "fieldNumber": 2,
+          "fieldPosition": 2,
+          "cells": [
+            "January 27, 2019",
+            "24,600",
+            "56,411,660"
+          ],
+          "rowNumber": 27,
+          "rowPosition": 28,
+          "code": "monetary-fields",
+          "name": "Monetary Fields",
+          "tags": [
+            "#table",
+            "#row",
+            "#cell"
+          ],
+          "note": "monetary values should only contain numbers to two decimal places, no '$' or commas",
+          "message": "The cell \"24,600\" in row \"28\" at position \"2\" does not conform to a constraint: monetary values should only contain numbers to two decimal places, no '$' or commas",
+          "description": "The field value contains a monetary value that shold not have '$' or ',' characters"
+        },
+        {
+          "cell": "2,750",
+          "fieldName": "TotalFireLoss",
+          "fieldNumber": 2,
+          "fieldPosition": 2,
+          "cells": [
+            "January 29, 2019",
+            "2,750",
+            "15,050"
+          ],
+          "rowNumber": 29,
+          "rowPosition": 30,
+          "code": "monetary-fields",
+          "name": "Monetary Fields",
+          "tags": [
+            "#table",
+            "#row",
+            "#cell"
+          ],
+          "note": "monetary values should only contain numbers to two decimal places, no '$' or commas",
+          "message": "The cell \"2,750\" in row \"30\" at position \"2\" does not conform to a constraint: monetary values should only contain numbers to two decimal places, no '$' or commas",
+          "description": "The field value contains a monetary value that shold not have '$' or ',' characters"
+        },
+        {
+          "cell": "20,100",
+          "fieldName": "TotalFireLoss",
+          "fieldNumber": 2,
+          "fieldPosition": 2,
+          "cells": [
+            "January 30, 2019",
+            "20,100",
+            "430,500"
+          ],
+          "rowNumber": 30,
+          "rowPosition": 31,
+          "code": "monetary-fields",
+          "name": "Monetary Fields",
+          "tags": [
+            "#table",
+            "#row",
+            "#cell"
+          ],
+          "note": "monetary values should only contain numbers to two decimal places, no '$' or commas",
+          "message": "The cell \"20,100\" in row \"31\" at position \"2\" does not conform to a constraint: monetary values should only contain numbers to two decimal places, no '$' or commas",
+          "description": "The field value contains a monetary value that shold not have '$' or ',' characters"
+        },
+        {
+          "cell": "228,300",
+          "fieldName": "TotalFireLoss",
+          "fieldNumber": 2,
+          "fieldPosition": 2,
+          "cells": [
+            "January 31, 2019",
+            "228,300",
+            "6,758,200"
+          ],
+          "rowNumber": 31,
+          "rowPosition": 32,
+          "code": "monetary-fields",
+          "name": "Monetary Fields",
+          "tags": [
+            "#table",
+            "#row",
+            "#cell"
+          ],
+          "note": "monetary values should only contain numbers to two decimal places, no '$' or commas",
+          "message": "The cell \"228,300\" in row \"32\" at position \"2\" does not conform to a constraint: monetary values should only contain numbers to two decimal places, no '$' or commas",
+          "description": "The field value contains a monetary value that shold not have '$' or ',' characters"
+        },
+        {
+          "cell": "70,000",
+          "fieldName": "TotalFireLoss",
+          "fieldNumber": 2,
+          "fieldPosition": 2,
+          "cells": [
+            "February 1, 2019",
+            "70,000",
+            "70,000"
+          ],
+          "rowNumber": 32,
+          "rowPosition": 33,
+          "code": "monetary-fields",
+          "name": "Monetary Fields",
+          "tags": [
+            "#table",
+            "#row",
+            "#cell"
+          ],
+          "note": "monetary values should only contain numbers to two decimal places, no '$' or commas",
+          "message": "The cell \"70,000\" in row \"33\" at position \"2\" does not conform to a constraint: monetary values should only contain numbers to two decimal places, no '$' or commas",
+          "description": "The field value contains a monetary value that shold not have '$' or ',' characters"
+        },
+        {
+          "cell": "5,499",
+          "fieldName": "TotalFireLoss",
+          "fieldNumber": 2,
+          "fieldPosition": 2,
+          "cells": [
+            "February 2, 2019",
+            "5,499",
+            "1,009,100"
+          ],
+          "rowNumber": 33,
+          "rowPosition": 34,
+          "code": "monetary-fields",
+          "name": "Monetary Fields",
+          "tags": [
+            "#table",
+            "#row",
+            "#cell"
+          ],
+          "note": "monetary values should only contain numbers to two decimal places, no '$' or commas",
+          "message": "The cell \"5,499\" in row \"34\" at position \"2\" does not conform to a constraint: monetary values should only contain numbers to two decimal places, no '$' or commas",
+          "description": "The field value contains a monetary value that shold not have '$' or ',' characters"
+        },
+        {
+          "cell": "1,125",
+          "fieldName": "TotalFireLoss",
+          "fieldNumber": 2,
+          "fieldPosition": 2,
+          "cells": [
+            "February 3, 2019",
+            "1,125",
+            "3,500,450"
+          ],
+          "rowNumber": 34,
+          "rowPosition": 35,
+          "code": "monetary-fields",
+          "name": "Monetary Fields",
+          "tags": [
+            "#table",
+            "#row",
+            "#cell"
+          ],
+          "note": "monetary values should only contain numbers to two decimal places, no '$' or commas",
+          "message": "The cell \"1,125\" in row \"35\" at position \"2\" does not conform to a constraint: monetary values should only contain numbers to two decimal places, no '$' or commas",
+          "description": "The field value contains a monetary value that shold not have '$' or ',' characters"
+        },
+        {
+          "cell": "91,120",
+          "fieldName": "TotalFireLoss",
+          "fieldNumber": 2,
+          "fieldPosition": 2,
+          "cells": [
+            "February 4, 2019",
+            "91,120",
+            "661,170"
+          ],
+          "rowNumber": 35,
+          "rowPosition": 36,
+          "code": "monetary-fields",
+          "name": "Monetary Fields",
+          "tags": [
+            "#table",
+            "#row",
+            "#cell"
+          ],
+          "note": "monetary values should only contain numbers to two decimal places, no '$' or commas",
+          "message": "The cell \"91,120\" in row \"36\" at position \"2\" does not conform to a constraint: monetary values should only contain numbers to two decimal places, no '$' or commas",
+          "description": "The field value contains a monetary value that shold not have '$' or ',' characters"
+        },
+        {
+          "cell": "81,500",
+          "fieldName": "TotalFireLoss",
+          "fieldNumber": 2,
+          "fieldPosition": 2,
+          "cells": [
+            "February 6, 2019",
+            "81,500",
+            "3,498,500"
+          ],
+          "rowNumber": 37,
+          "rowPosition": 38,
+          "code": "monetary-fields",
+          "name": "Monetary Fields",
+          "tags": [
+            "#table",
+            "#row",
+            "#cell"
+          ],
+          "note": "monetary values should only contain numbers to two decimal places, no '$' or commas",
+          "message": "The cell \"81,500\" in row \"38\" at position \"2\" does not conform to a constraint: monetary values should only contain numbers to two decimal places, no '$' or commas",
+          "description": "The field value contains a monetary value that shold not have '$' or ',' characters"
+        },
+        {
+          "cell": "2,150",
+          "fieldName": "TotalFireLoss",
+          "fieldNumber": 2,
+          "fieldPosition": 2,
+          "cells": [
+            "February 7, 2019",
+            "2,150",
+            "4,150"
+          ],
+          "rowNumber": 38,
+          "rowPosition": 39,
+          "code": "monetary-fields",
+          "name": "Monetary Fields",
+          "tags": [
+            "#table",
+            "#row",
+            "#cell"
+          ],
+          "note": "monetary values should only contain numbers to two decimal places, no '$' or commas",
+          "message": "The cell \"2,150\" in row \"39\" at position \"2\" does not conform to a constraint: monetary values should only contain numbers to two decimal places, no '$' or commas",
+          "description": "The field value contains a monetary value that shold not have '$' or ',' characters"
+        },
+        {
+          "cell": "72,600",
+          "fieldName": "TotalFireLoss",
+          "fieldNumber": 2,
+          "fieldPosition": 2,
+          "cells": [
+            "February 9, 2019",
+            "72,600",
+            "2,778,600"
+          ],
+          "rowNumber": 40,
+          "rowPosition": 41,
+          "code": "monetary-fields",
+          "name": "Monetary Fields",
+          "tags": [
+            "#table",
+            "#row",
+            "#cell"
+          ],
+          "note": "monetary values should only contain numbers to two decimal places, no '$' or commas",
+          "message": "The cell \"72,600\" in row \"41\" at position \"2\" does not conform to a constraint: monetary values should only contain numbers to two decimal places, no '$' or commas",
+          "description": "The field value contains a monetary value that shold not have '$' or ',' characters"
+        },
+        {
+          "cell": "2,001",
+          "fieldName": "TotalFireLoss",
+          "fieldNumber": 2,
+          "fieldPosition": 2,
+          "cells": [
+            "February 10, 2019",
+            "2,001",
+            "944,601"
+          ],
+          "rowNumber": 41,
+          "rowPosition": 42,
+          "code": "monetary-fields",
+          "name": "Monetary Fields",
+          "tags": [
+            "#table",
+            "#row",
+            "#cell"
+          ],
+          "note": "monetary values should only contain numbers to two decimal places, no '$' or commas",
+          "message": "The cell \"2,001\" in row \"42\" at position \"2\" does not conform to a constraint: monetary values should only contain numbers to two decimal places, no '$' or commas",
+          "description": "The field value contains a monetary value that shold not have '$' or ',' characters"
+        },
+        {
+          "cell": "7,000",
+          "fieldName": "TotalFireLoss",
+          "fieldNumber": 2,
+          "fieldPosition": 2,
+          "cells": [
+            "February 11, 2019",
+            "7,000",
+            "606,000"
+          ],
+          "rowNumber": 42,
+          "rowPosition": 43,
+          "code": "monetary-fields",
+          "name": "Monetary Fields",
+          "tags": [
+            "#table",
+            "#row",
+            "#cell"
+          ],
+          "note": "monetary values should only contain numbers to two decimal places, no '$' or commas",
+          "message": "The cell \"7,000\" in row \"43\" at position \"2\" does not conform to a constraint: monetary values should only contain numbers to two decimal places, no '$' or commas",
+          "description": "The field value contains a monetary value that shold not have '$' or ',' characters"
+        },
+        {
+          "cell": "11,000",
+          "fieldName": "TotalFireLoss",
+          "fieldNumber": 2,
+          "fieldPosition": 2,
+          "cells": [
+            "February 12, 2019",
+            "11,000",
+            "824,000"
+          ],
+          "rowNumber": 43,
+          "rowPosition": 44,
+          "code": "monetary-fields",
+          "name": "Monetary Fields",
+          "tags": [
+            "#table",
+            "#row",
+            "#cell"
+          ],
+          "note": "monetary values should only contain numbers to two decimal places, no '$' or commas",
+          "message": "The cell \"11,000\" in row \"44\" at position \"2\" does not conform to a constraint: monetary values should only contain numbers to two decimal places, no '$' or commas",
+          "description": "The field value contains a monetary value that shold not have '$' or ',' characters"
+        },
+        {
+          "cell": "3,621",
+          "fieldName": "TotalFireLoss",
+          "fieldNumber": 2,
+          "fieldPosition": 2,
+          "cells": [
+            "February 13, 2019",
+            "3,621",
+            "2,064,020"
+          ],
+          "rowNumber": 44,
+          "rowPosition": 45,
+          "code": "monetary-fields",
+          "name": "Monetary Fields",
+          "tags": [
+            "#table",
+            "#row",
+            "#cell"
+          ],
+          "note": "monetary values should only contain numbers to two decimal places, no '$' or commas",
+          "message": "The cell \"3,621\" in row \"45\" at position \"2\" does not conform to a constraint: monetary values should only contain numbers to two decimal places, no '$' or commas",
+          "description": "The field value contains a monetary value that shold not have '$' or ',' characters"
+        },
+        {
+          "cell": "45,000",
+          "fieldName": "TotalFireLoss",
+          "fieldNumber": 2,
+          "fieldPosition": 2,
+          "cells": [
+            "February 14, 2019",
+            "45,000",
+            "45,000"
+          ],
+          "rowNumber": 45,
+          "rowPosition": 46,
+          "code": "monetary-fields",
+          "name": "Monetary Fields",
+          "tags": [
+            "#table",
+            "#row",
+            "#cell"
+          ],
+          "note": "monetary values should only contain numbers to two decimal places, no '$' or commas",
+          "message": "The cell \"45,000\" in row \"46\" at position \"2\" does not conform to a constraint: monetary values should only contain numbers to two decimal places, no '$' or commas",
+          "description": "The field value contains a monetary value that shold not have '$' or ',' characters"
+        },
+        {
+          "cell": "46,050",
+          "fieldName": "TotalFireLoss",
+          "fieldNumber": 2,
+          "fieldPosition": 2,
+          "cells": [
+            "February 15, 2019",
+            "46,050",
+            "870,500"
+          ],
+          "rowNumber": 46,
+          "rowPosition": 47,
+          "code": "monetary-fields",
+          "name": "Monetary Fields",
+          "tags": [
+            "#table",
+            "#row",
+            "#cell"
+          ],
+          "note": "monetary values should only contain numbers to two decimal places, no '$' or commas",
+          "message": "The cell \"46,050\" in row \"47\" at position \"2\" does not conform to a constraint: monetary values should only contain numbers to two decimal places, no '$' or commas",
+          "description": "The field value contains a monetary value that shold not have '$' or ',' characters"
+        },
+        {
+          "cell": "None",
+          "fieldName": "TotalFireLoss",
+          "fieldNumber": 2,
+          "fieldPosition": 2,
+          "cells": [
+            "February 16, 2019",
+            "None",
+            "None"
+          ],
+          "rowNumber": 47,
+          "rowPosition": 48,
+          "code": "monetary-fields",
+          "name": "Monetary Fields",
+          "tags": [
+            "#table",
+            "#row",
+            "#cell"
+          ],
+          "note": "monetary values should only contain numbers to two decimal places, no '$' or commas",
+          "message": "The cell \"None\" in row \"48\" at position \"2\" does not conform to a constraint: monetary values should only contain numbers to two decimal places, no '$' or commas",
+          "description": "The field value contains a monetary value that shold not have '$' or ',' characters"
+        },
+        {
+          "cell": "428,000",
+          "fieldName": "TotalFireLoss",
+          "fieldNumber": 2,
+          "fieldPosition": 2,
+          "cells": [
+            "February 17, 2019",
+            "428,000",
+            "2,672,500"
+          ],
+          "rowNumber": 48,
+          "rowPosition": 49,
+          "code": "monetary-fields",
+          "name": "Monetary Fields",
+          "tags": [
+            "#table",
+            "#row",
+            "#cell"
+          ],
+          "note": "monetary values should only contain numbers to two decimal places, no '$' or commas",
+          "message": "The cell \"428,000\" in row \"49\" at position \"2\" does not conform to a constraint: monetary values should only contain numbers to two decimal places, no '$' or commas",
+          "description": "The field value contains a monetary value that shold not have '$' or ',' characters"
+        },
+        {
+          "cell": "60,850",
+          "fieldName": "TotalFireLoss",
+          "fieldNumber": 2,
+          "fieldPosition": 2,
+          "cells": [
+            "February 18, 2019",
+            "60,850",
+            "2,825,310"
+          ],
+          "rowNumber": 49,
+          "rowPosition": 50,
+          "code": "monetary-fields",
+          "name": "Monetary Fields",
+          "tags": [
+            "#table",
+            "#row",
+            "#cell"
+          ],
+          "note": "monetary values should only contain numbers to two decimal places, no '$' or commas",
+          "message": "The cell \"60,850\" in row \"50\" at position \"2\" does not conform to a constraint: monetary values should only contain numbers to two decimal places, no '$' or commas",
+          "description": "The field value contains a monetary value that shold not have '$' or ',' characters"
+        },
+        {
+          "cell": "275,001",
+          "fieldName": "TotalFireLoss",
+          "fieldNumber": 2,
+          "fieldPosition": 2,
+          "cells": [
+            "February 19, 2019",
+            "275,001",
+            "375,001"
+          ],
+          "rowNumber": 50,
+          "rowPosition": 51,
+          "code": "monetary-fields",
+          "name": "Monetary Fields",
+          "tags": [
+            "#table",
+            "#row",
+            "#cell"
+          ],
+          "note": "monetary values should only contain numbers to two decimal places, no '$' or commas",
+          "message": "The cell \"275,001\" in row \"51\" at position \"2\" does not conform to a constraint: monetary values should only contain numbers to two decimal places, no '$' or commas",
+          "description": "The field value contains a monetary value that shold not have '$' or ',' characters"
+        },
+        {
+          "cell": "19,000",
+          "fieldName": "TotalFireLoss",
+          "fieldNumber": 2,
+          "fieldPosition": 2,
+          "cells": [
+            "February 20, 2019",
+            "19,000",
+            "42,045,105"
+          ],
+          "rowNumber": 51,
+          "rowPosition": 52,
+          "code": "monetary-fields",
+          "name": "Monetary Fields",
+          "tags": [
+            "#table",
+            "#row",
+            "#cell"
+          ],
+          "note": "monetary values should only contain numbers to two decimal places, no '$' or commas",
+          "message": "The cell \"19,000\" in row \"52\" at position \"2\" does not conform to a constraint: monetary values should only contain numbers to two decimal places, no '$' or commas",
+          "description": "The field value contains a monetary value that shold not have '$' or ',' characters"
+        },
+        {
+          "cell": "23,090",
+          "fieldName": "TotalFireLoss",
+          "fieldNumber": 2,
+          "fieldPosition": 2,
+          "cells": [
+            "February 21, 2019",
+            "23,090",
+            "1,111,040"
+          ],
+          "rowNumber": 52,
+          "rowPosition": 53,
+          "code": "monetary-fields",
+          "name": "Monetary Fields",
+          "tags": [
+            "#table",
+            "#row",
+            "#cell"
+          ],
+          "note": "monetary values should only contain numbers to two decimal places, no '$' or commas",
+          "message": "The cell \"23,090\" in row \"53\" at position \"2\" does not conform to a constraint: monetary values should only contain numbers to two decimal places, no '$' or commas",
+          "description": "The field value contains a monetary value that shold not have '$' or ',' characters"
+        },
+        {
+          "cell": "108,200",
+          "fieldName": "TotalFireLoss",
+          "fieldNumber": 2,
+          "fieldPosition": 2,
+          "cells": [
+            "February 22, 2019",
+            "108,200",
+            "1,132,000"
+          ],
+          "rowNumber": 53,
+          "rowPosition": 54,
+          "code": "monetary-fields",
+          "name": "Monetary Fields",
+          "tags": [
+            "#table",
+            "#row",
+            "#cell"
+          ],
+          "note": "monetary values should only contain numbers to two decimal places, no '$' or commas",
+          "message": "The cell \"108,200\" in row \"54\" at position \"2\" does not conform to a constraint: monetary values should only contain numbers to two decimal places, no '$' or commas",
+          "description": "The field value contains a monetary value that shold not have '$' or ',' characters"
+        },
+        {
+          "cell": "45,700",
+          "fieldName": "TotalFireLoss",
+          "fieldNumber": 2,
+          "fieldPosition": 2,
+          "cells": [
+            "February 23, 2019",
+            "45,700",
+            "4,000,000"
+          ],
+          "rowNumber": 54,
+          "rowPosition": 55,
+          "code": "monetary-fields",
+          "name": "Monetary Fields",
+          "tags": [
+            "#table",
+            "#row",
+            "#cell"
+          ],
+          "note": "monetary values should only contain numbers to two decimal places, no '$' or commas",
+          "message": "The cell \"45,700\" in row \"55\" at position \"2\" does not conform to a constraint: monetary values should only contain numbers to two decimal places, no '$' or commas",
+          "description": "The field value contains a monetary value that shold not have '$' or ',' characters"
+        },
+        {
+          "cell": "3,600",
+          "fieldName": "TotalFireLoss",
+          "fieldNumber": 2,
+          "fieldPosition": 2,
+          "cells": [
+            "February 24, 2019",
+            "3,600",
+            "25,000,100"
+          ],
+          "rowNumber": 55,
+          "rowPosition": 56,
+          "code": "monetary-fields",
+          "name": "Monetary Fields",
+          "tags": [
+            "#table",
+            "#row",
+            "#cell"
+          ],
+          "note": "monetary values should only contain numbers to two decimal places, no '$' or commas",
+          "message": "The cell \"3,600\" in row \"56\" at position \"2\" does not conform to a constraint: monetary values should only contain numbers to two decimal places, no '$' or commas",
+          "description": "The field value contains a monetary value that shold not have '$' or ',' characters"
+        },
+        {
+          "cell": "4,326",
+          "fieldName": "TotalFireLoss",
+          "fieldNumber": 2,
+          "fieldPosition": 2,
+          "cells": [
+            "February 25, 2019",
+            "4,326",
+            "5,400"
+          ],
+          "rowNumber": 56,
+          "rowPosition": 57,
+          "code": "monetary-fields",
+          "name": "Monetary Fields",
+          "tags": [
+            "#table",
+            "#row",
+            "#cell"
+          ],
+          "note": "monetary values should only contain numbers to two decimal places, no '$' or commas",
+          "message": "The cell \"4,326\" in row \"57\" at position \"2\" does not conform to a constraint: monetary values should only contain numbers to two decimal places, no '$' or commas",
+          "description": "The field value contains a monetary value that shold not have '$' or ',' characters"
+        },
+        {
+          "cell": "21,502",
+          "fieldName": "TotalFireLoss",
+          "fieldNumber": 2,
+          "fieldPosition": 2,
+          "cells": [
+            "February 26, 2019",
+            "21,502",
+            "6,075,340"
+          ],
+          "rowNumber": 57,
+          "rowPosition": 58,
+          "code": "monetary-fields",
+          "name": "Monetary Fields",
+          "tags": [
+            "#table",
+            "#row",
+            "#cell"
+          ],
+          "note": "monetary values should only contain numbers to two decimal places, no '$' or commas",
+          "message": "The cell \"21,502\" in row \"58\" at position \"2\" does not conform to a constraint: monetary values should only contain numbers to two decimal places, no '$' or commas",
+          "description": "The field value contains a monetary value that shold not have '$' or ',' characters"
+        },
+        {
+          "cell": "36,701",
+          "fieldName": "TotalFireLoss",
+          "fieldNumber": 2,
+          "fieldPosition": 2,
+          "cells": [
+            "February 27, 2019",
+            "36,701",
+            "53,410,201"
+          ],
+          "rowNumber": 58,
+          "rowPosition": 59,
+          "code": "monetary-fields",
+          "name": "Monetary Fields",
+          "tags": [
+            "#table",
+            "#row",
+            "#cell"
+          ],
+          "note": "monetary values should only contain numbers to two decimal places, no '$' or commas",
+          "message": "The cell \"36,701\" in row \"59\" at position \"2\" does not conform to a constraint: monetary values should only contain numbers to two decimal places, no '$' or commas",
+          "description": "The field value contains a monetary value that shold not have '$' or ',' characters"
+        },
+        {
+          "cell": "1,000",
+          "fieldName": "TotalFireLoss",
+          "fieldNumber": 2,
+          "fieldPosition": 2,
+          "cells": [
+            "March 1, 2019",
+            "1,000",
+            "1,700"
+          ],
+          "rowNumber": 59,
+          "rowPosition": 60,
+          "code": "monetary-fields",
+          "name": "Monetary Fields",
+          "tags": [
+            "#table",
+            "#row",
+            "#cell"
+          ],
+          "note": "monetary values should only contain numbers to two decimal places, no '$' or commas",
+          "message": "The cell \"1,000\" in row \"60\" at position \"2\" does not conform to a constraint: monetary values should only contain numbers to two decimal places, no '$' or commas",
+          "description": "The field value contains a monetary value that shold not have '$' or ',' characters"
+        },
+        {
+          "cell": "19,050",
+          "fieldName": "TotalFireLoss",
+          "fieldNumber": 2,
+          "fieldPosition": 2,
+          "cells": [
+            "March 2, 2019",
+            "19,050",
+            "8,845,761"
+          ],
+          "rowNumber": 60,
+          "rowPosition": 61,
+          "code": "monetary-fields",
+          "name": "Monetary Fields",
+          "tags": [
+            "#table",
+            "#row",
+            "#cell"
+          ],
+          "note": "monetary values should only contain numbers to two decimal places, no '$' or commas",
+          "message": "The cell \"19,050\" in row \"61\" at position \"2\" does not conform to a constraint: monetary values should only contain numbers to two decimal places, no '$' or commas",
+          "description": "The field value contains a monetary value that shold not have '$' or ',' characters"
+        },
+        {
+          "cell": "141,150",
+          "fieldName": "TotalFireLoss",
+          "fieldNumber": 2,
+          "fieldPosition": 2,
+          "cells": [
+            "March 3, 2019",
+            "141,150",
+            "1,322,050"
+          ],
+          "rowNumber": 61,
+          "rowPosition": 62,
+          "code": "monetary-fields",
+          "name": "Monetary Fields",
+          "tags": [
+            "#table",
+            "#row",
+            "#cell"
+          ],
+          "note": "monetary values should only contain numbers to two decimal places, no '$' or commas",
+          "message": "The cell \"141,150\" in row \"62\" at position \"2\" does not conform to a constraint: monetary values should only contain numbers to two decimal places, no '$' or commas",
+          "description": "The field value contains a monetary value that shold not have '$' or ',' characters"
+        },
+        {
+          "cell": "186,150",
+          "fieldName": "TotalFireLoss",
+          "fieldNumber": 2,
+          "fieldPosition": 2,
+          "cells": [
+            "March 4, 2019",
+            "186,150",
+            "826,370"
+          ],
+          "rowNumber": 62,
+          "rowPosition": 63,
+          "code": "monetary-fields",
+          "name": "Monetary Fields",
+          "tags": [
+            "#table",
+            "#row",
+            "#cell"
+          ],
+          "note": "monetary values should only contain numbers to two decimal places, no '$' or commas",
+          "message": "The cell \"186,150\" in row \"63\" at position \"2\" does not conform to a constraint: monetary values should only contain numbers to two decimal places, no '$' or commas",
+          "description": "The field value contains a monetary value that shold not have '$' or ',' characters"
+        },
+        {
+          "cell": "65,000",
+          "fieldName": "TotalFireLoss",
+          "fieldNumber": 2,
+          "fieldPosition": 2,
+          "cells": [
+            "March 5, 2019",
+            "65,000",
+            "329,580"
+          ],
+          "rowNumber": 63,
+          "rowPosition": 64,
+          "code": "monetary-fields",
+          "name": "Monetary Fields",
+          "tags": [
+            "#table",
+            "#row",
+            "#cell"
+          ],
+          "note": "monetary values should only contain numbers to two decimal places, no '$' or commas",
+          "message": "The cell \"65,000\" in row \"64\" at position \"2\" does not conform to a constraint: monetary values should only contain numbers to two decimal places, no '$' or commas",
+          "description": "The field value contains a monetary value that shold not have '$' or ',' characters"
+        },
+        {
+          "cell": "27,150",
+          "fieldName": "TotalFireLoss",
+          "fieldNumber": 2,
+          "fieldPosition": 2,
+          "cells": [
+            "March 6, 2019",
+            "27,150",
+            "31,000"
+          ],
+          "rowNumber": 64,
+          "rowPosition": 65,
+          "code": "monetary-fields",
+          "name": "Monetary Fields",
+          "tags": [
+            "#table",
+            "#row",
+            "#cell"
+          ],
+          "note": "monetary values should only contain numbers to two decimal places, no '$' or commas",
+          "message": "The cell \"27,150\" in row \"65\" at position \"2\" does not conform to a constraint: monetary values should only contain numbers to two decimal places, no '$' or commas",
+          "description": "The field value contains a monetary value that shold not have '$' or ',' characters"
+        },
+        {
+          "cell": "51,010",
+          "fieldName": "TotalFireLoss",
+          "fieldNumber": 2,
+          "fieldPosition": 2,
+          "cells": [
+            "March 7, 2019",
+            "51,010",
+            "55,513,350"
+          ],
+          "rowNumber": 65,
+          "rowPosition": 66,
+          "code": "monetary-fields",
+          "name": "Monetary Fields",
+          "tags": [
+            "#table",
+            "#row",
+            "#cell"
+          ],
+          "note": "monetary values should only contain numbers to two decimal places, no '$' or commas",
+          "message": "The cell \"51,010\" in row \"66\" at position \"2\" does not conform to a constraint: monetary values should only contain numbers to two decimal places, no '$' or commas",
+          "description": "The field value contains a monetary value that shold not have '$' or ',' characters"
+        },
+        {
+          "cell": "3,520",
+          "fieldName": "TotalFireLoss",
+          "fieldNumber": 2,
+          "fieldPosition": 2,
+          "cells": [
+            "March 8, 2019",
+            "3,520",
+            "24,441,350"
+          ],
+          "rowNumber": 66,
+          "rowPosition": 67,
+          "code": "monetary-fields",
+          "name": "Monetary Fields",
+          "tags": [
+            "#table",
+            "#row",
+            "#cell"
+          ],
+          "note": "monetary values should only contain numbers to two decimal places, no '$' or commas",
+          "message": "The cell \"3,520\" in row \"67\" at position \"2\" does not conform to a constraint: monetary values should only contain numbers to two decimal places, no '$' or commas",
+          "description": "The field value contains a monetary value that shold not have '$' or ',' characters"
+        },
+        {
+          "cell": "4,500",
+          "fieldName": "TotalFireLoss",
+          "fieldNumber": 2,
+          "fieldPosition": 2,
+          "cells": [
+            "March 9, 2019",
+            "4,500",
+            "16,350"
+          ],
+          "rowNumber": 67,
+          "rowPosition": 68,
+          "code": "monetary-fields",
+          "name": "Monetary Fields",
+          "tags": [
+            "#table",
+            "#row",
+            "#cell"
+          ],
+          "note": "monetary values should only contain numbers to two decimal places, no '$' or commas",
+          "message": "The cell \"4,500\" in row \"68\" at position \"2\" does not conform to a constraint: monetary values should only contain numbers to two decimal places, no '$' or commas",
+          "description": "The field value contains a monetary value that shold not have '$' or ',' characters"
+        },
+        {
+          "cell": "82,140",
+          "fieldName": "TotalFireLoss",
+          "fieldNumber": 2,
+          "fieldPosition": 2,
+          "cells": [
+            "March 10, 2019",
+            "82,140",
+            "532,270,760"
+          ],
+          "rowNumber": 68,
+          "rowPosition": 69,
+          "code": "monetary-fields",
+          "name": "Monetary Fields",
+          "tags": [
+            "#table",
+            "#row",
+            "#cell"
+          ],
+          "note": "monetary values should only contain numbers to two decimal places, no '$' or commas",
+          "message": "The cell \"82,140\" in row \"69\" at position \"2\" does not conform to a constraint: monetary values should only contain numbers to two decimal places, no '$' or commas",
+          "description": "The field value contains a monetary value that shold not have '$' or ',' characters"
+        },
+        {
+          "cell": "12,060",
+          "fieldName": "TotalFireLoss",
+          "fieldNumber": 2,
+          "fieldPosition": 2,
+          "cells": [
+            "March 11, 2019",
+            "12,060",
+            "3,062,910"
+          ],
+          "rowNumber": 69,
+          "rowPosition": 70,
+          "code": "monetary-fields",
+          "name": "Monetary Fields",
+          "tags": [
+            "#table",
+            "#row",
+            "#cell"
+          ],
+          "note": "monetary values should only contain numbers to two decimal places, no '$' or commas",
+          "message": "The cell \"12,060\" in row \"70\" at position \"2\" does not conform to a constraint: monetary values should only contain numbers to two decimal places, no '$' or commas",
+          "description": "The field value contains a monetary value that shold not have '$' or ',' characters"
+        },
+        {
+          "cell": "54,600",
+          "fieldName": "TotalFireLoss",
+          "fieldNumber": 2,
+          "fieldPosition": 2,
+          "cells": [
+            "March 12, 2019",
+            "54,600",
+            "1,326,570"
+          ],
+          "rowNumber": 70,
+          "rowPosition": 71,
+          "code": "monetary-fields",
+          "name": "Monetary Fields",
+          "tags": [
+            "#table",
+            "#row",
+            "#cell"
+          ],
+          "note": "monetary values should only contain numbers to two decimal places, no '$' or commas",
+          "message": "The cell \"54,600\" in row \"71\" at position \"2\" does not conform to a constraint: monetary values should only contain numbers to two decimal places, no '$' or commas",
+          "description": "The field value contains a monetary value that shold not have '$' or ',' characters"
+        },
+        {
+          "cell": "80,000",
+          "fieldName": "TotalFireLoss",
+          "fieldNumber": 2,
+          "fieldPosition": 2,
+          "cells": [
+            "March 13, 2019",
+            "80,000",
+            "1,740,550"
+          ],
+          "rowNumber": 71,
+          "rowPosition": 72,
+          "code": "monetary-fields",
+          "name": "Monetary Fields",
+          "tags": [
+            "#table",
+            "#row",
+            "#cell"
+          ],
+          "note": "monetary values should only contain numbers to two decimal places, no '$' or commas",
+          "message": "The cell \"80,000\" in row \"72\" at position \"2\" does not conform to a constraint: monetary values should only contain numbers to two decimal places, no '$' or commas",
+          "description": "The field value contains a monetary value that shold not have '$' or ',' characters"
+        },
+        {
+          "cell": "240,100",
+          "fieldName": "TotalFireLoss",
+          "fieldNumber": 2,
+          "fieldPosition": 2,
+          "cells": [
+            "March 14, 2019",
+            "240,100",
+            "927,920"
+          ],
+          "rowNumber": 72,
+          "rowPosition": 73,
+          "code": "monetary-fields",
+          "name": "Monetary Fields",
+          "tags": [
+            "#table",
+            "#row",
+            "#cell"
+          ],
+          "note": "monetary values should only contain numbers to two decimal places, no '$' or commas",
+          "message": "The cell \"240,100\" in row \"73\" at position \"2\" does not conform to a constraint: monetary values should only contain numbers to two decimal places, no '$' or commas",
+          "description": "The field value contains a monetary value that shold not have '$' or ',' characters"
+        },
+        {
+          "cell": "152,500",
+          "fieldName": "TotalFireLoss",
+          "fieldNumber": 2,
+          "fieldPosition": 2,
+          "cells": [
+            "March 15, 2019",
+            "152,500",
+            "7,120,540"
+          ],
+          "rowNumber": 73,
+          "rowPosition": 74,
+          "code": "monetary-fields",
+          "name": "Monetary Fields",
+          "tags": [
+            "#table",
+            "#row",
+            "#cell"
+          ],
+          "note": "monetary values should only contain numbers to two decimal places, no '$' or commas",
+          "message": "The cell \"152,500\" in row \"74\" at position \"2\" does not conform to a constraint: monetary values should only contain numbers to two decimal places, no '$' or commas",
+          "description": "The field value contains a monetary value that shold not have '$' or ',' characters"
+        },
+        {
+          "cell": "122,000",
+          "fieldName": "TotalFireLoss",
+          "fieldNumber": 2,
+          "fieldPosition": 2,
+          "cells": [
+            "March 16, 2019",
+            "122,000",
+            "1,371,000"
+          ],
+          "rowNumber": 74,
+          "rowPosition": 75,
+          "code": "monetary-fields",
+          "name": "Monetary Fields",
+          "tags": [
+            "#table",
+            "#row",
+            "#cell"
+          ],
+          "note": "monetary values should only contain numbers to two decimal places, no '$' or commas",
+          "message": "The cell \"122,000\" in row \"75\" at position \"2\" does not conform to a constraint: monetary values should only contain numbers to two decimal places, no '$' or commas",
+          "description": "The field value contains a monetary value that shold not have '$' or ',' characters"
+        },
+        {
+          "cell": "13,510",
+          "fieldName": "TotalFireLoss",
+          "fieldNumber": 2,
+          "fieldPosition": 2,
+          "cells": [
+            "March 17, 2019",
+            "13,510",
+            "662,510"
+          ],
+          "rowNumber": 75,
+          "rowPosition": 76,
+          "code": "monetary-fields",
+          "name": "Monetary Fields",
+          "tags": [
+            "#table",
+            "#row",
+            "#cell"
+          ],
+          "note": "monetary values should only contain numbers to two decimal places, no '$' or commas",
+          "message": "The cell \"13,510\" in row \"76\" at position \"2\" does not conform to a constraint: monetary values should only contain numbers to two decimal places, no '$' or commas",
+          "description": "The field value contains a monetary value that shold not have '$' or ',' characters"
+        },
+        {
+          "cell": "10,520",
+          "fieldName": "TotalFireLoss",
+          "fieldNumber": 2,
+          "fieldPosition": 2,
+          "cells": [
+            "March 18, 2019",
+            "10,520",
+            "1,318,370"
+          ],
+          "rowNumber": 76,
+          "rowPosition": 77,
+          "code": "monetary-fields",
+          "name": "Monetary Fields",
+          "tags": [
+            "#table",
+            "#row",
+            "#cell"
+          ],
+          "note": "monetary values should only contain numbers to two decimal places, no '$' or commas",
+          "message": "The cell \"10,520\" in row \"77\" at position \"2\" does not conform to a constraint: monetary values should only contain numbers to two decimal places, no '$' or commas",
+          "description": "The field value contains a monetary value that shold not have '$' or ',' characters"
+        },
+        {
+          "cell": "81,605",
+          "fieldName": "TotalFireLoss",
+          "fieldNumber": 2,
+          "fieldPosition": 2,
+          "cells": [
+            "March 19, 2019",
+            "81,605",
+            "36,254,505"
+          ],
+          "rowNumber": 77,
+          "rowPosition": 78,
+          "code": "monetary-fields",
+          "name": "Monetary Fields",
+          "tags": [
+            "#table",
+            "#row",
+            "#cell"
+          ],
+          "note": "monetary values should only contain numbers to two decimal places, no '$' or commas",
+          "message": "The cell \"81,605\" in row \"78\" at position \"2\" does not conform to a constraint: monetary values should only contain numbers to two decimal places, no '$' or commas",
+          "description": "The field value contains a monetary value that shold not have '$' or ',' characters"
+        },
+        {
+          "cell": "12,420",
+          "fieldName": "TotalFireLoss",
+          "fieldNumber": 2,
+          "fieldPosition": 2,
+          "cells": [
+            "March 20, 2019",
+            "12,420",
+            "10,557,900"
+          ],
+          "rowNumber": 78,
+          "rowPosition": 79,
+          "code": "monetary-fields",
+          "name": "Monetary Fields",
+          "tags": [
+            "#table",
+            "#row",
+            "#cell"
+          ],
+          "note": "monetary values should only contain numbers to two decimal places, no '$' or commas",
+          "message": "The cell \"12,420\" in row \"79\" at position \"2\" does not conform to a constraint: monetary values should only contain numbers to two decimal places, no '$' or commas",
+          "description": "The field value contains a monetary value that shold not have '$' or ',' characters"
+        },
+        {
+          "cell": "20,000",
+          "fieldName": "TotalFireLoss",
+          "fieldNumber": 2,
+          "fieldPosition": 2,
+          "cells": [
+            "March 21, 2019",
+            "20,000",
+            "3,503,000"
+          ],
+          "rowNumber": 79,
+          "rowPosition": 80,
+          "code": "monetary-fields",
+          "name": "Monetary Fields",
+          "tags": [
+            "#table",
+            "#row",
+            "#cell"
+          ],
+          "note": "monetary values should only contain numbers to two decimal places, no '$' or commas",
+          "message": "The cell \"20,000\" in row \"80\" at position \"2\" does not conform to a constraint: monetary values should only contain numbers to two decimal places, no '$' or commas",
+          "description": "The field value contains a monetary value that shold not have '$' or ',' characters"
+        },
+        {
+          "cell": "1,360",
+          "fieldName": "TotalFireLoss",
+          "fieldNumber": 2,
+          "fieldPosition": 2,
+          "cells": [
+            "March 22, 2019",
+            "1,360",
+            "13,301,200"
+          ],
+          "rowNumber": 80,
+          "rowPosition": 81,
+          "code": "monetary-fields",
+          "name": "Monetary Fields",
+          "tags": [
+            "#table",
+            "#row",
+            "#cell"
+          ],
+          "note": "monetary values should only contain numbers to two decimal places, no '$' or commas",
+          "message": "The cell \"1,360\" in row \"81\" at position \"2\" does not conform to a constraint: monetary values should only contain numbers to two decimal places, no '$' or commas",
+          "description": "The field value contains a monetary value that shold not have '$' or ',' characters"
+        },
+        {
+          "cell": "427,027",
+          "fieldName": "TotalFireLoss",
+          "fieldNumber": 2,
+          "fieldPosition": 2,
+          "cells": [
+            "March 23, 2019",
+            "427,027",
+            "1,415,350"
+          ],
+          "rowNumber": 81,
+          "rowPosition": 82,
+          "code": "monetary-fields",
+          "name": "Monetary Fields",
+          "tags": [
+            "#table",
+            "#row",
+            "#cell"
+          ],
+          "note": "monetary values should only contain numbers to two decimal places, no '$' or commas",
+          "message": "The cell \"427,027\" in row \"82\" at position \"2\" does not conform to a constraint: monetary values should only contain numbers to two decimal places, no '$' or commas",
+          "description": "The field value contains a monetary value that shold not have '$' or ',' characters"
+        },
+        {
+          "cell": "435,050",
+          "fieldName": "TotalFireLoss",
+          "fieldNumber": 2,
+          "fieldPosition": 2,
+          "cells": [
+            "March 26, 2019",
+            "435,050",
+            "13,279,140"
+          ],
+          "rowNumber": 84,
+          "rowPosition": 85,
+          "code": "monetary-fields",
+          "name": "Monetary Fields",
+          "tags": [
+            "#table",
+            "#row",
+            "#cell"
+          ],
+          "note": "monetary values should only contain numbers to two decimal places, no '$' or commas",
+          "message": "The cell \"435,050\" in row \"85\" at position \"2\" does not conform to a constraint: monetary values should only contain numbers to two decimal places, no '$' or commas",
+          "description": "The field value contains a monetary value that shold not have '$' or ',' characters"
+        },
+        {
+          "cell": "14,000",
+          "fieldName": "TotalFireLoss",
+          "fieldNumber": 2,
+          "fieldPosition": 2,
+          "cells": [
+            "March 27, 2019",
+            "14,000",
+            "16,000"
+          ],
+          "rowNumber": 85,
+          "rowPosition": 86,
+          "code": "monetary-fields",
+          "name": "Monetary Fields",
+          "tags": [
+            "#table",
+            "#row",
+            "#cell"
+          ],
+          "note": "monetary values should only contain numbers to two decimal places, no '$' or commas",
+          "message": "The cell \"14,000\" in row \"86\" at position \"2\" does not conform to a constraint: monetary values should only contain numbers to two decimal places, no '$' or commas",
+          "description": "The field value contains a monetary value that shold not have '$' or ',' characters"
+        },
+        {
+          "cell": "49,000",
+          "fieldName": "TotalFireLoss",
+          "fieldNumber": 2,
+          "fieldPosition": 2,
+          "cells": [
+            "March 28, 2019",
+            "49,000",
+            "35,245,500"
+          ],
+          "rowNumber": 86,
+          "rowPosition": 87,
+          "code": "monetary-fields",
+          "name": "Monetary Fields",
+          "tags": [
+            "#table",
+            "#row",
+            "#cell"
+          ],
+          "note": "monetary values should only contain numbers to two decimal places, no '$' or commas",
+          "message": "The cell \"49,000\" in row \"87\" at position \"2\" does not conform to a constraint: monetary values should only contain numbers to two decimal places, no '$' or commas",
+          "description": "The field value contains a monetary value that shold not have '$' or ',' characters"
+        },
+        {
+          "cell": "6,321",
+          "fieldName": "TotalFireLoss",
+          "fieldNumber": 2,
+          "fieldPosition": 2,
+          "cells": [
+            "March 29, 2019",
+            "6,321",
+            "279,660"
+          ],
+          "rowNumber": 87,
+          "rowPosition": 88,
+          "code": "monetary-fields",
+          "name": "Monetary Fields",
+          "tags": [
+            "#table",
+            "#row",
+            "#cell"
+          ],
+          "note": "monetary values should only contain numbers to two decimal places, no '$' or commas",
+          "message": "The cell \"6,321\" in row \"88\" at position \"2\" does not conform to a constraint: monetary values should only contain numbers to two decimal places, no '$' or commas",
+          "description": "The field value contains a monetary value that shold not have '$' or ',' characters"
+        },
+        {
+          "cell": "7,050",
+          "fieldName": "TotalFireLoss",
+          "fieldNumber": 2,
+          "fieldPosition": 2,
+          "cells": [
+            "March 30, 2019",
+            "7,050",
+            "350,007,100"
+          ],
+          "rowNumber": 88,
+          "rowPosition": 89,
+          "code": "monetary-fields",
+          "name": "Monetary Fields",
+          "tags": [
+            "#table",
+            "#row",
+            "#cell"
+          ],
+          "note": "monetary values should only contain numbers to two decimal places, no '$' or commas",
+          "message": "The cell \"7,050\" in row \"89\" at position \"2\" does not conform to a constraint: monetary values should only contain numbers to two decimal places, no '$' or commas",
+          "description": "The field value contains a monetary value that shold not have '$' or ',' characters"
+        },
+        {
+          "cell": "6,251",
+          "fieldName": "TotalFireLoss",
+          "fieldNumber": 2,
+          "fieldPosition": 2,
+          "cells": [
+            "March 31, 2019",
+            "6,251",
+            "6,551"
+          ],
+          "rowNumber": 89,
+          "rowPosition": 90,
+          "code": "monetary-fields",
+          "name": "Monetary Fields",
+          "tags": [
+            "#table",
+            "#row",
+            "#cell"
+          ],
+          "note": "monetary values should only contain numbers to two decimal places, no '$' or commas",
+          "message": "The cell \"6,251\" in row \"90\" at position \"2\" does not conform to a constraint: monetary values should only contain numbers to two decimal places, no '$' or commas",
+          "description": "The field value contains a monetary value that shold not have '$' or ',' characters"
+        },
+        {
+          "cell": "55,240",
+          "fieldName": "TotalFireLoss",
+          "fieldNumber": 2,
+          "fieldPosition": 2,
+          "cells": [
+            "April 1, 2019",
+            "55,240",
+            "705,850"
+          ],
+          "rowNumber": 90,
+          "rowPosition": 91,
+          "code": "monetary-fields",
+          "name": "Monetary Fields",
+          "tags": [
+            "#table",
+            "#row",
+            "#cell"
+          ],
+          "note": "monetary values should only contain numbers to two decimal places, no '$' or commas",
+          "message": "The cell \"55,240\" in row \"91\" at position \"2\" does not conform to a constraint: monetary values should only contain numbers to two decimal places, no '$' or commas",
+          "description": "The field value contains a monetary value that shold not have '$' or ',' characters"
+        },
+        {
+          "cell": "7,600",
+          "fieldName": "TotalFireLoss",
+          "fieldNumber": 2,
+          "fieldPosition": 2,
+          "cells": [
+            "April 2, 2019",
+            "7,600",
+            "677,800"
+          ],
+          "rowNumber": 91,
+          "rowPosition": 92,
+          "code": "monetary-fields",
+          "name": "Monetary Fields",
+          "tags": [
+            "#table",
+            "#row",
+            "#cell"
+          ],
+          "note": "monetary values should only contain numbers to two decimal places, no '$' or commas",
+          "message": "The cell \"7,600\" in row \"92\" at position \"2\" does not conform to a constraint: monetary values should only contain numbers to two decimal places, no '$' or commas",
+          "description": "The field value contains a monetary value that shold not have '$' or ',' characters"
+        },
+        {
+          "cell": "132,020",
+          "fieldName": "TotalFireLoss",
+          "fieldNumber": 2,
+          "fieldPosition": 2,
+          "cells": [
+            "April 3, 2019",
+            "132,020",
+            "61,365,540"
+          ],
+          "rowNumber": 92,
+          "rowPosition": 93,
+          "code": "monetary-fields",
+          "name": "Monetary Fields",
+          "tags": [
+            "#table",
+            "#row",
+            "#cell"
+          ],
+          "note": "monetary values should only contain numbers to two decimal places, no '$' or commas",
+          "message": "The cell \"132,020\" in row \"93\" at position \"2\" does not conform to a constraint: monetary values should only contain numbers to two decimal places, no '$' or commas",
+          "description": "The field value contains a monetary value that shold not have '$' or ',' characters"
+        },
+        {
+          "cell": "4,250",
+          "fieldName": "TotalFireLoss",
+          "fieldNumber": 2,
+          "fieldPosition": 2,
+          "cells": [
+            "April 4, 2019",
+            "4,250",
+            "4,250"
+          ],
+          "rowNumber": 93,
+          "rowPosition": 94,
+          "code": "monetary-fields",
+          "name": "Monetary Fields",
+          "tags": [
+            "#table",
+            "#row",
+            "#cell"
+          ],
+          "note": "monetary values should only contain numbers to two decimal places, no '$' or commas",
+          "message": "The cell \"4,250\" in row \"94\" at position \"2\" does not conform to a constraint: monetary values should only contain numbers to two decimal places, no '$' or commas",
+          "description": "The field value contains a monetary value that shold not have '$' or ',' characters"
+        },
+        {
+          "cell": "12,500",
+          "fieldName": "TotalFireLoss",
+          "fieldNumber": 2,
+          "fieldPosition": 2,
+          "cells": [
+            "April 5, 2019",
+            "12,500",
+            "6,656,780"
+          ],
+          "rowNumber": 94,
+          "rowPosition": 95,
+          "code": "monetary-fields",
+          "name": "Monetary Fields",
+          "tags": [
+            "#table",
+            "#row",
+            "#cell"
+          ],
+          "note": "monetary values should only contain numbers to two decimal places, no '$' or commas",
+          "message": "The cell \"12,500\" in row \"95\" at position \"2\" does not conform to a constraint: monetary values should only contain numbers to two decimal places, no '$' or commas",
+          "description": "The field value contains a monetary value that shold not have '$' or ',' characters"
+        },
+        {
+          "cell": "1,500",
+          "fieldName": "TotalFireLoss",
+          "fieldNumber": 2,
+          "fieldPosition": 2,
+          "cells": [
+            "April 6, 2019",
+            "1,500",
+            "7,280,410"
+          ],
+          "rowNumber": 95,
+          "rowPosition": 96,
+          "code": "monetary-fields",
+          "name": "Monetary Fields",
+          "tags": [
+            "#table",
+            "#row",
+            "#cell"
+          ],
+          "note": "monetary values should only contain numbers to two decimal places, no '$' or commas",
+          "message": "The cell \"1,500\" in row \"96\" at position \"2\" does not conform to a constraint: monetary values should only contain numbers to two decimal places, no '$' or commas",
+          "description": "The field value contains a monetary value that shold not have '$' or ',' characters"
+        },
+        {
+          "cell": "188,251",
+          "fieldName": "TotalFireLoss",
+          "fieldNumber": 2,
+          "fieldPosition": 2,
+          "cells": [
+            "April 7, 2019",
+            "188,251",
+            "2,270,850"
+          ],
+          "rowNumber": 96,
+          "rowPosition": 97,
+          "code": "monetary-fields",
+          "name": "Monetary Fields",
+          "tags": [
+            "#table",
+            "#row",
+            "#cell"
+          ],
+          "note": "monetary values should only contain numbers to two decimal places, no '$' or commas",
+          "message": "The cell \"188,251\" in row \"97\" at position \"2\" does not conform to a constraint: monetary values should only contain numbers to two decimal places, no '$' or commas",
+          "description": "The field value contains a monetary value that shold not have '$' or ',' characters"
+        },
+        {
+          "cell": "15,500",
+          "fieldName": "TotalFireLoss",
+          "fieldNumber": 2,
+          "fieldPosition": 2,
+          "cells": [
+            "April 8, 2019",
+            "15,500",
+            "5,016,600"
+          ],
+          "rowNumber": 97,
+          "rowPosition": 98,
+          "code": "monetary-fields",
+          "name": "Monetary Fields",
+          "tags": [
+            "#table",
+            "#row",
+            "#cell"
+          ],
+          "note": "monetary values should only contain numbers to two decimal places, no '$' or commas",
+          "message": "The cell \"15,500\" in row \"98\" at position \"2\" does not conform to a constraint: monetary values should only contain numbers to two decimal places, no '$' or commas",
+          "description": "The field value contains a monetary value that shold not have '$' or ',' characters"
+        },
+        {
+          "cell": "2,050",
+          "fieldName": "TotalFireLoss",
+          "fieldNumber": 2,
+          "fieldPosition": 2,
+          "cells": [
+            "April 10, 2019",
+            "2,050",
+            "175,550"
+          ],
+          "rowNumber": 99,
+          "rowPosition": 100,
+          "code": "monetary-fields",
+          "name": "Monetary Fields",
+          "tags": [
+            "#table",
+            "#row",
+            "#cell"
+          ],
+          "note": "monetary values should only contain numbers to two decimal places, no '$' or commas",
+          "message": "The cell \"2,050\" in row \"100\" at position \"2\" does not conform to a constraint: monetary values should only contain numbers to two decimal places, no '$' or commas",
+          "description": "The field value contains a monetary value that shold not have '$' or ',' characters"
+        },
+        {
+          "cell": "7,200",
+          "fieldName": "TotalFireLoss",
+          "fieldNumber": 2,
+          "fieldPosition": 2,
+          "cells": [
+            "April 11, 2019",
+            "7,200",
+            "5,004,500"
+          ],
+          "rowNumber": 100,
+          "rowPosition": 101,
+          "code": "monetary-fields",
+          "name": "Monetary Fields",
+          "tags": [
+            "#table",
+            "#row",
+            "#cell"
+          ],
+          "note": "monetary values should only contain numbers to two decimal places, no '$' or commas",
+          "message": "The cell \"7,200\" in row \"101\" at position \"2\" does not conform to a constraint: monetary values should only contain numbers to two decimal places, no '$' or commas",
+          "description": "The field value contains a monetary value that shold not have '$' or ',' characters"
+        },
+        {
+          "cell": "18,400",
+          "fieldName": "TotalFireLoss",
+          "fieldNumber": 2,
+          "fieldPosition": 2,
+          "cells": [
+            "April 12, 2019",
+            "18,400",
+            "14,379,400"
+          ],
+          "rowNumber": 101,
+          "rowPosition": 102,
+          "code": "monetary-fields",
+          "name": "Monetary Fields",
+          "tags": [
+            "#table",
+            "#row",
+            "#cell"
+          ],
+          "note": "monetary values should only contain numbers to two decimal places, no '$' or commas",
+          "message": "The cell \"18,400\" in row \"102\" at position \"2\" does not conform to a constraint: monetary values should only contain numbers to two decimal places, no '$' or commas",
+          "description": "The field value contains a monetary value that shold not have '$' or ',' characters"
+        },
+        {
+          "cell": "1,000",
+          "fieldName": "TotalFireLoss",
+          "fieldNumber": 2,
+          "fieldPosition": 2,
+          "cells": [
+            "April 13, 2019",
+            "1,000",
+            "1,125,000"
+          ],
+          "rowNumber": 102,
+          "rowPosition": 103,
+          "code": "monetary-fields",
+          "name": "Monetary Fields",
+          "tags": [
+            "#table",
+            "#row",
+            "#cell"
+          ],
+          "note": "monetary values should only contain numbers to two decimal places, no '$' or commas",
+          "message": "The cell \"1,000\" in row \"103\" at position \"2\" does not conform to a constraint: monetary values should only contain numbers to two decimal places, no '$' or commas",
+          "description": "The field value contains a monetary value that shold not have '$' or ',' characters"
+        },
+        {
+          "cell": "106,001",
+          "fieldName": "TotalFireLoss",
+          "fieldNumber": 2,
+          "fieldPosition": 2,
+          "cells": [
+            "April 14, 2019",
+            "106,001",
+            "726,501"
+          ],
+          "rowNumber": 103,
+          "rowPosition": 104,
+          "code": "monetary-fields",
+          "name": "Monetary Fields",
+          "tags": [
+            "#table",
+            "#row",
+            "#cell"
+          ],
+          "note": "monetary values should only contain numbers to two decimal places, no '$' or commas",
+          "message": "The cell \"106,001\" in row \"104\" at position \"2\" does not conform to a constraint: monetary values should only contain numbers to two decimal places, no '$' or commas",
+          "description": "The field value contains a monetary value that shold not have '$' or ',' characters"
+        },
+        {
+          "cell": "11,506",
+          "fieldName": "TotalFireLoss",
+          "fieldNumber": 2,
+          "fieldPosition": 2,
+          "cells": [
+            "April 15, 2019",
+            "11,506",
+            "21,037,651"
+          ],
+          "rowNumber": 104,
+          "rowPosition": 105,
+          "code": "monetary-fields",
+          "name": "Monetary Fields",
+          "tags": [
+            "#table",
+            "#row",
+            "#cell"
+          ],
+          "note": "monetary values should only contain numbers to two decimal places, no '$' or commas",
+          "message": "The cell \"11,506\" in row \"105\" at position \"2\" does not conform to a constraint: monetary values should only contain numbers to two decimal places, no '$' or commas",
+          "description": "The field value contains a monetary value that shold not have '$' or ',' characters"
+        },
+        {
+          "cell": "17,000",
+          "fieldName": "TotalFireLoss",
+          "fieldNumber": 2,
+          "fieldPosition": 2,
+          "cells": [
+            "April 16, 2019",
+            "17,000",
+            "16,612,900"
+          ],
+          "rowNumber": 105,
+          "rowPosition": 106,
+          "code": "monetary-fields",
+          "name": "Monetary Fields",
+          "tags": [
+            "#table",
+            "#row",
+            "#cell"
+          ],
+          "note": "monetary values should only contain numbers to two decimal places, no '$' or commas",
+          "message": "The cell \"17,000\" in row \"106\" at position \"2\" does not conform to a constraint: monetary values should only contain numbers to two decimal places, no '$' or commas",
+          "description": "The field value contains a monetary value that shold not have '$' or ',' characters"
+        },
+        {
+          "cell": "2,000",
+          "fieldName": "TotalFireLoss",
+          "fieldNumber": 2,
+          "fieldPosition": 2,
+          "cells": [
+            "April 17, 2019",
+            "2,000",
+            "78,000"
+          ],
+          "rowNumber": 106,
+          "rowPosition": 107,
+          "code": "monetary-fields",
+          "name": "Monetary Fields",
+          "tags": [
+            "#table",
+            "#row",
+            "#cell"
+          ],
+          "note": "monetary values should only contain numbers to two decimal places, no '$' or commas",
+          "message": "The cell \"2,000\" in row \"107\" at position \"2\" does not conform to a constraint: monetary values should only contain numbers to two decimal places, no '$' or commas",
+          "description": "The field value contains a monetary value that shold not have '$' or ',' characters"
+        },
+        {
+          "cell": "11,050",
+          "fieldName": "TotalFireLoss",
+          "fieldNumber": 2,
+          "fieldPosition": 2,
+          "cells": [
+            "April 18, 2019",
+            "11,050",
+            "12,501"
+          ],
+          "rowNumber": 107,
+          "rowPosition": 108,
+          "code": "monetary-fields",
+          "name": "Monetary Fields",
+          "tags": [
+            "#table",
+            "#row",
+            "#cell"
+          ],
+          "note": "monetary values should only contain numbers to two decimal places, no '$' or commas",
+          "message": "The cell \"11,050\" in row \"108\" at position \"2\" does not conform to a constraint: monetary values should only contain numbers to two decimal places, no '$' or commas",
+          "description": "The field value contains a monetary value that shold not have '$' or ',' characters"
+        },
+        {
+          "cell": "None",
+          "fieldName": "TotalFireLoss",
+          "fieldNumber": 2,
+          "fieldPosition": 2,
+          "cells": [
+            "April 19, 2019",
+            "None",
+            "None"
+          ],
+          "rowNumber": 108,
+          "rowPosition": 109,
+          "code": "monetary-fields",
+          "name": "Monetary Fields",
+          "tags": [
+            "#table",
+            "#row",
+            "#cell"
+          ],
+          "note": "monetary values should only contain numbers to two decimal places, no '$' or commas",
+          "message": "The cell \"None\" in row \"109\" at position \"2\" does not conform to a constraint: monetary values should only contain numbers to two decimal places, no '$' or commas",
+          "description": "The field value contains a monetary value that shold not have '$' or ',' characters"
+        },
+        {
+          "cell": "169,400",
+          "fieldName": "TotalFireLoss",
+          "fieldNumber": 2,
+          "fieldPosition": 2,
+          "cells": [
+            "April 20, 2019",
+            "169,400",
+            "137,310,430"
+          ],
+          "rowNumber": 109,
+          "rowPosition": 110,
+          "code": "monetary-fields",
+          "name": "Monetary Fields",
+          "tags": [
+            "#table",
+            "#row",
+            "#cell"
+          ],
+          "note": "monetary values should only contain numbers to two decimal places, no '$' or commas",
+          "message": "The cell \"169,400\" in row \"110\" at position \"2\" does not conform to a constraint: monetary values should only contain numbers to two decimal places, no '$' or commas",
+          "description": "The field value contains a monetary value that shold not have '$' or ',' characters"
+        },
+        {
+          "cell": "168,231",
+          "fieldName": "TotalFireLoss",
+          "fieldNumber": 2,
+          "fieldPosition": 2,
+          "cells": [
+            "April 21, 2019",
+            "168,231",
+            "194,730"
+          ],
+          "rowNumber": 110,
+          "rowPosition": 111,
+          "code": "monetary-fields",
+          "name": "Monetary Fields",
+          "tags": [
+            "#table",
+            "#row",
+            "#cell"
+          ],
+          "note": "monetary values should only contain numbers to two decimal places, no '$' or commas",
+          "message": "The cell \"168,231\" in row \"111\" at position \"2\" does not conform to a constraint: monetary values should only contain numbers to two decimal places, no '$' or commas",
+          "description": "The field value contains a monetary value that shold not have '$' or ',' characters"
+        },
+        {
+          "cell": "6,225",
+          "fieldName": "TotalFireLoss",
+          "fieldNumber": 2,
+          "fieldPosition": 2,
+          "cells": [
+            "April 22, 2019",
+            "6,225",
+            "211,200"
+          ],
+          "rowNumber": 111,
+          "rowPosition": 112,
+          "code": "monetary-fields",
+          "name": "Monetary Fields",
+          "tags": [
+            "#table",
+            "#row",
+            "#cell"
+          ],
+          "note": "monetary values should only contain numbers to two decimal places, no '$' or commas",
+          "message": "The cell \"6,225\" in row \"112\" at position \"2\" does not conform to a constraint: monetary values should only contain numbers to two decimal places, no '$' or commas",
+          "description": "The field value contains a monetary value that shold not have '$' or ',' characters"
+        },
+        {
+          "cell": "3,203",
+          "fieldName": "TotalFireLoss",
+          "fieldNumber": 2,
+          "fieldPosition": 2,
+          "cells": [
+            "April 23, 2019",
+            "3,203",
+            "7,005,003"
+          ],
+          "rowNumber": 112,
+          "rowPosition": 113,
+          "code": "monetary-fields",
+          "name": "Monetary Fields",
+          "tags": [
+            "#table",
+            "#row",
+            "#cell"
+          ],
+          "note": "monetary values should only contain numbers to two decimal places, no '$' or commas",
+          "message": "The cell \"3,203\" in row \"113\" at position \"2\" does not conform to a constraint: monetary values should only contain numbers to two decimal places, no '$' or commas",
+          "description": "The field value contains a monetary value that shold not have '$' or ',' characters"
+        },
+        {
+          "cell": "34,000",
+          "fieldName": "TotalFireLoss",
+          "fieldNumber": 2,
+          "fieldPosition": 2,
+          "cells": [
+            "April 24, 2019",
+            "34,000",
+            "766,000"
+          ],
+          "rowNumber": 113,
+          "rowPosition": 114,
+          "code": "monetary-fields",
+          "name": "Monetary Fields",
+          "tags": [
+            "#table",
+            "#row",
+            "#cell"
+          ],
+          "note": "monetary values should only contain numbers to two decimal places, no '$' or commas",
+          "message": "The cell \"34,000\" in row \"114\" at position \"2\" does not conform to a constraint: monetary values should only contain numbers to two decimal places, no '$' or commas",
+          "description": "The field value contains a monetary value that shold not have '$' or ',' characters"
+        },
+        {
+          "cell": "5,901",
+          "fieldName": "TotalFireLoss",
+          "fieldNumber": 2,
+          "fieldPosition": 2,
+          "cells": [
+            "April 25, 2019",
+            "5,901",
+            "508,201"
+          ],
+          "rowNumber": 114,
+          "rowPosition": 115,
+          "code": "monetary-fields",
+          "name": "Monetary Fields",
+          "tags": [
+            "#table",
+            "#row",
+            "#cell"
+          ],
+          "note": "monetary values should only contain numbers to two decimal places, no '$' or commas",
+          "message": "The cell \"5,901\" in row \"115\" at position \"2\" does not conform to a constraint: monetary values should only contain numbers to two decimal places, no '$' or commas",
+          "description": "The field value contains a monetary value that shold not have '$' or ',' characters"
+        },
+        {
+          "cell": "129,301",
+          "fieldName": "TotalFireLoss",
+          "fieldNumber": 2,
+          "fieldPosition": 2,
+          "cells": [
+            "April 26, 2019",
+            "129,301",
+            "36,755,151"
+          ],
+          "rowNumber": 115,
+          "rowPosition": 116,
+          "code": "monetary-fields",
+          "name": "Monetary Fields",
+          "tags": [
+            "#table",
+            "#row",
+            "#cell"
+          ],
+          "note": "monetary values should only contain numbers to two decimal places, no '$' or commas",
+          "message": "The cell \"129,301\" in row \"116\" at position \"2\" does not conform to a constraint: monetary values should only contain numbers to two decimal places, no '$' or commas",
+          "description": "The field value contains a monetary value that shold not have '$' or ',' characters"
+        },
+        {
+          "cell": "229,151",
+          "fieldName": "TotalFireLoss",
+          "fieldNumber": 2,
+          "fieldPosition": 2,
+          "cells": [
+            "April 27, 2019",
+            "229,151",
+            "9,110,651"
+          ],
+          "rowNumber": 116,
+          "rowPosition": 117,
+          "code": "monetary-fields",
+          "name": "Monetary Fields",
+          "tags": [
+            "#table",
+            "#row",
+            "#cell"
+          ],
+          "note": "monetary values should only contain numbers to two decimal places, no '$' or commas",
+          "message": "The cell \"229,151\" in row \"117\" at position \"2\" does not conform to a constraint: monetary values should only contain numbers to two decimal places, no '$' or commas",
+          "description": "The field value contains a monetary value that shold not have '$' or ',' characters"
+        },
+        {
+          "cell": "65,500",
+          "fieldName": "TotalFireLoss",
+          "fieldNumber": 2,
+          "fieldPosition": 2,
+          "cells": [
+            "April 28, 2019",
+            "65,500",
+            "2,140,910"
+          ],
+          "rowNumber": 117,
+          "rowPosition": 118,
+          "code": "monetary-fields",
+          "name": "Monetary Fields",
+          "tags": [
+            "#table",
+            "#row",
+            "#cell"
+          ],
+          "note": "monetary values should only contain numbers to two decimal places, no '$' or commas",
+          "message": "The cell \"65,500\" in row \"118\" at position \"2\" does not conform to a constraint: monetary values should only contain numbers to two decimal places, no '$' or commas",
+          "description": "The field value contains a monetary value that shold not have '$' or ',' characters"
+        },
+        {
+          "cell": "4,502",
+          "fieldName": "TotalFireLoss",
+          "fieldNumber": 2,
+          "fieldPosition": 2,
+          "cells": [
+            "April 29, 2019",
+            "4,502",
+            "5,002"
+          ],
+          "rowNumber": 118,
+          "rowPosition": 119,
+          "code": "monetary-fields",
+          "name": "Monetary Fields",
+          "tags": [
+            "#table",
+            "#row",
+            "#cell"
+          ],
+          "note": "monetary values should only contain numbers to two decimal places, no '$' or commas",
+          "message": "The cell \"4,502\" in row \"119\" at position \"2\" does not conform to a constraint: monetary values should only contain numbers to two decimal places, no '$' or commas",
+          "description": "The field value contains a monetary value that shold not have '$' or ',' characters"
+        },
+        {
+          "cell": "3,831",
+          "fieldName": "TotalFireLoss",
+          "fieldNumber": 2,
+          "fieldPosition": 2,
+          "cells": [
+            "April 30, 2019",
+            "3,831",
+            "28,731"
+          ],
+          "rowNumber": 119,
+          "rowPosition": 120,
+          "code": "monetary-fields",
+          "name": "Monetary Fields",
+          "tags": [
+            "#table",
+            "#row",
+            "#cell"
+          ],
+          "note": "monetary values should only contain numbers to two decimal places, no '$' or commas",
+          "message": "The cell \"3,831\" in row \"120\" at position \"2\" does not conform to a constraint: monetary values should only contain numbers to two decimal places, no '$' or commas",
+          "description": "The field value contains a monetary value that shold not have '$' or ',' characters"
+        },
+        {
+          "cell": "82,800",
+          "fieldName": "TotalFireLoss",
+          "fieldNumber": 2,
+          "fieldPosition": 2,
+          "cells": [
+            "May 1, 2019",
+            "82,800",
+            "51,939,403"
+          ],
+          "rowNumber": 120,
+          "rowPosition": 121,
+          "code": "monetary-fields",
+          "name": "Monetary Fields",
+          "tags": [
+            "#table",
+            "#row",
+            "#cell"
+          ],
+          "note": "monetary values should only contain numbers to two decimal places, no '$' or commas",
+          "message": "The cell \"82,800\" in row \"121\" at position \"2\" does not conform to a constraint: monetary values should only contain numbers to two decimal places, no '$' or commas",
+          "description": "The field value contains a monetary value that shold not have '$' or ',' characters"
+        },
+        {
+          "cell": "9,600",
+          "fieldName": "TotalFireLoss",
+          "fieldNumber": 2,
+          "fieldPosition": 2,
+          "cells": [
+            "May 3, 2019",
+            "9,600",
+            "7,150,620"
+          ],
+          "rowNumber": 122,
+          "rowPosition": 123,
+          "code": "monetary-fields",
+          "name": "Monetary Fields",
+          "tags": [
+            "#table",
+            "#row",
+            "#cell"
+          ],
+          "note": "monetary values should only contain numbers to two decimal places, no '$' or commas",
+          "message": "The cell \"9,600\" in row \"123\" at position \"2\" does not conform to a constraint: monetary values should only contain numbers to two decimal places, no '$' or commas",
+          "description": "The field value contains a monetary value that shold not have '$' or ',' characters"
+        },
+        {
+          "cell": "584,305",
+          "fieldName": "TotalFireLoss",
+          "fieldNumber": 2,
+          "fieldPosition": 2,
+          "cells": [
+            "May 4, 2019",
+            "584,305",
+            "19,697,120"
+          ],
+          "rowNumber": 123,
+          "rowPosition": 124,
+          "code": "monetary-fields",
+          "name": "Monetary Fields",
+          "tags": [
+            "#table",
+            "#row",
+            "#cell"
+          ],
+          "note": "monetary values should only contain numbers to two decimal places, no '$' or commas",
+          "message": "The cell \"584,305\" in row \"124\" at position \"2\" does not conform to a constraint: monetary values should only contain numbers to two decimal places, no '$' or commas",
+          "description": "The field value contains a monetary value that shold not have '$' or ',' characters"
+        },
+        {
+          "cell": "223,941",
+          "fieldName": "TotalFireLoss",
+          "fieldNumber": 2,
+          "fieldPosition": 2,
+          "cells": [
+            "May 5, 2019",
+            "223,941",
+            "7,042,951"
+          ],
+          "rowNumber": 124,
+          "rowPosition": 125,
+          "code": "monetary-fields",
+          "name": "Monetary Fields",
+          "tags": [
+            "#table",
+            "#row",
+            "#cell"
+          ],
+          "note": "monetary values should only contain numbers to two decimal places, no '$' or commas",
+          "message": "The cell \"223,941\" in row \"125\" at position \"2\" does not conform to a constraint: monetary values should only contain numbers to two decimal places, no '$' or commas",
+          "description": "The field value contains a monetary value that shold not have '$' or ',' characters"
+        },
+        {
+          "cell": "4,250",
+          "fieldName": "TotalFireLoss",
+          "fieldNumber": 2,
+          "fieldPosition": 2,
+          "cells": [
+            "May 6, 2019",
+            "4,250",
+            "14,212,650"
+          ],
+          "rowNumber": 125,
+          "rowPosition": 126,
+          "code": "monetary-fields",
+          "name": "Monetary Fields",
+          "tags": [
+            "#table",
+            "#row",
+            "#cell"
+          ],
+          "note": "monetary values should only contain numbers to two decimal places, no '$' or commas",
+          "message": "The cell \"4,250\" in row \"126\" at position \"2\" does not conform to a constraint: monetary values should only contain numbers to two decimal places, no '$' or commas",
+          "description": "The field value contains a monetary value that shold not have '$' or ',' characters"
+        },
+        {
+          "cell": "29,318",
+          "fieldName": "TotalFireLoss",
+          "fieldNumber": 2,
+          "fieldPosition": 2,
+          "cells": [
+            "May 9, 2019",
+            "29,318",
+            "2,584,402"
+          ],
+          "rowNumber": 128,
+          "rowPosition": 129,
+          "code": "monetary-fields",
+          "name": "Monetary Fields",
+          "tags": [
+            "#table",
+            "#row",
+            "#cell"
+          ],
+          "note": "monetary values should only contain numbers to two decimal places, no '$' or commas",
+          "message": "The cell \"29,318\" in row \"129\" at position \"2\" does not conform to a constraint: monetary values should only contain numbers to two decimal places, no '$' or commas",
+          "description": "The field value contains a monetary value that shold not have '$' or ',' characters"
+        },
+        {
+          "cell": "5,700",
+          "fieldName": "TotalFireLoss",
+          "fieldNumber": 2,
+          "fieldPosition": 2,
+          "cells": [
+            "May 10, 2019",
+            "5,700",
+            "708,700"
+          ],
+          "rowNumber": 129,
+          "rowPosition": 130,
+          "code": "monetary-fields",
+          "name": "Monetary Fields",
+          "tags": [
+            "#table",
+            "#row",
+            "#cell"
+          ],
+          "note": "monetary values should only contain numbers to two decimal places, no '$' or commas",
+          "message": "The cell \"5,700\" in row \"130\" at position \"2\" does not conform to a constraint: monetary values should only contain numbers to two decimal places, no '$' or commas",
+          "description": "The field value contains a monetary value that shold not have '$' or ',' characters"
+        },
+        {
+          "cell": "163,626",
+          "fieldName": "TotalFireLoss",
+          "fieldNumber": 2,
+          "fieldPosition": 2,
+          "cells": [
+            "May 11, 2019",
+            "163,626",
+            "52,012,126"
+          ],
+          "rowNumber": 130,
+          "rowPosition": 131,
+          "code": "monetary-fields",
+          "name": "Monetary Fields",
+          "tags": [
+            "#table",
+            "#row",
+            "#cell"
+          ],
+          "note": "monetary values should only contain numbers to two decimal places, no '$' or commas",
+          "message": "The cell \"163,626\" in row \"131\" at position \"2\" does not conform to a constraint: monetary values should only contain numbers to two decimal places, no '$' or commas",
+          "description": "The field value contains a monetary value that shold not have '$' or ',' characters"
+        },
+        {
+          "cell": "21,055",
+          "fieldName": "TotalFireLoss",
+          "fieldNumber": 2,
+          "fieldPosition": 2,
+          "cells": [
+            "May 12, 2019",
+            "21,055",
+            "448,645"
+          ],
+          "rowNumber": 131,
+          "rowPosition": 132,
+          "code": "monetary-fields",
+          "name": "Monetary Fields",
+          "tags": [
+            "#table",
+            "#row",
+            "#cell"
+          ],
+          "note": "monetary values should only contain numbers to two decimal places, no '$' or commas",
+          "message": "The cell \"21,055\" in row \"132\" at position \"2\" does not conform to a constraint: monetary values should only contain numbers to two decimal places, no '$' or commas",
+          "description": "The field value contains a monetary value that shold not have '$' or ',' characters"
+        },
+        {
+          "cell": "219,051",
+          "fieldName": "TotalFireLoss",
+          "fieldNumber": 2,
+          "fieldPosition": 2,
+          "cells": [
+            "May 13, 2019",
+            "219,051",
+            "1,120,260"
+          ],
+          "rowNumber": 132,
+          "rowPosition": 133,
+          "code": "monetary-fields",
+          "name": "Monetary Fields",
+          "tags": [
+            "#table",
+            "#row",
+            "#cell"
+          ],
+          "note": "monetary values should only contain numbers to two decimal places, no '$' or commas",
+          "message": "The cell \"219,051\" in row \"133\" at position \"2\" does not conform to a constraint: monetary values should only contain numbers to two decimal places, no '$' or commas",
+          "description": "The field value contains a monetary value that shold not have '$' or ',' characters"
+        },
+        {
+          "cell": "167,702",
+          "fieldName": "TotalFireLoss",
+          "fieldNumber": 2,
+          "fieldPosition": 2,
+          "cells": [
+            "May 14, 2019",
+            "167,702",
+            "3,816,261"
+          ],
+          "rowNumber": 133,
+          "rowPosition": 134,
+          "code": "monetary-fields",
+          "name": "Monetary Fields",
+          "tags": [
+            "#table",
+            "#row",
+            "#cell"
+          ],
+          "note": "monetary values should only contain numbers to two decimal places, no '$' or commas",
+          "message": "The cell \"167,702\" in row \"134\" at position \"2\" does not conform to a constraint: monetary values should only contain numbers to two decimal places, no '$' or commas",
+          "description": "The field value contains a monetary value that shold not have '$' or ',' characters"
+        },
+        {
+          "cell": "213,500",
+          "fieldName": "TotalFireLoss",
+          "fieldNumber": 2,
+          "fieldPosition": 2,
+          "cells": [
+            "May 15, 2019",
+            "213,500",
+            "674,500"
+          ],
+          "rowNumber": 134,
+          "rowPosition": 135,
+          "code": "monetary-fields",
+          "name": "Monetary Fields",
+          "tags": [
+            "#table",
+            "#row",
+            "#cell"
+          ],
+          "note": "monetary values should only contain numbers to two decimal places, no '$' or commas",
+          "message": "The cell \"213,500\" in row \"135\" at position \"2\" does not conform to a constraint: monetary values should only contain numbers to two decimal places, no '$' or commas",
+          "description": "The field value contains a monetary value that shold not have '$' or ',' characters"
+        },
+        {
+          "cell": "15,000",
+          "fieldName": "TotalFireLoss",
+          "fieldNumber": 2,
+          "fieldPosition": 2,
+          "cells": [
+            "May 16, 2019",
+            "15,000",
+            "15,000"
+          ],
+          "rowNumber": 135,
+          "rowPosition": 136,
+          "code": "monetary-fields",
+          "name": "Monetary Fields",
+          "tags": [
+            "#table",
+            "#row",
+            "#cell"
+          ],
+          "note": "monetary values should only contain numbers to two decimal places, no '$' or commas",
+          "message": "The cell \"15,000\" in row \"136\" at position \"2\" does not conform to a constraint: monetary values should only contain numbers to two decimal places, no '$' or commas",
+          "description": "The field value contains a monetary value that shold not have '$' or ',' characters"
+        },
+        {
+          "cell": "4,950",
+          "fieldName": "TotalFireLoss",
+          "fieldNumber": 2,
+          "fieldPosition": 2,
+          "cells": [
+            "May 17, 2019",
+            "4,950",
+            "2,548,860"
+          ],
+          "rowNumber": 136,
+          "rowPosition": 137,
+          "code": "monetary-fields",
+          "name": "Monetary Fields",
+          "tags": [
+            "#table",
+            "#row",
+            "#cell"
+          ],
+          "note": "monetary values should only contain numbers to two decimal places, no '$' or commas",
+          "message": "The cell \"4,950\" in row \"137\" at position \"2\" does not conform to a constraint: monetary values should only contain numbers to two decimal places, no '$' or commas",
+          "description": "The field value contains a monetary value that shold not have '$' or ',' characters"
+        },
+        {
+          "cell": "4,500",
+          "fieldName": "TotalFireLoss",
+          "fieldNumber": 2,
+          "fieldPosition": 2,
+          "cells": [
+            "May 18, 2019",
+            "4,500",
+            "11,501"
+          ],
+          "rowNumber": 137,
+          "rowPosition": 138,
+          "code": "monetary-fields",
+          "name": "Monetary Fields",
+          "tags": [
+            "#table",
+            "#row",
+            "#cell"
+          ],
+          "note": "monetary values should only contain numbers to two decimal places, no '$' or commas",
+          "message": "The cell \"4,500\" in row \"138\" at position \"2\" does not conform to a constraint: monetary values should only contain numbers to two decimal places, no '$' or commas",
+          "description": "The field value contains a monetary value that shold not have '$' or ',' characters"
+        },
+        {
+          "cell": "5,000",
+          "fieldName": "TotalFireLoss",
+          "fieldNumber": 2,
+          "fieldPosition": 2,
+          "cells": [
+            "May 19, 2019",
+            "5,000",
+            "3,177,000"
+          ],
+          "rowNumber": 138,
+          "rowPosition": 139,
+          "code": "monetary-fields",
+          "name": "Monetary Fields",
+          "tags": [
+            "#table",
+            "#row",
+            "#cell"
+          ],
+          "note": "monetary values should only contain numbers to two decimal places, no '$' or commas",
+          "message": "The cell \"5,000\" in row \"139\" at position \"2\" does not conform to a constraint: monetary values should only contain numbers to two decimal places, no '$' or commas",
+          "description": "The field value contains a monetary value that shold not have '$' or ',' characters"
+        },
+        {
+          "cell": "22,400",
+          "fieldName": "TotalFireLoss",
+          "fieldNumber": 2,
+          "fieldPosition": 2,
+          "cells": [
+            "May 20, 2019",
+            "22,400",
+            "811,750"
+          ],
+          "rowNumber": 139,
+          "rowPosition": 140,
+          "code": "monetary-fields",
+          "name": "Monetary Fields",
+          "tags": [
+            "#table",
+            "#row",
+            "#cell"
+          ],
+          "note": "monetary values should only contain numbers to two decimal places, no '$' or commas",
+          "message": "The cell \"22,400\" in row \"140\" at position \"2\" does not conform to a constraint: monetary values should only contain numbers to two decimal places, no '$' or commas",
+          "description": "The field value contains a monetary value that shold not have '$' or ',' characters"
+        },
+        {
+          "cell": "18,500",
+          "fieldName": "TotalFireLoss",
+          "fieldNumber": 2,
+          "fieldPosition": 2,
+          "cells": [
+            "May 21, 2019",
+            "18,500",
+            "17,990,200"
+          ],
+          "rowNumber": 140,
+          "rowPosition": 141,
+          "code": "monetary-fields",
+          "name": "Monetary Fields",
+          "tags": [
+            "#table",
+            "#row",
+            "#cell"
+          ],
+          "note": "monetary values should only contain numbers to two decimal places, no '$' or commas",
+          "message": "The cell \"18,500\" in row \"141\" at position \"2\" does not conform to a constraint: monetary values should only contain numbers to two decimal places, no '$' or commas",
+          "description": "The field value contains a monetary value that shold not have '$' or ',' characters"
+        }
+      ],
+      "stats": {
+        "errors": 132
+      },
+      "valid": false
+    }
+  ],
+  "stats": {
+    "errors": 132,
+    "tasks": 1
+  },
+  "valid": false
+}
