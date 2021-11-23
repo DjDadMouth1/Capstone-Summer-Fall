@@ -4,27 +4,6 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="https://kit.fontawesome.com/a7ebbfc552.js" crossorigin="anonymous"></script>
-    <script>
-      function doSomething() {
-          //alert('Form submitted!');
-		  
-		  document.getElementById('output-form').style.visibility="visible";
-		  
-		  var file = document.getElementById('myFile');
-	  
-          if(file.files.length)
-          {
-            var fileReader=new FileReader();
-            fileReader.onload=function()
-            {
-              document.getElementById('output').textContent=fileReader.result;
-            }
-            fileReader.readAsBinaryString(file.files[0]);
-          }
-		  
-          return false;
-      }
-    </script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/reset.css') }}">
@@ -50,7 +29,7 @@
       </header>
       <div class="content">
         <div class="container">
-          <div class="config-form">
+          <div class="config-check-select">
             <form method="POST" action="" enctype="multipart/form-data">
               <h4>Select custom checks to be run:</h4>
               {% for key, value in check_select.items() %}
@@ -65,7 +44,7 @@
           </form>
           </div>
           <form action="/">
-            <button type="submit">Validator</button>
+            <button class="return-to-validator" type="submit">Validator</button>
           </form> 
 
           <div class="output-form" id="output-form">
