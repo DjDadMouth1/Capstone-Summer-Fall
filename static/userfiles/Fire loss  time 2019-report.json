@@ -1,6 +1,6 @@
 {
   "version": "4.19.5",
-  "time": 0.018,
+  "time": 0.022,
   "errors": [],
   "tasks": [
     {
@@ -12,8 +12,8 @@
         "format": "csv",
         "hashing": "md5",
         "stats": {
-          "hash": "8e9de63dd5c0cb9a8d4926c072c72259",
-          "bytes": 5159,
+          "hash": "807ff95931f614d952d68e23c184f9b1",
+          "bytes": 5300,
           "fields": 3,
           "rows": 140
         },
@@ -35,7 +35,7 @@
           ]
         }
       },
-      "time": 0.018,
+      "time": 0.022,
       "scope": [
         "hash-count-error",
         "byte-count-error",
