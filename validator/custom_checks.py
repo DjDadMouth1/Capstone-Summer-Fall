@@ -6,6 +6,14 @@ import re
 
 
 class header_format(Check):
+    """
+    Open Data Handbook Reference - Column Names
+
+    Checks System column names must be all upper case and limited to 30 characters and must start with an alphabetic character. 
+    Use only alphanumeric characters and period (.), dash(-) or underscore (_). Avoid use of abbreviations. Instead, use the 
+    title case for field names and be sure that the names match that in the Data Dictionary. Aliases reflect real-world context,
+    use simple language, names limited to 30 characters, initcaps words and spaces to separate words.
+    """
     code = "header-format-error"
     Errors = [HeaderFormatError]
 
@@ -16,16 +24,17 @@ class header_format(Check):
     def validate_start(self):
         MAX_CHARACTERS = 30
 
-        # Prepare context
+        # get header data
         header_data = self.resource.header
         labels = header_data.labels
         fields = header_data.fields
         field_positions = header_data.field_positions
 
-        # Iterate items
+        # Iterate through each header name and check if the name meets the PDX Opendata requirements.
         field_number = 0
         for field_position, field, label in zip(field_positions, fields, labels):
 
+            # check PDX Opendata requirements
             field_name_errors_note = []
             is_first_letter_alphabetic = label[0].isalpha()
             is_numeric = (
@@ -34,6 +43,7 @@ class header_format(Check):
             is_uppercase = label.isupper()
             is_less_than_max_length = len(label) <= MAX_CHARACTERS
 
+            # Put together the error message for the column name
             error_position_msg = f"The column name, '{label}', at field position {field_position} has the following error(s): "
             field_name_errors_note.append(error_position_msg)
             if not is_first_letter_alphabetic:
@@ -84,13 +94,19 @@ class header_format(Check):
 
 
 class numeric_field(Check):
+    """
+    Open Data Handbook Reference - Numeric Field Values
+
+    Checks that text in a field that is intended to contain numeric or date data. Any numerical values, including decimals,
+    negatives, or other values without special symbols (%, $, °, etc.). Do not include commas in large number formats.
+    """
     code = "numeric-field-error"
     Errors = [NumericFieldError]
 
     def __init__(self, descriptor=None):
         super().__init__(descriptor)
 
-    # check if there is are numberic fields with barnumbers.
+    # check if there is are numberic fields
     def validate_start(self):
         column_with_numbers = [
             field
@@ -98,22 +114,24 @@ class numeric_field(Check):
             if (field["type"] == "number" or field["type"] == "integer")
         ]
         if not column_with_numbers:
-            note = f"Boolean format consistency check requires a number data type column. Ignore this message if the data does not contain columns containing numbers. Note that if a field contains a non-numeric character, the number in the field it will be saved as a string (e.g. 90% and $1.50 will both saved as strings rather than numbers.)"
+            note = f"Ignore this message if the data does not contain columns containing numbers."
             yield errors.CheckError(note=note)
 
     def validate_row(self, row):
+        # get columns that are numbers
         column_with_numbers = [
             field["name"]
             for field in self.resource.schema.fields
             if (field["type"] == "number" or field["type"] == "integer")
         ]
+        # iterate though the columns that are numbers 
         for field_name, field_value in zip(row.field_names, row.cells):
             if field_name in column_with_numbers:
                 field_value_string = str(field_value)
 
                 # check if it contains any non-numeric characters (looking for %,$, etc.)
-                if not field_value_string.replace(".", "").replace("-", "").isalnum():
-                    note = f"Data in {field_name} column contains special characters. All characters in a column designated a numeric must be numberic. Remove the non-numeric characters from the following value: {field_value_string}."
+                if not field_value_string.replace(".", "").replace("-", "").replace("'", "").replace('"', "").isalnum():
+                    note = f"Data contains special characters. Remove the non-numeric characters from the following value: {field_value_string}."
                     yield NumericFieldError.from_row(
                         row, note=note, field_name=field_name
                     )
@@ -126,6 +144,13 @@ class numeric_field(Check):
 
 
 class zip_code_format(Check):
+    """
+    Open Data Handbook Reference - Zip Codes
+
+    Checks for Five-digit or nine-digit Zip Codes are acceptable. Consistency within a dataset is critical. 
+    Nine-digit Zip Codes can be provided as hyphenated values (i.e.12345-9876). Do not mix both formats 
+    within the same column. Field definitions must be text.
+    """
     code = "zip-code-consistency-error"
     Errors = [ZipCodeFormatError]
 
@@ -143,15 +168,17 @@ class zip_code_format(Check):
             if zip_code_key in uppercase_headers:
                 actual_zip_code_key = zip_code_key
         if not actual_zip_code_key:
-            note = f"zip code format check requires a zip code field:{ZIP_CODE_KEYS}"
+            note = f"Ignore this message if the data does not contain ZIP codes"
             yield errors.CheckError(note=note)
 
     def validate_row(self, row):
-        print("in row")
+        # iterate through row and look for the column with the zipcode 
         for field_name, cell in row.items():
             ZIP_CODE_KEYS = ["ZIP", "ZIP CODE", "ZIP CODES", "ZIPCODE", "ZIPCODES"]
             if field_name.upper() in ZIP_CODE_KEYS:
+                # get the zip code value
                 zip_code_value = str(cell)
+                 # check if zip code meets PDX opendata format
                 if not re.search(
                     "^[0-9]{5}-[0-9]{4}$", zip_code_value
                 ) and not re.search("^[0-9]{5}$", zip_code_value):
@@ -168,6 +195,14 @@ class zip_code_format(Check):
 
 
 class zip_code_consistency(Check):
+    """
+    Open Data Handbook Reference - Zip Codes
+    This check ensures columns either use only Five-digit or nine-digit zip codes. 
+
+    Checks for Five-digit or nine-digit Zip Codes are acceptable. Consistency within a dataset is critical. 
+    Nine-digit Zip Codes can be provided as hyphenated values (i.e.12345-9876). Do not mix both formats 
+    within the same column. Field definitions must be text.
+    """
     code = "zip-code-consistency-error"
     Errors = [ZipCodeFormatConsistencyError]
 
@@ -186,7 +221,7 @@ class zip_code_consistency(Check):
             if zip_code_key in uppercase_headers:
                 has_zip_code = True
         if not has_zip_code:
-            note = f"Zip Code consistency check requires one of the following fields to exist:{ZIP_CODE_KEYS} Ignore this message if data does not contain zip codes."
+            note = f"Ignore this message if the data does not contain ZIP codes"
             yield errors.CheckError(note=note)
 
     def validate_row(self, row):
@@ -194,14 +229,18 @@ class zip_code_consistency(Check):
         uppercase_headers = [
             label.upper() for label in self.resource.schema.field_names
         ]
+        # Iterate the all fields
         for field_name, cell in row.items():
+            # get the field names that are zip codes
             if field_name.upper() in ZIP_CODE_KEYS:
                 zip_code_value = str(cell)
                 zip_code_length = len(str(cell))
-                match = self.__memory.get(field_name)
+                # check if a current format has been saved for this zip code field.
+                saved_zip_code_format = self.__memory.get(field_name)
 
                 # field format not saved yet
-                if not match:
+                if not saved_zip_code_format:
+                    # check if the current zip code meets the PDX opendata format, if not, return error, otherwise save the current format.
                     if not re.search(
                         "^[0-9]{5}-[0-9]{4}$", zip_code_value
                     ) and not re.search("^[0-9]{5}$", zip_code_value):
@@ -211,11 +250,13 @@ class zip_code_consistency(Check):
                         )
                     else:
                         self.__memory[field_name] = (zip_code_length, row.row_position)
-
-                if match:
-                    saved_length = match[0]
+                
+                # zip code format was found
+                if saved_zip_code_format:
+                    # check if the current zip code format matches the saved zip code format. If not, yeild error.
+                    saved_length = saved_zip_code_format[0]
                     if zip_code_length != saved_length:
-                        note = f"Data in {field_name} column is inconsistent. Data does not match format at row posistion {match[1]}"
+                        note = f"Data in {field_name} column is inconsistent. Data does not match format at row posistion {saved_zip_code_format[1]}"
                         yield ZipCodeFormatConsistencyError.from_row(
                             row, note=note, field_name=field_name
                         )
@@ -226,6 +267,13 @@ class zip_code_consistency(Check):
         "properties": {},
     }
 class boolean_format_consistency(Check):
+    """
+    Open Data Handbook Reference - Checkboxes
+    This check ensures columns using binary data types are conisitent.
+    
+    Checks for Checkbox and binary values are acceptable formats for a dataset.
+    Valid false values: {0, f, false, n, no, off} Valid true values: {1, t, true, y, yes, on}
+    """
     code = "boolean-format-consistency-error"
     Errors = [BooleanFormatConsistencyError]
 
@@ -233,14 +281,15 @@ class boolean_format_consistency(Check):
         super().__init__(descriptor)
         self.__memory = {}
 
-    # check if there is are boolean
+    # check if there is are boolean data types in the dataset
     def validate_start(self):
         column_data_types = [field["type"] for field in self.resource.schema.fields]
         if "boolean" not in column_data_types:
-            note = f"Boolean format consistency check+-++ requires a boolean data type column. Ignore this message if the data does not contain boolean columns (True/False)."
+            note = f"Ignore this message if the data does not contain boolean columns (True/False)."
             yield errors.CheckError(note=note)
 
     def validate_row(self, row):
+        # current acceptable boolean values by PDX OpenData
         boolean_sets = [
             {"1", "0"},
             {"t", "f"},
@@ -249,26 +298,33 @@ class boolean_format_consistency(Check):
             {"y", "n"},
             {"on", "off"},
         ]
-        column_data_types = [
+        # get the coluns with boolean data
+        columns_with_booleans = [
             field["name"]
             for field in self.resource.schema.fields
             if field["type"] == "boolean"
         ]
-
+        # Iterate the all fields
         for field_name, field_value in zip(row.field_names, row.cells):
-            if field_name in column_data_types:
+            # get the fields taht are booleans
+            if field_name in columns_with_booleans:
                 field_value_string = str(field_value)
+                # check if a current format has been saved for this boolean field.
                 saved_boolean_format = self.__memory.get(field_name)
 
                 # field boolean format not saved yet
                 if not saved_boolean_format:
                     for boolean_set in boolean_sets:
+                        # save the current boolean format used
                         if field_value_string in boolean_set:
                             self.__memory[field_name] = (boolean_set, row.row_position)
+                # boolean format was found
                 if saved_boolean_format:
+                    # get the saved boolean format and check if the current boolean format matches
+                    # the saved boolean format. If not, yeild error.
                     current_boolean_set = saved_boolean_format[0]
                     if field_value_string not in current_boolean_set:
-                        note = f"Boolean data in {field_name} column is not consistent with other boolean values in the column. The current value is {field_value_string} and must be updated ot be one of the following:{current_boolean_set}, which was decided at the follwing row: {saved_boolean_format[1]}."
+                        note = f"Boolean data in {field_name} column is not consistent with other boolean values in the column. The current value is {field_value_string} and must be updated ot be one of the following:{current_boolean_set}, which was decided at the following row: {saved_boolean_format[1]}."
                         yield BooleanFormatConsistencyError.from_row(
                             row, note=note, field_name=field_name
                         )
