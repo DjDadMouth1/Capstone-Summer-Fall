@@ -33,7 +33,12 @@
             <form method="POST" action="" enctype="multipart/form-data">
               {% for key, value in config_dict.items() %}
               <h4>{{key}}:</h4>
-              <p class="input-p">{% for field in value %}<input name="{{key}}[{{loop.index}}]" value="{{field}}"> {%endfor%}<input name="{{key}}[{{value|length + 1}}]" value=""></p>
+              <p class="input-p">
+                {% for field in value %}
+                  <input name="{{key}}[{{loop.index}}]" value="{{field}}">
+                  {% if loop.index % 4 == 0 %}<br>{% endif %} 
+                {%endfor%}
+                <input name="{{key}}[{{value|length + 1}}]" placeholder="New Field" value=""></p>
               {% endfor %}
               <button type="submit">Update Config</button>
           </form>
