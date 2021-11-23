@@ -56,6 +56,18 @@ html, body, input, button {
   font-family: "Open Sans", Courier, monospace;
 }
 
+.input-p input {
+  border: white 1px solid;
+}
+
+form button {
+  background: #27ae60;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin: 10px 0px;
+}
+
 img {
   max-width: 100%;
 }
