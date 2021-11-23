@@ -19,7 +19,7 @@ def run_validator():
          outputselection = request.values['outputSelection']
          filename = str(new_file.filename)
          outputselection = str(outputselection)
-         new_file.save(('./static/userfiles/' + new_file.filename))
+         new_file.save(os.path.join('./static/userfiles/', new_file.filename))
          from validation import validator
          report_name = validator.custom_validate(filename,outputselection)
          print(report_name)
