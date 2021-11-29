@@ -864,8 +864,8 @@ class valid_date_in_cell(Check):
         for field, value in row.items():
             if field.upper() in self.__checklabels:
                 isError = False
-                try:
-                    date_time_obj = datetime.strptime(value, "%d/%m/%y") #try to parse this string value into date, if can not past. It mean this cell value is not true Date format
+                try:  
+                    date_time_obj = datetime.strptime(value, "%B %d, %Y") #try to parse this string value into date, if can not past. It mean this cell value is not true Date format
                 except:
                     isError = True
 
