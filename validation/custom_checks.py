@@ -209,7 +209,6 @@ class zip_code_consistency(Check):
             yield errors.CheckError(note=note)
 
     def validate_row(self, row):
-        print(self.__memory)
         for field_name, cell in row.items():
             if field_name.upper() in self.__checklabels:
                 zip_code_value = str(cell)
@@ -659,8 +658,6 @@ class log_date_match_error(Check):
                 log_field = field['name']
             if field['name'].upper() == RECORD_DATE_KEY:
                 rec_field = field['name']
-        print(log_field)
-        print(rec_field)
 
         # Check if data file has both lat and long fields
         if bool((log_field and not rec_field) or (not log_field and rec_field)) or bool(not log_field and not rec_field):

@@ -22,7 +22,6 @@ def run_validator():
          new_file.save(os.path.join('static/userfiles/', new_file.filename))
          from validation import validator
          report_name = validator.custom_validate(filename,outputselection)
-         print(report_name)
          return render_template('htmlPage.html', display = True, report = report_name)
    
    return render_template('htmlPage.html')
@@ -41,7 +40,6 @@ def check_config():
       with open('./settings/fields.cfg','w') as outfile:
          for key,value in new_check_cfg.items():
             line = str(key) + ' = ' + ','.join(value) + '\n'
-            print(line)
             outfile.write(line.upper())
       
    field_cfg = {}
@@ -49,7 +47,7 @@ def check_config():
    for line in field_cfg_file:
       if not line.startswith('#'): 
          key, value = line.split('=')
-         field_cfg[key.strip()] = value.strip().split(',')
+         field_cfg[key.strip()] = [item.strip() for item in value.split(',')]
 
    return render_template('fieldconfig.html', config_dict = field_cfg)
 

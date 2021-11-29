@@ -14,8 +14,6 @@ def custom_validate(file, output_selection = None):
     
     filepath = './static/userfiles/' + file
 
-    print(filepath)
-
     report = validate(filepath, checks=check_selection)
     
     if output_selection == 'schema':
@@ -25,7 +23,6 @@ def custom_validate(file, output_selection = None):
     else:
         output_report = report
     
-    print(output_selection)
     if output_selection != '':
         output_selection = '-' + output_selection
 

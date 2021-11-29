@@ -190,38 +190,80 @@ img{
                     padding: 0px 10px;
                 }
             }
-            .config-form{
+            .config-fields{
+                margin: auto;
+                width: 60%;
+                @media only screen and (max-width: 900px){
+                    width: 70%;
+                }
+                @media only screen and (max-width: 600px){
+                    width: 90%;
+                }
                 form{
-                    h4{
-                        color: $primary;
+                    display: flex;
+                    justify-content: space-between;
+                    border: solid white 1px;
+                    box-sizing: content-box;
+                    width: 100%;
+                    border-radius: 10px;
+                    padding: 20px 20px 20px 20px;
+                    @media only screen and (max-width: 600px){
+                        padding: 20px 10px;
+                        flex-direction: column;
+                        justify-content: center;
+                        align-items: center;
                     }
-                    input{
-                        margin-bottom: 10px;
-                    }
-                    p{
-                        margin-bottom: 20px;
-                        input{
-                            padding-left: 5px;
-                            border: 1px solid white;
+                    .input-p{
+                        cursor: pointer;
+                        .choose-file{  
+                            border: solid 1px white;
+                            border-radius: 7px;
+                            background-color: $primary;
+                            color: white;
+                            padding: 5px;
+                            cursor: pointer;
+                            &:hover{
+                                color: $secondary;
+                            }
+                            @media only screen and (max-width: 950px){
+                                font-size: 12px;
+                            }
+                            @media only screen and (max-width: 600px){
+                                margin-bottom: 10px;
+                            }
                         }
                     }
-                    button{
-                        background: $primary;
-                        padding: 10px 20px;
-                        margin-bottom: 20px;
-                        border-radius: 5px;
+                    .input-selection{
+                        .output-selection{
+                            color: white;
+                            background-color: #27ae60;
+                            border-radius: 7px;
+                            height: 33px;
+                            border: white solid 1px;
+                            font-family: "Open Sans", Courier, monospace;
+                        }
+                    }
+                    
+                    .run-frictionless{
+                        padding: 0px 10px;
+                        height: 33px;
+                        border: solid 1px white;
+                        border-radius: 7px;
+                        background-color: $primary;
+                        color: white;
                         cursor: pointer;
+                        @media only screen and (max-width: 950px){
+                            font-size: 12px;
+                            padding: 0px 3px;
+                        }
+                        &:hover{
+                            color: $secondary;
+                        }
+                        
+                        
                     }
                 }
-            }
-            form{
-                .config-btn{
-                    background: $primary;
-                    padding: 10px 20px;
-                    margin-bottom: 20px;
-                    border-radius: 5px;
-                    cursor: pointer;
-                }
+                
             }
         }
     }

@@ -129,14 +129,48 @@ img {
   width: 60%;
 }
 
+.body-content .content .container .config-fields {
+  margin: auto;
+  width: 60%;
+}
+
+.body-content .content .container .check-select {
+  margin: auto;
+  width: 60%;
+}
+
 @media only screen and (max-width: 900px) {
   .body-content .content .container .input-form {
     width: 70%;
   }
 }
 
+@media only screen and (max-width: 900px) {
+  .body-content .content .container .config-fields {
+    width: 70%;
+  }
+}
+
+@media only screen and (max-width: 900px) {
+  .body-content .content .container .check-select {
+    width: 70%;
+  }
+}
+
 @media only screen and (max-width: 600px) {
   .body-content .content .container .input-form {
+    width: 90%;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .body-content .content .container .config-fields {
+    width: 90%;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .body-content .content .container .check-select {
     width: 90%;
   }
 }
@@ -156,8 +190,70 @@ img {
   padding: 20px 20px 20px 20px;
 }
 
+.body-content .content .container .config-fields form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: block;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  border: solid white 1px;
+  -webkit-box-sizing: content-box;
+          box-sizing: content-box;
+  width: 100%;
+  border-radius: 10px;
+  padding: 20px 20px 20px 20px;
+}
+
+.body-content .content .container .check-select form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: block;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  border: solid white 1px;
+  -webkit-box-sizing: content-box;
+          box-sizing: content-box;
+  width: 100%;
+  border-radius: 10px;
+  padding: 20px 20px 20px 20px;
+}
+
+@media only screen and (max-width: 600px) {
+  .body-content .content .container .config-fields form {
+    padding: 20px 10px;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
+}
+
 @media only screen and (max-width: 600px) {
   .body-content .content .container .input-form form {
+    padding: 20px 10px;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .body-content .content .container .config-fields form {
     padding: 20px 10px;
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
@@ -176,6 +272,14 @@ img {
   cursor: pointer;
 }
 
+.body-content .content .container .config-fields form .input-p {
+  cursor: pointer;
+}
+
+.body-content .content .container .config-fields form {
+  cursor: pointer;
+}
+
 .body-content .content .container .input-form form .input-p .choose-file {
   border: solid 1px white;
   border-radius: 7px;
@@ -184,6 +288,21 @@ img {
   padding: 5px;
   cursor: pointer;
 }
+
+.body-content .content .container .config-fields form .input-p .edit-field {
+  border: solid 1px #27ae60;
+  border-radius: 7px;
+  background-color: #ffffff;
+  color: rgb(0, 0, 0);
+  padding: 5px;
+  cursor: pointer;
+}
+
+.body-content .content .container .check-select form .check {
+  height: 20px;
+  width: 20px;
+}
+
 
 .body-content .content .container .input-form form .input-p .choose-file:hover {
   color: #f1c40f;

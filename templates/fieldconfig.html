@@ -13,7 +13,6 @@
       type="text/css"
       href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/css/bootstrap.min.css"
     />-->
-    <script defer src="webpage.js"></script>
   </head>
   <body class="bg-dark">
     <div class="body-content">
@@ -30,22 +29,22 @@
       <div class="content">
         <div class="container">
           <div class="config-fields">
+            <form action="/">
+              <button class="edit-field" type="submit">Validator</button>
+            </form> 
             <form method="POST" action="" enctype="multipart/form-data">
               {% for key, value in config_dict.items() %}
               <h4>{{key}}:</h4>
               <p class="input-p">
                 {% for field in value %}
-                  <input name="{{key}}[{{loop.index}}]" value="{{field}}">
-                  {% if loop.index % 4 == 0 %}<br>{% endif %} 
+                  <input class="edit-field" name="{{key}}[{{loop.index}}]" value="{{field}}">
                 {%endfor%}
-                <input name="{{key}}[{{value|length + 1}}]" placeholder="New Field" value=""></p>
+                <input class="edit-field" name="{{key}}[{{value|length + 1}}]" placeholder="New Field" value=""></p>
+                <br>
               {% endfor %}
               <button type="submit">Update Config</button>
           </form>
           </div>
-          <form action="/">
-            <button class="return-to-validator" type="submit">Validator</button>
-          </form> 
         </div>
       </div>
       <footer class="flex j-center a-center" >
@@ -65,5 +64,4 @@
     
   </body>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-  <script src="js/main.js"></script>
 </html>
