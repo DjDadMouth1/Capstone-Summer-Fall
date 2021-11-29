@@ -120,7 +120,7 @@ class MonetaryFields(errors.ConstraintError):
     name = "Monetary Fields"
     tags = ["#table", "#row", "#cell"]
     template = 'The cell "{cell}" in row "{rowPosition}" at position "{fieldPosition}" does not conform to a constraint: {note}'
-    description = "The field value contains a monetary value that shold not have '$' or ',' characters"
+    description = "The field value contains a monetary value that should not have '$' or ',' characters"
 
 class ValidEmailInCell(errors.CellError):
     code = "valid-email-in-cell"
