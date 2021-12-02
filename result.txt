@@ -1,4 +1,0 @@
-
--frictionless may create a result file
--the user can download this file by click download button
--What api should we have in this web page?

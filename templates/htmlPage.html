@@ -5,24 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="https://kit.fontawesome.com/a7ebbfc552.js" crossorigin="anonymous"></script>
     <script>
-      function doSomething() {
-          //alert('Form submitted!');
-		  
-		  document.getElementById('output-form').style.visibility="visible";
-		  
-		  var file = document.getElementById('myFile');
-	  
-          if(file.files.length)
-          {
-            var fileReader=new FileReader();
-            fileReader.onload=function()
-            {
-              document.getElementById('output').textContent=fileReader.result;
-            }
-            fileReader.readAsBinaryString(file.files[0]);
-          }
-		  
-          return false;
+      function displayReport(filepath) {
+      
+      fetch(filepath)
+        .then(res => res.text())
+        .then(text => {
+          const insertAt = document.getElementById('output');
+          insertAt.textContent = text;
+          document.getElementById('output-form').style.visibility="visible";
+        });		  
       }
     </script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -34,7 +25,6 @@
       type="text/css"
       href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/css/bootstrap.min.css"
     />-->
-    <script defer src="webpage.js"></script>
   </head>
   <body class="bg-dark">
     <div class="body-content">
@@ -49,31 +39,37 @@
         </div>
       </header>
       <div class="content">
-        <div class="container">
+        <div class="container ">
           <div class="input-form">
             <form method="POST" action="" enctype="multipart/form-data">
               <p class="input-p"><input class="choose-file" type="file" name="filename"></p>
-              <p class="input-p">
+              <p class="input-selection">
                 <select class="output-selection" name="outputSelection">
-                  <option selected="selected" value="">Default</option>
+                  <option selected="selected" value="">Report Type</option>
+                  <option value="">Full</option>
                   <option value="schema">Schema</option>
                   <option value="error">Error Only</option>                
                 </select>
               </p>
               <p><input class="run-frictionless" type="submit" value="Run Frictionless"></p>
             </form>
-            <!-- <form method="POST" action="" onsubmit="return doSomething();" class="my-form">
-              <input class="choose-file" type="file" id="myFile" name="filename">
-              <input class="run-frictionless" type="submit" value="Run Frictionless">
-            </form> -->
+            <form action="/check_select">
+              <button type="submit">Check Selection</button>
+            </form>
+            <form action="/field_config">
+              <button type="submit">Check Configuration</button>
+            </form>
           </div>
-
+          {% if display %}
+              <script>displayReport("{{report}}");</script>
+          {% endif %}
+          <div id='test'></div>
           <div class="output-form" id="output-form">
             <div class="download">
               <!-- when download class is clicked, it will run a function in main.js
               to display downboad-btn button. This function can replace the name
               of download file in href link by the name of result file. -->
-              <a href="./result.txt" download>
+              <a href="{{report}}" download>
                 <div class="download-btn">
                   Download Files
                   <i class="fas fa-download"></i>
@@ -96,10 +92,8 @@
           </p>
         </div>
       </footer>
-
     </div>
     
   </body>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-  <script src="js/main.js"></script>
 </html>

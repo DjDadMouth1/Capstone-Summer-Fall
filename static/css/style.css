@@ -56,6 +56,18 @@ html, body, input, button {
   font-family: "Open Sans", Courier, monospace;
 }
 
+.input-p input {
+  border: white 1px solid;
+}
+
+form button {
+  background: #27ae60;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin: 10px 0px;
+}
+
 img {
   max-width: 100%;
 }
@@ -117,15 +129,49 @@ img {
   width: 60%;
 }
 
+.body-content .content .container .config-fields {
+  margin: auto;
+  width: 60%;
+}
+
+.body-content .content .container .check-select {
+  margin: auto;
+  width: 60%;
+}
+
 @media only screen and (max-width: 900px) {
   .body-content .content .container .input-form {
     width: 75%;
   }
 }
 
+@media only screen and (max-width: 900px) {
+  .body-content .content .container .config-fields {
+    width: 70%;
+  }
+}
+
+@media only screen and (max-width: 900px) {
+  .body-content .content .container .check-select {
+    width: 70%;
+  }
+}
+
 @media only screen and (max-width: 600px) {
   .body-content .content .container .input-form {
     width: 95%;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .body-content .content .container .config-fields {
+    width: 90%;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .body-content .content .container .check-select {
+    width: 90%;
   }
 }
 
@@ -137,8 +183,57 @@ img {
       -ms-flex-pack: justify;
           justify-content: space-between;
   border: solid white 1px;
+  -webkit-box-sizing: content-box;
+          box-sizing: content-box;
+  width: 100%;
   border-radius: 10px;
   padding: 20px 20px 20px 20px;
+}
+
+.body-content .content .container .config-fields form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: block;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  border: solid white 1px;
+  -webkit-box-sizing: content-box;
+          box-sizing: content-box;
+  width: 100%;
+  border-radius: 10px;
+  padding: 20px 20px 20px 20px;
+}
+
+.body-content .content .container .check-select form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: block;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  border: solid white 1px;
+  -webkit-box-sizing: content-box;
+          box-sizing: content-box;
+  width: 100%;
+  border-radius: 10px;
+  padding: 20px 20px 20px 20px;
+}
+
+@media only screen and (max-width: 600px) {
+  .body-content .content .container .config-fields form {
+    padding: 20px 10px;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
 }
 
 @media only screen and (max-width: 600px) {
@@ -157,11 +252,35 @@ img {
   }
 }
 
+@media only screen and (max-width: 600px) {
+  .body-content .content .container .config-fields form {
+    padding: 20px 10px;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
+}
+
 .body-content .content .container .input-form form .input-p {
   cursor: pointer;
 }
 
-.body-content .content .container .input-form form .input-p .choose-file, .output-selection {
+.body-content .content .container .config-fields form .input-p {
+  cursor: pointer;
+}
+
+.body-content .content .container .config-fields form {
+  cursor: pointer;
+}
+
+.body-content .content .container .input-form form .input-p .choose-file {
   border: solid 1px white;
   border-radius: 7px;
   background-color: #27ae60;
@@ -170,23 +289,47 @@ img {
   cursor: pointer;
 }
 
-.body-content .content .container .input-form form .input-p .choose-file:hover, .output-selection:hover {
+.body-content .content .container .config-fields form .input-p .edit-field {
+  border: solid 1px #27ae60;
+  border-radius: 7px;
+  background-color: #ffffff;
+  color: rgb(0, 0, 0);
+  padding: 5px;
+  cursor: pointer;
+}
+
+.body-content .content .container .check-select form .check {
+  height: 20px;
+  width: 20px;
+}
+
+
+.body-content .content .container .input-form form .input-p .choose-file:hover {
   color: #f1c40f;
 }
 
 @media only screen and (max-width: 950px) {
-  .body-content .content .container .input-form form .input-p .choose-file, .output-selection{
+  .body-content .content .container .input-form form .input-p .choose-file {
     font-size: 12px;
   }
 }
 
 @media only screen and (max-width: 600px) {
-  .body-content .content .container .input-form form .input-p .choose-file, .output-selection{
+  .body-content .content .container .input-form form .input-p .choose-file {
     margin-bottom: 10px;
   }
 }
 
-.body-content .content .container .input-form form .run-frictionless, .output-selection {
+.body-content .content .container .input-form form .input-selection .output-selection {
+  color: white;
+  background-color: #27ae60;
+  border-radius: 7px;
+  height: 33px;
+  border: white solid 1px;
+  font-family: "Open Sans", Courier, monospace;
+}
+
+.body-content .content .container .input-form form .run-frictionless {
   padding: 0px 10px;
   height: 33px;
   border: solid 1px white;
@@ -210,7 +353,7 @@ img {
 .body-content .content .container .output-form {
   position: relative;
   height: 550px;
-  width: 50%;
+  width: 60%;
   margin: auto;
   margin-top: 20px;
   visibility: hidden;
@@ -264,13 +407,48 @@ img {
 
 .body-content .content .container .output-form .output {
   border-radius: 5px;
+  margin: 0px 20px;
   position: absolute;
   top: 34px;
-  max-height: 100%;
+  max-height: 90%;
   width: 100%;
   background-color: white;
+  color: black;
   overflow: auto;
   padding: 0px 10px;
+}
+
+.body-content .content .container .config-form form h4 {
+  color: #27ae60;
+}
+
+.body-content .content .container .config-form form input {
+  margin-bottom: 10px;
+}
+
+.body-content .content .container .config-form form p {
+  margin-bottom: 20px;
+}
+
+.body-content .content .container .config-form form p input {
+  padding-left: 5px;
+  border: 1px solid white;
+}
+
+.body-content .content .container .config-form form button {
+  background: #27ae60;
+  padding: 10px 20px;
+  margin-bottom: 20px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.body-content .content .container form .config-btn {
+  background: #27ae60;
+  padding: 10px 20px;
+  margin-bottom: 20px;
+  border-radius: 5px;
+  cursor: pointer;
 }
 
 .body-content footer {
