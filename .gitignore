@@ -2,5 +2,6 @@
 
 /venv
 /__pycache__
-/validator/__pycache__
+/validation/__pycache__
 result.txt
+/settings/__pycache__
