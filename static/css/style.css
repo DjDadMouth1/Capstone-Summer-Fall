@@ -141,7 +141,7 @@ img {
 
 @media only screen and (max-width: 900px) {
   .body-content .content .container .input-form {
-    width: 70%;
+    width: 75%;
   }
 }
 
@@ -159,7 +159,7 @@ img {
 
 @media only screen and (max-width: 600px) {
   .body-content .content .container .input-form {
-    width: 90%;
+    width: 95%;
   }
 }
 
@@ -340,7 +340,7 @@ img {
 }
 
 @media only screen and (max-width: 950px) {
-  .body-content .content .container .input-form form .run-frictionless {
+  .body-content .content .container .input-form form .run-frictionless, .output-selection {
     font-size: 12px;
     padding: 0px 3px;
   }
